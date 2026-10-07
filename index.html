@@ -99,6 +99,30 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
   .lista{grid-template-columns:1fr}
   .btn{flex:1 1 auto;justify-content:center}
 }
+/* ---- Quem financia CT&I ---- */
+.atalho{margin-left:6px;color:#fff;text-decoration:none;font-weight:600}
+.atalho:hover{background:rgba(255,255,255,.28)}
+.financiadores{margin-top:22px}
+.financiadores h2{margin:0 0 4px;font-size:20px;line-height:1.25}
+.fin-intro{margin:0 0 12px;color:var(--suave);font-size:14.5px}
+.fin-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;align-items:start}
+details.fin-grupo{border:1.5px solid var(--borda);border-top:4px solid var(--cor,#0f8a6c);border-radius:12px;padding:10px 12px;background:#fff}
+details.fin-grupo summary{cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;display:flex;align-items:center;gap:8px;color:var(--texto)}
+details.fin-grupo summary::-webkit-details-marker{display:none}
+details.fin-grupo summary .n{background:var(--fundo);border-radius:999px;padding:0 8px;font-size:12.5px;color:var(--suave);font-weight:600}
+details.fin-grupo summary:after{content:"▾";margin-left:auto;color:var(--suave);transition:transform .2s}
+details.fin-grupo[open] summary:after{transform:rotate(180deg)}
+.fin-grupo ul{list-style:none;margin:10px 0 2px;padding:0;display:grid;gap:9px}
+.fin-grupo li{font-size:14px;line-height:1.35;padding-left:2px}
+.fin-grupo li a{font-weight:700;color:var(--verde-esc);text-decoration:none}
+.fin-grupo li a:hover{text-decoration:underline}
+.fin-grupo li a:after{content:" ↗";font-size:12px;font-weight:400}
+.fin-grupo li span{display:block;color:var(--suave);font-size:13.5px}
+.fin-nota{margin:12px 2px 0;font-size:12.5px;color:var(--suave)}
+@media (max-width:640px){
+  .financiadores h2{font-size:18px}
+  .atalho{margin:8px 0 0 0}
+}
 </style>
 </head>
 <body>
@@ -106,8 +130,9 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
   <div class="wrap">
     <h1>🔎 Radar de Oportunidades – Campo Verde</h1>
     <p class="sub">SEMCITECI – Secretaria de Ciência, Tecnologia e Inovação – Prefeitura de Campo Verde</p>
-    <p class="intro">Eventos, cursos gratuitos, editais e crédito para inovação e tecnologia, além de competições e olimpíadas científicas: para empresas, startups, produtores rurais, jovens, estudantes, professores e toda a comunidade — com destaque para o que acontece em Campo Verde.</p>
+    <p class="intro">Eventos, cursos gratuitos, editais e crédito para inovação e tecnologia, além de competições e olimpíadas científicas: para empresas, startups, produtores rurais, jovens, estudantes, professores, prefeituras e toda a comunidade — com destaque para o que acontece em Campo Verde.</p>
     <span class="atual" id="atual"></span>
+    <a class="atual atalho" href="#financiadores">🏦 Quem financia CT&amp;I</a>
   </div>
 </header>
 
@@ -153,6 +178,55 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
 
   <div class="resumo" id="resumo" aria-live="polite"></div>
   <div class="lista" id="lista"></div>
+  <section class="painel financiadores" id="financiadores" aria-labelledby="tituloFin">
+    <h2 id="tituloFin">🏦 Quem financia CT&amp;I</h2>
+    <p class="fin-intro">Guia rápido de quem apoia ciência, tecnologia e inovação, por público. Os links levam às páginas oficiais de editais e programas de cada instituição.</p>
+    <div class="fin-grade">
+      <details class="fin-grupo" style="--cor:#2f6fdb">
+        <summary>🔬 Professores e pesquisadores <span class="n">4</span></summary>
+        <ul>
+          <li><a href="https://www.gov.br/cnpq/pt-br/chamadas/abertas-para-submissao" target="_blank" rel="noopener noreferrer">CNPq</a><span>Bolsas de produtividade, auxílios e chamadas de pesquisa em todas as áreas.</span></li>
+          <li><a href="https://www.gov.br/capes/pt-br/assuntos/editais-e-resultados-capes" target="_blank" rel="noopener noreferrer">CAPES</a><span>Pós-graduação, formação de professores e apoio a eventos científicos.</span></li>
+          <li><a href="https://www.fapemat.mt.gov.br/pt/editais_1" target="_blank" rel="noopener noreferrer">FAPEMAT</a><span>Fundação de amparo à pesquisa de MT: editais para pesquisadores e instituições do estado.</span></li>
+          <li><a href="https://www.finep.gov.br/oportunidades" target="_blank" rel="noopener noreferrer">Finep</a><span>Recursos para ICTs: infraestrutura de pesquisa e projetos em parceria com empresas e cooperativas.</span></li>
+        </ul>
+      </details>
+      <details class="fin-grupo" style="--cor:#d64b8a">
+        <summary>🎒 Alunos <span class="n">4</span></summary>
+        <ul>
+          <li><a href="https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programas-ict" target="_blank" rel="noopener noreferrer">CNPq – Iniciação científica</a><span>Bolsas PIBIC, PIBITI e PIBIC-EM, concedidas por meio das instituições de ensino e pesquisa.</span></li>
+          <li><a href="https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica" target="_blank" rel="noopener noreferrer">CAPES – Educação básica</a><span>Bolsas para quem faz licenciatura, como o Pé-de-Meia Licenciaturas.</span></li>
+          <li><a href="https://www.fapemat.mt.gov.br/pt/editais_1" target="_blank" rel="noopener noreferrer">FAPEMAT</a><span>Editais estaduais de CT&amp;I; confira os abertos para estudantes de MT.</span></li>
+          <li><a href="https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/olimpiadascientificasmcti/olimpiadas-cientificas-mcti" target="_blank" rel="noopener noreferrer">MCTI – Olimpíadas científicas</a><span>Olimpíadas científicas para estudantes de todo o país e a Semana Nacional de C&amp;T.</span></li>
+        </ul>
+      </details>
+      <details class="fin-grupo" style="--cor:#e07a10">
+        <summary>💼 Empresas e comércio <span class="n">7</span></summary>
+        <ul>
+          <li><a href="https://www.finep.gov.br/oportunidades" target="_blank" rel="noopener noreferrer">Finep</a><span>Subvenção (recurso não reembolsável) e crédito para projetos de inovação.</span></li>
+          <li><a href="https://www.bndes.gov.br/wps/vanityurl/bndes-mais-inovacao/" target="_blank" rel="noopener noreferrer">BNDES</a><span>Crédito para inovação e digitalização (BNDES Mais Inovação).</span></li>
+          <li><a href="https://sebrae.com.br/subsites/sebraetec" target="_blank" rel="noopener noreferrer">Sebrae</a><span>Consultorias Sebraetec, Agentes Locais de Inovação (ALI) e Catalisa ICT.</span></li>
+          <li><a href="https://programas.sebraestartups.com.br/" target="_blank" rel="noopener noreferrer">Sebrae Startups</a><span>Programas de aceleração, investimento e desafios para startups.</span></li>
+          <li><a href="https://embrapii.org.br/" target="_blank" rel="noopener noreferrer">Embrapii</a><span>Projetos de P&amp;D com as unidades Embrapii, inclusive para pequenas empresas com o Sebrae.</span></li>
+          <li><a href="https://desenvolve.mt.gov.br/linhasdecredito" target="_blank" rel="noopener noreferrer">Desenvolve MT</a><span>Agência de fomento de MT: crédito para empresas, incluindo a linha Desenvolve Inovação.</span></li>
+          <li><a href="https://www.fapemat.mt.gov.br/pt/editais_1" target="_blank" rel="noopener noreferrer">FAPEMAT</a><span>Programas estaduais como Centelha e Tecnova, quando há edital aberto.</span></li>
+        </ul>
+      </details>
+      <details class="fin-grupo" style="--cor:#0e7490">
+        <summary>🏛️ Prefeituras <span class="n">7</span></summary>
+        <ul>
+          <li><a href="https://www.gov.br/pt-br/servicos/acessar-a-plataforma-inteli-gente" target="_blank" rel="noopener noreferrer">MCTI – inteli.gente</a><span>Diagnóstico gratuito de maturidade para cidades inteligentes sustentáveis.</span></li>
+          <li><a href="https://www.finep.gov.br/oportunidades" target="_blank" rel="noopener noreferrer">Finep</a><span>Chamadas para ICTs e ambientes de inovação, como parques tecnológicos e incubadoras.</span></li>
+          <li><a href="https://cidades.bndes.gov.br/" target="_blank" rel="noopener noreferrer">BNDES Cidades</a><span>Soluções de financiamento para modernizar a gestão e os serviços municipais.</span></li>
+          <li><a href="https://www.gov.br/mcom/pt-br/acesso-a-informacao/acoes-e-programas/programas-projetos-acoes-obras-e-atividades" target="_blank" rel="noopener noreferrer">Ministério das Comunicações</a><span>Conectividade e inclusão digital, como o Computadores para Inclusão.</span></li>
+          <li><a href="https://www.secitec.mt.gov.br/editais" target="_blank" rel="noopener noreferrer">Secitec-MT</a><span>Editais e seleções estaduais de ciência, tecnologia e inovação.</span></li>
+          <li><a href="https://www.fapemat.mt.gov.br/pt/editais_1" target="_blank" rel="noopener noreferrer">FAPEMAT</a><span>Editais estaduais de CT&amp;I que podem envolver parcerias com o município.</span></li>
+          <li><a href="https://www.gov.br/transferegov/pt-br" target="_blank" rel="noopener noreferrer">Transferegov</a><span>Convênios, transferências e emendas da União para municípios.</span></li>
+        </ul>
+      </details>
+    </div>
+    <p class="fin-nota">Links conferidos em 07/10/2026. Editais abertos de cada instituição aparecem nos cards acima, quando servem para Campo Verde.</p>
+  </section>
 </main>
 
 <footer>
@@ -324,7 +398,8 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
    "publicos": [
     "servidor_publico",
     "pessoa_fisica",
-    "estudante"
+    "estudante",
+    "prefeitura"
    ],
    "organizador": "Enap – Escola Nacional de Administração Pública",
    "instituicoes": [
@@ -1273,7 +1348,8 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
     "estudante",
     "professor",
     "startup",
-    "servidor_publico"
+    "servidor_publico",
+    "prefeitura"
    ],
    "organizador": "Sociedade Brasileira de Computação (SBC) e Univag – Centro Universitário de Várzea Grande",
    "instituicoes": [
@@ -1362,6 +1438,464 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
    "data_inclusao": "2026-10-07",
    "destaque": true,
    "observacoes": "Chamada de palestrantes (palestras e workshops) até 20/10/2026; resultado até 31/10; grade publicada até 8/11, segundo o site oficial."
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "cnpq-33-2026-produtividade",
+   "titulo": "Chamada CNPq nº 33/2026 – Bolsas de Produtividade em Pesquisa (PQ e PQ-Sr) e em Desenvolvimento Tecnológico e Extensão Inovadora (DT)",
+   "titulo_curto": "CNPq 33/2026 – Bolsas de Produtividade (PQ, PQ-Sr e DT)",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "professor"
+   ],
+   "organizador": "CNPq / MCTI",
+   "instituicoes": [
+    "CNPq/CAPES"
+   ],
+   "resumo": "Chamada das Bolsas de Produtividade do CNPq. Podem concorrer pesquisadores(as) com título de doutor, currículo Lattes atualizado e vínculo formal com a instituição onde o projeto será executado. Para DT ou PQ nível C, o doutorado deve ter sido obtido até 2024.",
+   "valor": "Bolsa em nome do proponente. Orçamento global estimado: R$ 23,5 milhões (DT) e R$ 425,4 milhões (PQ e PQ-Sr).",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2027-01-07",
+    "hora_cuiaba": "22:59",
+    "texto": "Submissão de 07/10/2026 até 07/01/2027, 23h59 de Brasília (22h59 de Cuiabá)."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-33-2026/chamada-publica-cnpq-N-33-2026",
+   "observacoes": "Prazo, requisitos e orçamento conferidos no texto da Chamada publicado na página do CNPq.",
+   "fonte_verificada": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-33-2026/chamada-publica-cnpq-N-33-2026"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "capes-paep-eb-27-2026",
+   "titulo": "CAPES PAEP-EB – Edital nº 27/2026: apoio a eventos sobre formação de professores da educação básica",
+   "titulo_curto": "CAPES PAEP-EB 27/2026 – apoio a eventos de formação de professores",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "prefeitura",
+    "professor"
+   ],
+   "organizador": "CAPES / MEC",
+   "instituicoes": [
+    "CNPq/CAPES"
+   ],
+   "resumo": "Recursos para realizar seminários, encontros, simpósios e outros eventos presenciais ou semipresenciais sobre formação de professores da educação básica, entre 18/01 e 11/12/2027, com alcance regional, nacional ou internacional. Podem propor Secretarias de Educação (inclusive municipais), instituições de ensino superior, escolas de governo e outras entidades com atuação contínua na formação de professores.",
+   "valor": "Até R$ 5 milhões no total. Teto por proposta conforme o alcance e o porte do evento: de R$ 35 mil (regional pequeno) a R$ 160 mil (internacional grande).",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-30",
+    "hora_cuiaba": "16:00",
+    "texto": "Submissão de 13/10 a 30/10/2026, até 17h de Brasília (16h de Cuiabá). Instituições sem cadastro na CAPES devem pedi-lo de 13/10 a 23/10/2026, até 17h de Brasília."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/programa-de-apoio-a-eventos-no-pais-para-a-educacao-basica-paep-eb",
+   "observacoes": "Não vale para cursos de formação nem ciclos de palestras espaçados. Pela Prefeitura, quem propõe é o(a) dirigente municipal de educação.",
+   "fonte_verificada": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/programa-de-apoio-a-eventos-no-pais-para-a-educacao-basica-paep-eb"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "capes-pe-de-meia-licenciaturas-2026",
+   "titulo": "Pé-de-Meia Licenciaturas 2026 – bolsa para quem cursa licenciatura presencial",
+   "titulo_curto": "Pé-de-Meia Licenciaturas – bolsa de R$ 700/mês para licenciandos",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "jovem",
+    "estudante"
+   ],
+   "organizador": "CAPES / MEC (Programa Mais Professores)",
+   "instituicoes": [
+    "CNPq/CAPES"
+   ],
+   "resumo": "Bolsa para estudantes com alto desempenho no Enem que entraram em curso de licenciatura presencial pelo SiSU, pelo Prouni ou com Fies. Objetivo: atrair e manter bons alunos na formação de professores.",
+   "valor": "Bolsa mensal de R$ 700 + incentivo de R$ 350/mês em poupança, que pode ser resgatado após a formatura caso a pessoa se torne professor(a) da rede pública de educação básica.",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-12-19",
+    "hora_cuiaba": null,
+    "texto": "Pré-inscrição em fluxo contínuo na Plataforma Freire, de 20/02 a 19/12/2026; a CAPES analisa os pedidos todo mês."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pe-de-meia-licenciaturas",
+   "observacoes": "Depois de aprovado(a), o cadastro do bolsista é feito pela instituição de ensino.",
+   "fonte_verificada": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pe-de-meia-licenciaturas"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "finep-cooperamais-ict",
+   "titulo": "Finep COOPERAMAIS Tecnologia – ICT: pesquisa e inovação para a agricultura familiar com cooperativas",
+   "titulo_curto": "Finep COOPERAMAIS Tecnologia – ICTs + cooperativas da agricultura familiar",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "professor",
+    "produtor_rural"
+   ],
+   "organizador": "Finep / MCTI (FNDCT/CT-Agro)",
+   "instituicoes": [
+    "Finep"
+   ],
+   "resumo": "Recursos não reembolsáveis para ICTs públicas e privadas desenvolverem soluções tecnológicas para a agricultura familiar, sempre com uma cooperativa parceira (parceria formal há pelo menos 1 ano; cooperativa com CAF ativo e pelo menos 70% dos cooperados com CAF). Temas: comercialização e logística, agroindustrialização, transformação digital, economia circular e eficiência energética.",
+   "valor": "R$ 100 milhões no total (pelo menos 30% para Norte, Nordeste e Centro-Oeste). De R$ 3 milhões a R$ 15 milhões por proposta, até 36 meses. Exige contrapartida financeira.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-12-08",
+    "hora_cuiaba": "17:00",
+    "texto": "Propostas até 08/12/2026, 18h (horário da página da Finep; convertido para Cuiabá supondo horário de Brasília)."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.finep.gov.br/e/chamada-publica/222684/1060260",
+   "observacoes": "Quem propõe é a ICT (cada uma pode ser executora principal de só uma proposta). O projeto precisa partir de TRL 3 ou superior.",
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/1060260"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "finep-proninc-2026",
+   "titulo": "Finep Proninc 2026 – incubadoras de cooperativas populares e tecnologias para a economia solidária",
+   "titulo_curto": "Finep Proninc 2026 – tecnologias para a economia solidária (ICTs)",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "professor"
+   ],
+   "organizador": "Finep / MCTI",
+   "instituicoes": [
+    "Finep"
+   ],
+   "resumo": "Recursos não reembolsáveis para projetos de ICTs que atuem com Incubadora Tecnológica de Cooperativas Populares (ITCP) e Núcleo de Inovação Tecnológica (NIT), desenvolvendo soluções para empreendimentos da economia solidária. Áreas: agroecologia, saneamento e resíduos, sistemas digitais e finanças solidárias, energias renováveis e saúde.",
+   "valor": "R$ 100 milhões no total; de R$ 2 milhões a R$ 5 milhões por proposta.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-10-09",
+    "hora_cuiaba": "16:00",
+    "texto": "Cadastro obrigatório da instituição no SISGON até 09/10/2026, 17h de Brasília (16h de Cuiabá). Proposta até 14/01/2027, 17h de Brasília (16h de Cuiabá)."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.finep.gov.br/e/chamada-publica/222684/1057230",
+   "observacoes": "Sem o cadastro aprovado até 09/10/2026 não é possível preencher a proposta. Convenentes públicos têm contrapartida conforme a LDO.",
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/1057230"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "mcti-brics-forum-jovens-cientistas-2026",
+   "titulo": "Fórum de Jovens Cientistas do BRICS 2026 – inscrições para representar o Brasil",
+   "titulo_curto": "Fórum de Jovens Cientistas do BRICS 2026 (até 39 anos, com mestrado)",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "professor",
+    "pessoa_fisica"
+   ],
+   "organizador": "MCTI, com seleção da Academia Brasileira de Ciências (ABC)",
+   "instituicoes": [
+    "MCTI"
+   ],
+   "resumo": "Seleção de cientistas brasileiros com até 39 anos (em 31/12) e mestrado completo para o BRICS Young Scientists Forum, em Bangalore (Índia), de 2 a 6/11/2026. Doutorado (completo ou em andamento) conta como diferencial. Serão 3 brasileiros por categoria: ciência na era da realidade sintética; biologia como plataforma de manufatura; e adaptação climática como fronteira deep tech.",
+   "valor": "O MCTI paga as passagens; hospedagem, alimentação e transporte local ficam com os organizadores do fórum.",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-18",
+    "hora_cuiaba": null,
+    "texto": "Até 18/10/2026: enviar o formulário preenchido para brics@abc.org.br (pode ser enviado pelo próprio cientista ou por terceiros)."
+   },
+   "modalidade": "presencial",
+   "local": "Seleção nacional; fórum em Bangalore (Índia)",
+   "link": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/inscricoes-para-o-forum-de-jovens-cientistas-dos-brics-2026-seguem-ate-18-de-outubro",
+   "observacoes": "É a participação no fórum; o BRICS Young Innovator Prize (também no radar) tem inscrição separada.",
+   "fonte_verificada": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/inscricoes-para-o-forum-de-jovens-cientistas-dos-brics-2026-seguem-ate-18-de-outubro"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "aeb-escola-virtual-37-cursos-2026",
+   "titulo": "AEB Escola Virtual – 37 cursos gratuitos de ciência e tecnologia espacial",
+   "titulo_curto": "AEB Escola Virtual – 37 cursos gratuitos sobre ciência e tecnologia espacial",
+   "categoria": "cursos",
+   "publicos": [
+    "estudante",
+    "professor",
+    "pessoa_fisica"
+   ],
+   "organizador": "Agência Espacial Brasileira (AEB) / MCTI",
+   "instituicoes": [
+    "MCTI"
+   ],
+   "resumo": "Cursos on-line e assíncronos de astronomia, programação, eletrônica, meteorologia, sensoriamento remoto, foguetes, nanossatélites, direito espacial e metodologias para o ensino de ciências, entre outros. Nova categoria de Ciências Agrárias e Biológicas. Para estudantes, professores e interessados na área espacial; certificado ao concluir.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": "2026-10-15",
+    "hora_cuiaba": null,
+    "texto": "Inscrições até 15/10/2026 na Plataforma AEB Escola Virtual. Depois de começar, há até dois meses para concluir o curso."
+   },
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/aeb-abre-inscricoes-para-37-cursos-gratuitos-sobre-ciencia-e-tecnologia-espacial",
+   "observacoes": "Acesso aos cursos: aebescolavirtual.aeb.gov.br.",
+   "fonte_verificada": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/aeb-abre-inscricoes-para-37-cursos-gratuitos-sobre-ciencia-e-tecnologia-espacial"
+  },
+  {
+   "fluxo_continuo": true,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "mcom-computadores-para-inclusao",
+   "titulo": "Computadores para Inclusão – pedido de computadores recondicionados para escolas, bibliotecas e telecentros",
+   "titulo_curto": "Computadores para Inclusão – computadores recondicionados (MCom)",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "prefeitura"
+   ],
+   "organizador": "Ministério das Comunicações",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Doação de computadores recondicionados pelo programa federal Computadores para Inclusão. Podem pedir organizações da sociedade civil sem fins lucrativos e Pontos de Inclusão Digital com CNPJ, como escolas públicas, bibliotecas, laboratórios de informática e telecentros.",
+   "valor": "Doação gratuita (termo de doação com encargos).",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Pedido a qualquer momento pelo gov.br (é preciso conta gov.br). O prazo de atendimento depende da disponibilidade de equipamentos nos Centros de Recondicionamento."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/pt-br/servicos/solicitar-computadores-recondicionados",
+   "observacoes": "Quem recebe deve manter os equipamentos em uso no local combinado por pelo menos 12 meses e dar destino ambientalmente correto ao lixo eletrônico.",
+   "fonte_verificada": "https://www.gov.br/pt-br/servicos/solicitar-computadores-recondicionados"
+  },
+  {
+   "fluxo_continuo": true,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "bndes-cidades-modernizacao-gestao-municipal",
+   "titulo": "BNDES Cidades – modernização da gestão tributária, fiscal, orçamentária e da arrecadação municipal",
+   "titulo_curto": "BNDES Cidades – modernização da gestão municipal (crédito)",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "prefeitura"
+   ],
+   "organizador": "BNDES",
+   "instituicoes": [
+    "Bancos e agências de fomento"
+   ],
+   "resumo": "Financiamento para prefeituras modernizarem e digitalizarem a gestão pública: capacitação, serviços técnicos especializados, atendimento ao cidadão e georreferenciamento. O pedido é feito por uma instituição financeira credenciada ao BNDES (BNDES Automático), de acordo com a capacidade de endividamento do município.",
+   "valor": "Não informado na fonte (depende do projeto e da capacidade de endividamento do município).",
+   "gratuito": false,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "A qualquer momento: o município procura uma instituição financeira credenciada, que encaminha o projeto ao BNDES."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://cidades.bndes.gov.br/solucao/modernizacao-gestao-tributaria-fiscal-orcamentaria-arrecadacao/",
+   "observacoes": "É financiamento (precisa ser pago). O BNDES Cidades também tem soluções para equipamentos de informática e internet nas escolas.",
+   "fonte_verificada": "https://cidades.bndes.gov.br/solucao/modernizacao-gestao-tributaria-fiscal-orcamentaria-arrecadacao/"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "luppa-6-edicao-cidades-2026",
+   "titulo": "LUPPA 6ª edição – chamada nacional de cidades para o Laboratório Urbano de Políticas Públicas Alimentares",
+   "titulo_curto": "LUPPA 6ª edição – laboratório de políticas públicas para prefeituras",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "prefeitura"
+   ],
+   "organizador": "Instituto Comida do Amanhã e ICLEI América do Sul",
+   "instituicoes": [
+    "Instituto Comida do Amanhã"
+   ],
+   "resumo": "Seleção de até 10 cidades de 10 mil a 1 milhão de habitantes, representadas pelas Prefeituras, para construir políticas alimentares municipais com apoio técnico, troca de experiências, capacitações e mentoria de cidades mais experientes. 40% das vagas são reservadas para cidades da Amazônia Legal (que inclui todo o Mato Grosso).",
+   "valor": "Cooperação técnica, capacitações e mentoria; o edital não prevê repasse de recursos. Ajuda parcial para passagens e hospedagem pode ser definida depois.",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-20",
+    "hora_cuiaba": null,
+    "texto": "Candidatura até 23h59 de 20/10/2026 (fuso não informado no edital), com carta de compromisso assinada pela Prefeitura e formulário de inscrição."
+   },
+   "modalidade": "hibrido",
+   "local": "Nacional",
+   "link": "https://luppa.comidadoamanha.org/wp-content/uploads/2026/09/Edital-Chamada-Cidades-LUPPA-6a-Edicao.pdf",
+   "observacoes": "Ao entrar, o(a) prefeito(a) assume o compromisso de desenvolver a política municipal de segurança alimentar e nutricional. Prazo conferido no item 5.2 do Edital LUPPA nº 01/2026.",
+   "fonte_verificada": "https://luppa.comidadoamanha.org/wp-content/uploads/2026/09/Edital-Chamada-Cidades-LUPPA-6a-Edicao.pdf"
+  },
+  {
+   "fluxo_continuo": true,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "sebraetec-consultoria-inovacao",
+   "titulo": "Sebraetec – consultorias de inovação e tecnologia com subsídio do Sebrae",
+   "titulo_curto": "Sebraetec – consultoria de inovação subsidiada pelo Sebrae",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "mei_pequena",
+    "produtor_rural"
+   ],
+   "organizador": "Sebrae",
+   "instituicoes": [
+    "Sebrae"
+   ],
+   "resumo": "Consultorias personalizadas de inovação e tecnologia, com mais de 270 soluções, prestadas por uma rede de prestadores de serviços tecnológicos do Sebraetec. Para MEI, micro e pequenas empresas, produtores rurais (com inscrição estadual, NIRF, DAP ou registro de pescador) e artesãos com carteira do SICAB.",
+   "valor": "O Sebrae subsidia parte do valor da consultoria (a maioria dos estados adota 70%; o Mato Grosso não está entre as exceções listadas). O restante fica com a empresa.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Atendimento a qualquer momento: entre em contato com o Sebrae pela página do programa."
+   },
+   "modalidade": "hibrido",
+   "local": "Nacional (atendimento pelo Sebrae no estado)",
+   "link": "https://sebrae.com.br/subsites/sebraetec",
+   "observacoes": "Percentual de subsídio conforme a regra informada na página oficial do Sebraetec; confirme o valor com o Sebrae MT.",
+   "fonte_verificada": "https://sebrae.com.br/subsites/sebraetec"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "sebrae-startups-inova-startups-2027",
+   "titulo": "Inova Startups 6ª edição (2027) – investimento de até R$ 800 mil e aceleração para startups",
+   "titulo_curto": "Inova Startups 2027 – investimento e aceleração (Sebrae Startups)",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "startup"
+   ],
+   "organizador": "Sebrae Nacional, com BossaInvest, Raja Ventures, Unifique, BRDE, TroposLab e ACATE",
+   "instituicoes": [
+    "Sebrae"
+   ],
+   "resumo": "Programa nacional que une investimento e uma jornada de aceleração com mentorias em três fases. Para startups inovadoras e escaláveis buscando rodada anjo ou pre-seed (valuation de até R$ 15 milhões), com produto validado e em operação e faturamento recorrente mínimo de R$ 10 mil por mês.",
+   "valor": "Investimento financeiro de até R$ 800 mil, mais a jornada de aceleração.",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-11-30",
+    "hora_cuiaba": null,
+    "texto": "Inscrições de 25/08 a 30/11/2026 na plataforma Sebrae Startups. Resultado até março de 2027."
+   },
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://programas.sebraestartups.com.br/in/1784661770721x554993476191244900",
+   "observacoes": "Critérios completos e condições do investimento no site do programa (inovastartups.com.br), indicado na página oficial.",
+   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1784661770721x554993476191244900"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "sebrae-startups-929-challenge-2026",
+   "titulo": "929 Challenge 2026 – Edição Brasil: conexão de startups e spin-offs com a Grande Baía da China",
+   "titulo_curto": "929 Challenge 2026 – startups e spin-offs rumo à China (Sebrae Startups)",
+   "categoria": "competicoes",
+   "publicos": [
+    "startup",
+    "estudante",
+    "professor"
+   ],
+   "organizador": "Sebrae Startups, com Fórum Macau, DSEDT de Macau e AEIMCP",
+   "instituicoes": [
+    "Sebrae"
+   ],
+   "resumo": "Competição internacional com bootcamp on-line (12 a 24/10/2026) e missão à China para os 16 finalistas. Duas trilhas: startups com CNPJ ativo (validação, tração, crescimento ou escala) e universidades/spin-offs (pesquisadores, pós-graduandos e universitários com soluções de alta complexidade). Pelo menos uma pessoa da equipe precisa ter inglês fluente.",
+   "valor": "100% gratuito e sem cessão de participação. Viagem dos finalistas paga pela organização e US$ 40 mil em prêmios.",
+   "gratuito": true,
+   "inscricao": {
+    "ate": "2026-10-10",
+    "hora_cuiaba": null,
+    "texto": "Até 23h59 de 10/10/2026 (fuso não informado), somente pelo site 929challenge.org indicado na página oficial."
+   },
+   "modalidade": "hibrido",
+   "local": "Nacional (bootcamp on-line; final em Macau, China)",
+   "link": "https://programas.sebraestartups.com.br/in/1790863305422x357691282292736000",
+   "observacoes": "Exige pitch deck (PDF ou link) e, para os finalistas, passaporte válido.",
+   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1790863305422x357691282292736000"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "id": "sebrae-startups-formacao-govtech-hubgoias-2026",
+   "titulo": "Formação GovTech HubGoiás – jornada nacional para startups venderem soluções ao setor público",
+   "titulo_curto": "Formação GovTech HubGoiás – startups no mercado público (gratuito)",
+   "categoria": "cursos",
+   "publicos": [
+    "startup",
+    "mei_pequena"
+   ],
+   "organizador": "Hub Goiás (programa divulgado na plataforma Sebrae Startups)",
+   "instituicoes": [
+    "Hub Goiás"
+   ],
+   "resumo": "Formação para startups, empresas de tecnologia e ICTs privadas que querem atuar no mercado público (B2G): conteúdos digitais, aulas ao vivo, diagnóstico, mentorias, banca e Demo Day. Trilha GovTech (até 450 vagas) exige CNPJ ativo e solução entre TRL 4 e TRL 8; há também a trilha ICT Privada (até 50 vagas).",
+   "valor": "Gratuito e sem cessão de participação (equity-free).",
+   "gratuito": true,
+   "inscricao": {
+    "ate": "2026-10-16",
+    "hora_cuiaba": null,
+    "texto": "Inscrições até 16/10/2026 na plataforma Sebrae Startups. Resultado da seleção em 30/10/2026."
+   },
+   "modalidade": "hibrido",
+   "local": "Nacional (on-line, com atividades presenciais em Goiânia-GO)",
+   "link": "https://programas.sebraestartups.com.br/in/1789130164174x497020058200965100",
+   "observacoes": "Jornada ao vivo de 08/12/2026 a 18/02/2027. Cada organização pode indicar até 2 pessoas maiores de 18 anos.",
+   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1789130164174x497020058200965100"
   }
  ]
 }</script>
@@ -1375,9 +1909,10 @@ var CATS = {
   fomento_pequenas:{nome:"Fomento: MEI e pequenas empresas",emoji:"💼",cor:"#e07a10",claro:"#fff2e3"},
   fomento_medias_grandes:{nome:"Fomento: médias e grandes empresas",emoji:"🏭",cor:"#7b4bd6",claro:"#f1eafd"},
   competicoes:{nome:"Competições e olimpíadas",emoji:"🏆",cor:"#b7791f",claro:"#fdf3dc"},
-  pessoas_fisicas:{nome:"Para pessoas físicas",emoji:"🙋",cor:"#d64b8a",claro:"#fdebf3"}
+  pessoas_fisicas:{nome:"Para pessoas físicas",emoji:"🙋",cor:"#d64b8a",claro:"#fdebf3"},
+  gestao_publica:{nome:"Prefeituras e gestão pública",emoji:"🏛️",cor:"#0e7490",claro:"#e0f2f7"}
 };
-var PUB = {mei_pequena:"MEI e pequenas empresas",media_grande:"Médias e grandes empresas",pessoa_fisica:"Pessoa física",jovem:"Jovens e estudantes",estudante:"Estudantes",professor:"Professores",produtor_rural:"Produtores rurais",startup:"Startups",servidor_publico:"Servidores públicos"};
+var PUB = {mei_pequena:"MEI e pequenas empresas",media_grande:"Médias e grandes empresas",pessoa_fisica:"Pessoa física",jovem:"Jovens e estudantes",estudante:"Estudantes",professor:"Professores",produtor_rural:"Produtores rurais",startup:"Startups",servidor_publico:"Servidores públicos",prefeitura:"Prefeituras e gestão pública"};
 var MOD = {presencial:"Presencial",online:"On-line",hibrido:"Híbrido (on-line + presencial)"};
 var CHAVE_VISITA = "radarCampoVerde.ultimaVisita";
 
@@ -1564,7 +2099,7 @@ el("verNovos").addEventListener("click",function(){estado.novos=true;el("fNovos"
 
 // ---- inicialização ----
 el("atual").textContent="Atualizado em "+fmt(D.atualizado_em)+" · "+D.itens.filter(function(i){return i._st!=="encerrado";}).length+" oportunidades abertas";
-if(window.matchMedia && window.matchMedia("(min-width:641px)").matches) el("boxFiltros").open=true;
+if(window.matchMedia && window.matchMedia("(min-width:641px)").matches){el("boxFiltros").open=true;Array.prototype.forEach.call(document.querySelectorAll("details.fin-grupo"),function(d){d.open=true;});}
 preencherSelects();
 var novos=D.itens.filter(function(i){return i._novo && i._st!=="encerrado";}).length;
 if(novos>0){
