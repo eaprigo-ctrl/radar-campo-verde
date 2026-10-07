@@ -64,6 +64,7 @@ select{border:1.5px solid var(--borda);border-radius:10px;padding:9px 10px;font-
 .card h3{margin:2px 0 4px;font-size:18px;line-height:1.3}
 .org{font-size:13.5px;color:var(--suave);margin-bottom:8px}
 .publicos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.selo-local{font-size:12.5px;font-weight:700;color:#0b6b3a;background:#e3f5ea;border:1px solid #9fd8b5;border-radius:999px;padding:2px 9px}
 .pub{font-size:12.5px;background:var(--fundo);border:1px solid var(--borda);border-radius:999px;padding:2px 9px}
 .card p.res{margin:0 0 10px;font-size:15px}
 .info{display:grid;gap:6px;font-size:14px;margin-bottom:10px}
@@ -105,7 +106,7 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
   <div class="wrap">
     <h1>🔎 Radar de Oportunidades – Campo Verde</h1>
     <p class="sub">SEMCITECI – Secretaria de Ciência, Tecnologia e Inovação – Prefeitura de Campo Verde</p>
-    <p class="intro">Eventos, cursos gratuitos, editais e crédito para inovação e tecnologia: para empresas, startups, produtores rurais, estudantes, professores e toda a comunidade.</p>
+    <p class="intro">Eventos, cursos gratuitos, editais e crédito para inovação e tecnologia, além de competições e olimpíadas científicas: para empresas, startups, produtores rurais, jovens, estudantes, professores e toda a comunidade — com destaque para o que acontece em Campo Verde.</p>
     <span class="atual" id="atual"></span>
   </div>
 </header>
@@ -141,6 +142,8 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
       </div>
     </details>
     <div class="linha-opcoes">
+      <label><input type="checkbox" id="fLocal"> 📍 Só Campo Verde (local)</label>
+      <label><input type="checkbox" id="fJovem"> 🎒 Jovens e estudantes</label>
       <label><input type="checkbox" id="fGratis"> Só gratuitos</label>
       <label><input type="checkbox" id="fNovos"> Só novidades</label>
       <label><input type="checkbox" id="fEnc"> Mostrar encerrados</label>
@@ -167,6 +170,7 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
    "titulo_curto": "IV Semana da Agronomia – IFMT Campo Verde",
    "categoria": "eventos",
    "publicos": [
+    "jovem",
     "estudante",
     "produtor_rural",
     "pessoa_fisica"
@@ -196,7 +200,8 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Programação detalhada ainda em estruturação, segundo a página do evento."
+   "observacoes": "Programação detalhada ainda em estruturação, segundo a página do evento.",
+   "local_campo_verde": true
   },
   {
    "id": "ifmt-cv-jenpex-2026",
@@ -204,6 +209,7 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
    "titulo_curto": "II JENPEX – IFMT Campo Verde (ciência, tecnologia e inovação)",
    "categoria": "eventos",
    "publicos": [
+    "jovem",
     "estudante",
     "professor",
     "pessoa_fisica"
@@ -233,7 +239,8 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": ""
+   "observacoes": "",
+   "local_campo_verde": true
   },
   {
    "id": "ifmt-pdl-jenpex-2026",
@@ -1108,6 +1115,216 @@ footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranj
    "data_inclusao": "2026-10-07",
    "destaque": false,
    "observacoes": ""
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Documentos: mini-biografia (até 500 caracteres), currículo Lattes atualizado e carta de recomendação de professor ou orientador. Vencedoras anunciadas até 15/01/2027; premiação em 11/02/2027.",
+   "id": "sbpc-premio-carolina-bori-2026",
+   "titulo": "8º Prêmio Carolina Bori Ciência & Mulher – categoria “Meninas na Ciência”",
+   "titulo_curto": "8º Prêmio Carolina Bori – Meninas na Ciência (SBPC)",
+   "categoria": "competicoes",
+   "publicos": [
+    "jovem",
+    "estudante"
+   ],
+   "organizador": "SBPC – Sociedade Brasileira para o Progresso da Ciência",
+   "instituicoes": [
+    "SBPC"
+   ],
+   "resumo": "Prêmio para estudantes do Ensino Médio ou da Graduação de instituições brasileiras que desenvolveram projeto de iniciação científica (com professor ou orientador) ou se destacaram em feiras, olimpíadas, projetos de pesquisa ou divulgação científica. Seis vencedoras (três do Ensino Médio e três da Graduação), que apresentarão os trabalhos na 79ª Reunião Anual da SBPC (julho de 2027) e terão mentoria com pesquisadores.",
+   "valor": "Inscrição gratuita. Prêmio de R$ 10 mil (Ensino Médio) e R$ 13 mil (Graduação), além de troféu",
+   "gratuito": true,
+   "inscricao": {
+    "ate": "2026-10-30",
+    "hora_cuiaba": null,
+    "texto": "Até 30/10/2026, feita pela própria candidata, exclusivamente pelo formulário on-line indicado no edital da SBPC."
+   },
+   "modalidade": "online",
+   "local": "Nacional – inscrição on-line",
+   "link": "https://portal.sbpcnet.org.br/premio-carolina-bori/",
+   "fonte_verificada": "https://portal.sbpcnet.org.br/premio-carolina-bori/"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Quem pode: quem está cursando graduação no Brasil ou concluiu em 2025 ou 2026, ou mestrado/doutorado stricto sensu (cursando ou concluído em 2025 ou 2026); mínimo de 18 anos; residente no Brasil. Leia o regulamento no site.",
+   "id": "instituto-claro-campus-mobile-2026",
+   "titulo": "Campus Mobile 2026 (15ª edição) – soluções mobile com impacto social",
+   "titulo_curto": "Campus Mobile 15ª edição – apps com impacto social (inclui Green Tech & Agtech)",
+   "categoria": "competicoes",
+   "publicos": [
+    "jovem",
+    "estudante"
+   ],
+   "organizador": "Instituto Claro – Campus Mobile",
+   "instituicoes": [
+    "Instituto Claro"
+   ],
+   "resumo": "Programa para criadores de ideias e soluções para dispositivos móveis que gerem impacto social. Seis categorias: Diversidade; Educação; Entretenimento e Cultura; Green Tech & Agtech (melhorar a vida e as atividades econômicas em regiões rurais); Saúde e Tecnologias Assistivas; e Tecnologias Urbanas. Os projetos vencedores ganham viagem de imersão ao Vale do Silício (EUA).",
+   "valor": "Valor de inscrição não informado na fonte. Prêmio: viagem de imersão ao Vale do Silício para os vencedores",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-18",
+    "hora_cuiaba": null,
+    "texto": "Até 18/10/2026, às 23h59 (horário indicado no site oficial), individualmente ou em equipe de até 3 pessoas, com um projeto em uma das seis categorias."
+   },
+   "modalidade": "online",
+   "local": "Nacional – inscrição on-line",
+   "link": "https://www.institutoclaro.org.br/campus-mobile/",
+   "fonte_verificada": "https://www.institutoclaro.org.br/campus-mobile/noticias/campus-mobile-abre-as-inscricoes-para-sua-15a-edicao/"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Os 3 selecionados para representar o Brasil serão informados pelo MCTI até 23/10/2026. Esta inscrição é só para o prêmio, não para participar do fórum. Regras completas em inglês (Terms and Conditions).",
+   "id": "brics-young-innovator-prize-2026",
+   "titulo": "9th BRICS Young Innovator Prize 2026 – candidaturas para representar o Brasil",
+   "titulo_curto": "BRICS Young Innovator Prize 2026 – jovens inovadores (até 40 anos)",
+   "categoria": "competicoes",
+   "publicos": [
+    "jovem",
+    "pessoa_fisica",
+    "startup"
+   ],
+   "organizador": "BRICS Young Scientist Forum – seleção brasileira com o MCTI (divulgação oficial: FEBRACE)",
+   "instituicoes": [
+    "MCTI",
+    "FEBRACE"
+   ],
+   "resumo": "Três vagas para jovens inovadores do Brasil, com menos de 40 anos, concorrerem ao prêmio entregue no 11º BRICS Young Scientist Forum (Bengaluru, Índia, 2 a 6/11/2026). Áreas desta edição: IA com pegada de carbono próxima de zero, minerais críticos e diagnósticos acessíveis.",
+   "valor": "Prêmios de US$ 25 mil (1º lugar), US$ 15 mil (2º) e US$ 10 mil (3º), além de certificados de mérito",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-17",
+    "hora_cuiaba": "22:59",
+    "texto": "Até 17/10/2026 (sábado), às 23h59 de Brasília (22h59 em Cuiabá), com formulário de manifestação de interesse e documentos indicados na página oficial."
+   },
+   "modalidade": "online",
+   "local": "Seleção nacional on-line; fórum em Bengaluru (Índia)",
+   "link": "https://febrace.org.br/noticias/inscricoes-para-representar-o-brasil-no-9th-brics-young-innovator-prize-2026-abertas-ate-17-10/",
+   "fonte_verificada": "https://febrace.org.br/noticias/inscricoes-para-representar-o-brasil-no-9th-brics-young-innovator-prize-2026-abertas-ate-17-10/"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "O prazo exibido no card é o de projetos e produções (20/10). Leia o Edital O2 2026 no site oficial antes de se inscrever.",
+   "id": "olimpiada-do-oceano-o2-2026",
+   "titulo": "Olimpíada do Oceano (O2) 2026 – modalidades com inscrições abertas",
+   "titulo_curto": "Olimpíada do Oceano (O2) 2026 – projetos e produções tecnológicas",
+   "categoria": "competicoes",
+   "publicos": [
+    "jovem",
+    "estudante",
+    "professor"
+   ],
+   "organizador": "Olimpíada do Oceano – Maré de Ciência, Unifesp e UFPA (apoio MCTI e CNPq)",
+   "instituicoes": [
+    "Unifesp",
+    "UFPA"
+   ],
+   "resumo": "Olimpíada de ciência e cultura oceânica, aberta a estudantes, professores e comunidade. Ainda com inscrições: Projeto Socioambiental e Produção artística, cultural e/ou tecnológica (invenções e aplicativos valem), individual ou em grupo, até 20/10/2026; “Educadore(a)s que inspiram” (relatos de professores) até 20/11/2026; e Desafio WOA (equipes de 5 a 15 estudantes de 9 a 18 anos, com dois professores orientadores) até 10/12/2026.",
+   "valor": "não informado na fonte (consulte o edital O2 2026)",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-20",
+    "hora_cuiaba": null,
+    "texto": "Projetos e produções: até 20/10/2026. Educadores: até 20/11/2026. Desafio WOA: até 10/12/2026. A Prova de Conhecimento já foi realizada (inscrições encerradas em 20/09)."
+   },
+   "modalidade": "online",
+   "local": "Nacional – inscrição e envio on-line",
+   "link": "https://olimpiada.maredeciencia.eco.br/",
+   "fonte_verificada": "https://olimpiada.maredeciencia.eco.br/"
+  },
+  {
+   "fluxo_continuo": false,
+   "evento": {
+    "inicio": "2026-11-10",
+    "fim": "2026-11-12",
+    "horario": "horário não informado na fonte"
+   },
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Evento chancelado pela SBC. Autores de trabalhos aceitos devem se inscrever até 02/11/2026.",
+   "id": "eri-mt-2026",
+   "titulo": "ERI-MT 2026 – XV Escola Regional de Informática de Mato Grosso (Cidades Digitais e Inteligentes)",
+   "titulo_curto": "ERI-MT 2026 – Escola Regional de Informática (com Mostra de IC e Hackathon)",
+   "categoria": "eventos",
+   "publicos": [
+    "jovem",
+    "estudante",
+    "professor",
+    "startup",
+    "servidor_publico"
+   ],
+   "organizador": "Sociedade Brasileira de Computação (SBC) e Univag – Centro Universitário de Várzea Grande",
+   "instituicoes": [
+    "SBC",
+    "Univag"
+   ],
+   "resumo": "Maior encontro de Computação de Mato Grosso, com tema “Cidades Inteligentes e Sustentáveis”. Palestras, minicursos e oficinas, trilhas de artigos, Mostra de Iniciação Científica e Projetos (estudantes de graduação ou ensino técnico) e Hackathon Smart City. Público: estudantes, pesquisadores, profissionais, gestores públicos e startups.",
+   "valor": "não informado na fonte",
+   "gratuito": null,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Submissão de trabalhos (inclusive Mostra de Iniciação Científica) até 11/10/2026. Inscrição de participantes pelo site oficial (prazo e valores não informados na página inicial)."
+   },
+   "modalidade": "presencial",
+   "local": "Várzea Grande – Univag Centro Universitário",
+   "link": "https://erimt2026.univag.com.br/",
+   "fonte_verificada": "https://erimt2026.univag.com.br/"
+  },
+  {
+   "fluxo_continuo": true,
+   "evento": null,
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "local_campo_verde": true,
+   "observacoes": "Programa com turmas previstas até 2028. Prazos por turma não foram publicados na fonte oficial; a lista de vagas de 01/09/2026 pode ter mudado.",
+   "id": "senai-qualifica-campo-verde-2026",
+   "titulo": "Qualifica Campo Verde (2ª edição) – cursos gratuitos do Senai MT com a Prefeitura",
+   "titulo_curto": "Qualifica Campo Verde – cursos gratuitos Senai (inclui informática)",
+   "categoria": "cursos",
+   "publicos": [
+    "pessoa_fisica"
+   ],
+   "organizador": "Senai MT e Prefeitura de Campo Verde",
+   "instituicoes": [
+    "Senai MT",
+    "Prefeitura de Campo Verde"
+   ],
+   "resumo": "Programa de qualificação profissional gratuita com 37 turmas e 740 vagas até 2028, nas áreas de Tecnologia da Informação, Eletroeletrônica, Metalmecânica, Gestão, Construção e Obras, Produção Alimentícia e Vestuário. A notícia oficial de 01/09/2026 informava 160 vagas abertas, incluindo Montador e Reparador de Computador e Operador de Computador.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Presencialmente na unidade do Senai MT em Campo Verde (Av. Eugenio Prati, Residencial Green Ville). Informações pelo WhatsApp (66) 2101-5000. Confirme na unidade quais turmas estão com vagas abertas."
+   },
+   "modalidade": "presencial",
+   "local": "Campo Verde – unidade do Senai MT",
+   "link": "https://www.senaimt.ind.br/noticias/6686/qualifica-campo-verde-oferece-740-vagas-gratuitas-e-prepara-profissionais-para-novo-ciclo-de-crescimento",
+   "fonte_verificada": "https://www.senaimt.ind.br/noticias/6686/qualifica-campo-verde-oferece-740-vagas-gratuitas-e-prepara-profissionais-para-novo-ciclo-de-crescimento"
   }
  ]
 }</script>
@@ -1120,9 +1337,10 @@ var CATS = {
   cursos:{nome:"Cursos gratuitos",emoji:"🎓",cor:"#0f8a6c",claro:"#e6f6f1"},
   fomento_pequenas:{nome:"Fomento: MEI e pequenas empresas",emoji:"💼",cor:"#e07a10",claro:"#fff2e3"},
   fomento_medias_grandes:{nome:"Fomento: médias e grandes empresas",emoji:"🏭",cor:"#7b4bd6",claro:"#f1eafd"},
+  competicoes:{nome:"Competições e olimpíadas",emoji:"🏆",cor:"#b7791f",claro:"#fdf3dc"},
   pessoas_fisicas:{nome:"Para pessoas físicas",emoji:"🙋",cor:"#d64b8a",claro:"#fdebf3"}
 };
-var PUB = {mei_pequena:"MEI e pequenas empresas",media_grande:"Médias e grandes empresas",pessoa_fisica:"Pessoa física",estudante:"Estudantes",professor:"Professores",produtor_rural:"Produtores rurais",startup:"Startups",servidor_publico:"Servidores públicos"};
+var PUB = {mei_pequena:"MEI e pequenas empresas",media_grande:"Médias e grandes empresas",pessoa_fisica:"Pessoa física",jovem:"Jovens e estudantes",estudante:"Estudantes",professor:"Professores",produtor_rural:"Produtores rurais",startup:"Startups",servidor_publico:"Servidores públicos"};
 var MOD = {presencial:"Presencial",online:"On-line",hibrido:"Híbrido (on-line + presencial)"};
 var CHAVE_VISITA = "radarCampoVerde.ultimaVisita";
 
@@ -1180,7 +1398,7 @@ function ehNovo(it){
 D.itens.forEach(function(it){it._novo=ehNovo(it); it._st=status(it);});
 
 // ---- filtros ----
-var estado={cat:"",q:"",pub:"",mod:"",inst:"",gratis:false,novos:false,enc:false,ordem:"prazo"};
+var estado={cat:"",q:"",pub:"",mod:"",inst:"",local:false,jovem:false,gratis:false,novos:false,enc:false,ordem:"prazo"};
 var el=function(id){return document.getElementById(id);};
 
 function preencherSelects(){
@@ -1194,10 +1412,12 @@ function passaBase(it){
   if(estado.pub && (it.publicos||[]).indexOf(estado.pub)<0) return false;
   if(estado.mod && it.modalidade!==estado.mod) return false;
   if(estado.inst && (it.instituicoes||[]).indexOf(estado.inst)<0) return false;
+  if(estado.local && it.local_campo_verde!==true) return false;
+  if(estado.jovem && (it.publicos||[]).indexOf("jovem")<0) return false;
   if(estado.gratis && it.gratuito!==true) return false;
   if(estado.novos && !it._novo) return false;
   if(estado.q){
-    var alvo=[it.titulo,it.resumo,it.organizador,(it.instituicoes||[]).join(" "),it.local,it.valor,(it.publicos||[]).map(function(p){return PUB[p];}).join(" "),CATS[it.categoria].nome].join(" ");
+    var alvo=[it.titulo,it.resumo,it.organizador,(it.instituicoes||[]).join(" "),it.local,it.valor,(it.publicos||[]).map(function(p){return PUB[p];}).join(" "),CATS[it.categoria].nome,(it.local_campo_verde?"Campo Verde local":"")].join(" ");
     var n=function(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();};
     var t=n(alvo), termos=n(estado.q).split(/\s+/).filter(Boolean);
     for(var i=0;i<termos.length;i++){ if(t.indexOf(termos[i])<0) return false; }
@@ -1210,11 +1430,14 @@ function desenharCats(base){
   Object.keys(CATS).forEach(function(k){h+='<button type="button" class="chip'+(estado.cat===k?" ativo":"")+'" data-cat="'+k+'">'+CATS[k].emoji+" "+esc(CATS[k].nome)+' <span class="n">'+(cont[k]||0)+'</span></button>';});
   el("cats").innerHTML=h;
 }
+// "Jovens e estudantes" já inclui estudantes: não repete o selo "Estudantes" no card/compartilhamento
+function pubsVis(it){var ps=it.publicos||[];return ps.indexOf("jovem")>=0?ps.filter(function(p){return p!=="estudante";}):ps;}
 function card(it){
   var c=CATS[it.categoria], st=it._st, dt=diasTexto(it);
-  var pubs=(it.publicos||[]).map(function(p){return '<span class="pub">'+esc(PUB[p]||p)+'</span>';}).join("");
+  var pubs=pubsVis(it).map(function(p){return '<span class="pub">'+esc(PUB[p]||p)+'</span>';}).join("");
   var h='<article class="card'+(st==="encerrado"?" encerrado":"")+'" style="--cor:'+c.cor+';--cor-claro:'+c.claro+'" data-id="'+esc(it.id)+'">';
   h+='<div class="topo-card"><span class="tag-cat">'+c.emoji+" "+esc(c.nome)+'</span>'+(it._novo?'<span class="selo-novo">NOVO</span>':'')+'<span class="status st-'+st+'">'+ST_TXT[st]+'</span></div>';
+  if(it.local_campo_verde) h+='<div style="margin:2px 0 4px"><span class="selo-local" title="Oportunidade em Campo Verde">📍 Campo Verde</span></div>';
   h+='<h3>'+esc(it.titulo)+'</h3><div class="org">'+esc(it.organizador)+'</div>';
   h+='<div class="publicos" title="Para quem">'+pubs+'</div>';
   h+='<p class="res">'+esc(it.resumo)+'</p><div class="info">';
@@ -1252,18 +1475,19 @@ function render(){
   var l2=el("limpar2"); if(l2) l2.onclick=limpar;
 }
 function limpar(){
-  estado={cat:"",q:"",pub:"",mod:"",inst:"",gratis:false,novos:false,enc:false,ordem:estado.ordem};
+  estado={cat:"",q:"",pub:"",mod:"",inst:"",local:false,jovem:false,gratis:false,novos:false,enc:false,ordem:estado.ordem};
   el("q").value="";el("fPublico").value="";el("fModalidade").value="";el("fInst").value="";
-  el("fGratis").checked=false;el("fNovos").checked=false;el("fEnc").checked=false;render();
+  el("fLocal").checked=false;el("fJovem").checked=false;el("fGratis").checked=false;el("fNovos").checked=false;el("fEnc").checked=false;render();
 }
 
 // ---- compartilhar ----
 function textoWhats(it){
   var c=CATS[it.categoria];
   var linhas=[c.emoji+" *"+it.titulo+"*",
-    "👥 Para quem: "+(it.publicos||[]).map(function(p,i){var t=p==="pessoa_fisica"?"Público em geral":(PUB[p]||p);return (i&&p!=="mei_pequena")?t.charAt(0).toLowerCase()+t.slice(1):t;}).join(", "),
+    "👥 Para quem: "+pubsVis(it).map(function(p,i){var t=p==="pessoa_fisica"?"Público em geral":(PUB[p]||p);return (i&&p!=="mei_pequena")?t.charAt(0).toLowerCase()+t.slice(1):t;}).join(", "),
     "🗓️ Prazo: "+prazoTexto(it)];
   if(it.evento && (it.inscricao||{}).ate) linhas.push("📅 Evento: "+periodoEvento(it.evento));
+  if(it.local_campo_verde) linhas.push("📍 Em Campo Verde");
   if(it.gratuito===true) linhas.push("💚 Gratuito");
   linhas.push("🔗 "+it.link);
   linhas.push("");
@@ -1293,6 +1517,8 @@ el("ordem").addEventListener("change",function(){estado.ordem=this.value;render(
 el("fPublico").addEventListener("change",function(){estado.pub=this.value;render();});
 el("fModalidade").addEventListener("change",function(){estado.mod=this.value;render();});
 el("fInst").addEventListener("change",function(){estado.inst=this.value;render();});
+el("fLocal").addEventListener("change",function(){estado.local=this.checked;render();});
+el("fJovem").addEventListener("change",function(){estado.jovem=this.checked;render();});
 el("fGratis").addEventListener("change",function(){estado.gratis=this.checked;render();});
 el("fNovos").addEventListener("change",function(){estado.novos=this.checked;render();});
 el("fEnc").addEventListener("change",function(){estado.enc=this.checked;render();});
