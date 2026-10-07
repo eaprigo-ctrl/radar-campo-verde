@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar de Oportunidades – Campo Verde</title>
+<style>
+:root{
+  --verde:#0f8a6c; --verde-esc:#0b6b54; --verde-claro:#e6f6f1;
+  --laranja:#f28c28; --laranja-claro:#fff2e3;
+  --azul:#2f6fdb; --roxo:#7b4bd6; --rosa:#d64b8a;
+  --texto:#1f2a33; --suave:#5d6b76; --borda:#e3e8ec; --fundo:#f6f8f7; --branco:#fff;
+  --raio:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--texto);background:var(--fundo);line-height:1.45;font-size:16px}
+a{color:var(--verde-esc)}
+header.topo{background:linear-gradient(135deg,#0f8a6c 0%,#14a37f 55%,#f2a33a 130%);color:#fff;padding:28px 20px 70px;position:relative;overflow:hidden}
+header.topo:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.08)}
+.wrap{max-width:1180px;margin:0 auto}
+.topo h1{margin:0;font-size:30px;line-height:1.15;letter-spacing:-.3px}
+.topo .sub{margin:6px 0 0;font-size:15px;opacity:.95}
+.topo .intro{margin:14px 0 0;max-width:760px;font-size:15.5px;opacity:.97}
+.topo .atual{display:inline-block;margin-top:12px;background:rgba(255,255,255,.18);border-radius:999px;padding:4px 12px;font-size:13px}
+main.wrap{margin-top:-48px;padding:0 14px 30px;position:relative}
+.banner-novo{display:none;align-items:center;gap:12px;background:linear-gradient(90deg,#ff7a18,#d6338a);color:#fff;border-radius:var(--raio);padding:14px 18px;margin-bottom:14px;box-shadow:0 6px 20px rgba(214,51,138,.25);font-weight:600}
+.banner-novo.on{display:flex}
+.banner-novo .sino{font-size:26px}
+.banner-novo button{margin-left:auto;background:rgba(255,255,255,.22);color:#fff;border:0;border-radius:999px;padding:6px 14px;font-weight:600;cursor:pointer}
+.painel{background:var(--branco);border-radius:var(--raio);box-shadow:0 4px 18px rgba(16,40,32,.08);padding:16px}
+.cats{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--borda);background:#fff;border-radius:999px;padding:8px 14px;font-size:14.5px;cursor:pointer;color:var(--texto);display:inline-flex;align-items:center;gap:6px;font-family:inherit}
+.chip .n{background:var(--fundo);border-radius:999px;padding:0 8px;font-size:12.5px;color:var(--suave)}
+.chip.ativo{background:var(--verde);border-color:var(--verde);color:#fff}
+.chip.ativo .n{background:rgba(255,255,255,.25);color:#fff}
+.busca{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.busca input[type=search]{flex:1 1 260px;border:1.5px solid var(--borda);border-radius:12px;padding:11px 14px;font-size:16px;font-family:inherit}
+.busca input[type=search]:focus,select:focus{outline:2px solid #9fdcc9;border-color:var(--verde)}
+details.filtros{margin-top:12px}
+details.filtros summary{cursor:pointer;font-weight:600;color:var(--verde-esc);padding:4px 0;list-style:none}
+details.filtros summary::-webkit-details-marker{display:none}
+details.filtros summary:before{content:"⚙️ "}
+.grade-filtros{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+.grade-filtros label{display:flex;flex-direction:column;font-size:13px;color:var(--suave);gap:4px}
+select{border:1.5px solid var(--borda);border-radius:10px;padding:9px 10px;font-size:15px;background:#fff;font-family:inherit;color:var(--texto)}
+.linha-opcoes{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:12px;font-size:14px;color:var(--suave)}
+.linha-opcoes label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.btn-limpar{background:none;border:0;color:var(--verde-esc);text-decoration:underline;cursor:pointer;font-size:14px;font-family:inherit}
+.resumo{margin:16px 2px 10px;color:var(--suave);font-size:14.5px}
+.lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:#fff;border-radius:var(--raio);box-shadow:0 3px 14px rgba(16,40,32,.07);padding:16px 16px 12px;display:flex;flex-direction:column;border-top:5px solid var(--cor,#0f8a6c);position:relative}
+.card.encerrado{opacity:.62}
+.card .topo-card{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.tag-cat{font-size:12.5px;font-weight:700;color:var(--cor);background:var(--cor-claro,#e6f6f1);border-radius:999px;padding:3px 10px}
+.selo-novo{font-size:13px;font-weight:800;color:#fff;background:linear-gradient(90deg,#ff7a18,#d6338a);border-radius:8px;padding:3px 10px;letter-spacing:.6px;box-shadow:0 2px 8px rgba(214,51,138,.35);animation:pulsa 1.8s ease-in-out infinite}
+@keyframes pulsa{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.status{font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 10px;margin-left:auto}
+.st-aberto{background:#e3f5ec;color:#147a4d}
+.st-continuo{background:#e8efff;color:#2a56b8}
+.st-encerrando{background:#fff0dc;color:#b55d00}
+.st-andamento{background:#fde7f1;color:#a3245c}
+.st-encerrado{background:#eceff1;color:#66727b}
+.card h3{margin:2px 0 4px;font-size:18px;line-height:1.3}
+.org{font-size:13.5px;color:var(--suave);margin-bottom:8px}
+.publicos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.pub{font-size:12.5px;background:var(--fundo);border:1px solid var(--borda);border-radius:999px;padding:2px 9px}
+.card p.res{margin:0 0 10px;font-size:15px}
+.info{display:grid;gap:6px;font-size:14px;margin-bottom:10px}
+.info div{display:flex;gap:8px}
+.info .ic{flex:0 0 20px;text-align:center}
+.info b{font-weight:600}
+.dias{font-weight:700}
+.dias.urg{color:#c25400}
+.obs{font-size:13px;color:var(--suave);background:var(--fundo);border-radius:10px;padding:6px 10px;margin-bottom:10px}
+.acoes{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.btn{border:0;border-radius:12px;padding:10px 14px;font-size:14.5px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:inherit}
+.btn-of{background:var(--verde);color:#fff}
+.btn-of:hover{background:var(--verde-esc)}
+.btn-wa{background:#e9fbef;color:#167a3e;border:1.5px solid #b9ecca}
+.btn-wa:hover{background:#d8f6e3}
+.verif{margin-top:10px;font-size:12.5px;color:var(--suave);border-top:1px solid var(--borda);padding-top:8px}
+.verif a{color:var(--suave)}
+.vazio{background:#fff;border-radius:var(--raio);padding:30px;text-align:center;color:var(--suave)}
+footer{max-width:1180px;margin:10px auto 30px;padding:0 16px;color:var(--suave);font-size:13.5px}
+footer .aviso{background:var(--laranja-claro);border-left:4px solid var(--laranja);border-radius:10px;padding:10px 14px;color:#6b4513;margin-bottom:10px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(40px);background:#183a30;color:#fff;padding:12px 18px;border-radius:12px;font-size:15px;opacity:0;transition:all .25s;z-index:50;max-width:90vw;text-align:center;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  header.topo{padding:22px 16px 62px}
+  .topo h1{font-size:24px}
+  .topo .intro{font-size:14.5px}
+  main.wrap{padding:0 10px 24px}
+  .painel{padding:12px}
+  .cats{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+  .chip{white-space:nowrap;padding:7px 12px;font-size:14px}
+  .lista{grid-template-columns:1fr}
+  .btn{flex:1 1 auto;justify-content:center}
+}
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="wrap">
+    <h1>🔎 Radar de Oportunidades – Campo Verde</h1>
+    <p class="sub">SEMCITECI – Secretaria de Ciência, Tecnologia e Inovação – Prefeitura de Campo Verde</p>
+    <p class="intro">Eventos, cursos gratuitos, editais e crédito para inovação e tecnologia: para empresas, startups, produtores rurais, estudantes, professores e toda a comunidade.</p>
+    <span class="atual" id="atual"></span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="banner-novo" id="bannerNovo" role="status">
+    <span class="sino">🔔</span><span id="bannerTxt"></span>
+    <button type="button" id="verNovos">Ver novidades</button>
+  </div>
+
+  <section class="painel" aria-label="Filtros">
+    <div class="cats" id="cats" role="tablist"></div>
+    <div class="busca">
+      <input type="search" id="q" placeholder="Buscar por palavra (ex.: inteligência artificial, agro, crédito, Sebrae)" aria-label="Buscar">
+      <select id="ordem" aria-label="Ordenar">
+        <option value="prazo">Ordenar: prazo mais próximo</option>
+        <option value="recentes">Ordenar: mais recentes no radar</option>
+        <option value="titulo">Ordenar: título (A–Z)</option>
+      </select>
+    </div>
+    <details class="filtros" id="boxFiltros">
+      <summary>Mais filtros</summary>
+      <div class="grade-filtros">
+        <label>Para quem
+          <select id="fPublico"><option value="">Todos os públicos</option></select>
+        </label>
+        <label>Modalidade
+          <select id="fModalidade"><option value="">Presencial e on-line</option><option value="presencial">Presencial</option><option value="online">On-line</option><option value="hibrido">Híbrido (on-line + presencial)</option></select>
+        </label>
+        <label>Instituição / fonte
+          <select id="fInst"><option value="">Todas as instituições</option></select>
+        </label>
+      </div>
+    </details>
+    <div class="linha-opcoes">
+      <label><input type="checkbox" id="fGratis"> Só gratuitos</label>
+      <label><input type="checkbox" id="fNovos"> Só novidades</label>
+      <label><input type="checkbox" id="fEnc"> Mostrar encerrados</label>
+      <button type="button" class="btn-limpar" id="limpar">Limpar filtros</button>
+    </div>
+  </section>
+
+  <div class="resumo" id="resumo" aria-live="polite"></div>
+  <div class="lista" id="lista"></div>
+</main>
+
+<footer>
+  <div class="aviso">⚠️ As informações foram conferidas nas páginas oficiais na data indicada em cada oportunidade. Prazos e regras podem mudar: confirme sempre na página oficial antes de se inscrever. A Prefeitura não faz inscrições em nome de ninguém.</div>
+  <div id="rodape"></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script id="dados" type="application/json">{
+ "atualizado_em": "2026-10-07",
+ "itens": [
+  {
+   "id": "ifmt-cv-semana-agronomia-2026",
+   "titulo": "IV Semana da Agronomia – IFMT Campus Campo Verde",
+   "titulo_curto": "IV Semana da Agronomia – IFMT Campo Verde",
+   "categoria": "eventos",
+   "publicos": [
+    "estudante",
+    "produtor_rural",
+    "pessoa_fisica"
+   ],
+   "organizador": "IFMT – Campus Campo Verde",
+   "instituicoes": [
+    "IFMT"
+   ],
+   "resumo": "Dois dias de palestras e oficinas práticas sobre inovações do agronegócio e culturas estratégicas da região, como produção de milho e algodão e fertilizantes de alta performance. Aberto a estudantes, profissionais e comunidade.",
+   "valor": "não informado na fonte",
+   "gratuito": null,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Inscrição pelo site de eventos do IFMT (300 vagas). Prazo de inscrição não informado na fonte."
+   },
+   "fluxo_continuo": false,
+   "evento": {
+    "inicio": "2026-10-22",
+    "fim": "2026-10-23",
+    "horario": "horário não informado na fonte"
+   },
+   "modalidade": "presencial",
+   "local": "Campo Verde – ETEC Campo Verde",
+   "link": "https://eventos.ifmt.edu.br/eventos/1568/IVAGRO/",
+   "fonte_verificada": "https://eventos.ifmt.edu.br/eventos/1568/IVAGRO/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "Programação detalhada ainda em estruturação, segundo a página do evento."
+  },
+  {
+   "id": "ifmt-cv-jenpex-2026",
+   "titulo": "II JENPEX 2026 – Jornada de Ensino, Pesquisa e Extensão do IFMT Campo Verde",
+   "titulo_curto": "II JENPEX – IFMT Campo Verde (ciência, tecnologia e inovação)",
+   "categoria": "eventos",
+   "publicos": [
+    "estudante",
+    "professor",
+    "pessoa_fisica"
+   ],
+   "organizador": "IFMT – Campus Campo Verde",
+   "instituicoes": [
+    "IFMT"
+   ],
+   "resumo": "Tema: “Territórios sustentáveis: ciência, tecnologia, ambiente e sociedade”. Oficinas, atividades demonstrativas, exposição de pôsteres e Simpósio de Gestão Ambiental. Entre os eixos está Computação, Tecnologia e Inovação. Aberto à comunidade externa.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Inscrição pelo site de eventos do IFMT (700 vagas). Prazo de inscrição não informado na fonte."
+   },
+   "fluxo_continuo": false,
+   "evento": {
+    "inicio": "2026-11-16",
+    "fim": "2026-11-18",
+    "horario": "horário não informado na fonte"
+   },
+   "modalidade": "presencial",
+   "local": "Campo Verde – IFMT Campus Campo Verde",
+   "link": "https://eventos.ifmt.edu.br/eventos/1516/IIJENPEXCVD/",
+   "fonte_verificada": "https://eventos.ifmt.edu.br/eventos/1516/IIJENPEXCVD/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": ""
+  },
+  {
+   "id": "ifmt-pdl-jenpex-2026",
+   "titulo": "JENPEX 2026 – IFMT Campus Primavera do Leste",
+   "titulo_curto": "JENPEX 2026 – IFMT Primavera do Leste",
+   "categoria": "eventos",
+   "publicos": [
+    "estudante",
+    "professor",
+    "pessoa_fisica"
+   ],
+   "organizador": "IFMT – Campus Primavera do Leste",
+   "instituicoes": [
+    "IFMT"
+   ],
+   "resumo": "Palestras, minicursos, oficinas e exposição interativa de experimentos, protótipos, projetos de inovação e tecnologias desenvolvidas no IFMT. Aberto à comunidade, com certificado de até 30 horas.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Inscrição pelo site de eventos do IFMT (1.000 vagas). Prazo de inscrição não informado na fonte."
+   },
+   "fluxo_continuo": false,
+   "evento": {
+    "inicio": "2026-10-21",
+    "fim": "2026-10-22",
+    "horario": "horário não informado na fonte"
+   },
+   "modalidade": "presencial",
+   "local": "Primavera do Leste – IFMT Campus Primavera do Leste",
+   "link": "https://eventos.ifmt.edu.br/eventos/1493/JENPEX2026PDL/",
+   "fonte_verificada": "https://eventos.ifmt.edu.br/eventos/1493/JENPEX2026PDL/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Programação detalhada a ser divulgada na página oficial."
+  },
+  {
+   "id": "mcti-snct-2026",
+   "titulo": "23ª Semana Nacional de Ciência e Tecnologia (SNCT 2026) – “Ciência Delas”",
+   "titulo_curto": "Semana Nacional de Ciência e Tecnologia 2026 – “Ciência Delas”",
+   "categoria": "eventos",
+   "publicos": [
+    "estudante",
+    "professor",
+    "pessoa_fisica"
+   ],
+   "organizador": "Ministério da Ciência, Tecnologia e Inovação (MCTI)",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Semana nacional de divulgação científica, com o tema “Ciência Delas”, que destaca o protagonismo de mulheres e meninas na ciência, tecnologia e inovação. A programação acontece em instituições de todo o país.",
+   "valor": "não informado na fonte",
+   "gratuito": null,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Forma de participação e inscrição: não informado na fonte (varia conforme a programação local)."
+   },
+   "fluxo_continuo": false,
+   "evento": {
+    "inicio": "2026-10-26",
+    "fim": "2026-10-30",
+    "horario": "horário não informado na fonte"
+   },
+   "modalidade": "presencial",
+   "local": "Todo o Brasil (programação local)",
+   "link": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/popciencia",
+   "fonte_verificada": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/popciencia",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "O MCTI informa que a SNCT 2026 está “prevista” para 26 a 30 de outubro de 2026."
+  },
+  {
+   "id": "enap-semana-inovacao-2026",
+   "titulo": "Semana de Inovação 2026 da Enap – “O Futuro é Coletivo”",
+   "titulo_curto": "Semana de Inovação 2026 da Enap",
+   "categoria": "eventos",
+   "publicos": [
+    "servidor_publico",
+    "pessoa_fisica",
+    "estudante"
+   ],
+   "organizador": "Enap – Escola Nacional de Administração Pública",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Evento sobre inovação na gestão pública com mais de 400 horas de programação gratuita. Dá para assistir on-line (YouTube e Zoom) de qualquer lugar; as vagas presenciais, em Brasília, são limitadas. Certificado emitido pelo site ou aplicativo.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Inscrição única no site do evento; ao esgotar as vagas presenciais, fica só a opção on-line. Prazo não informado na fonte."
+   },
+   "fluxo_continuo": false,
+   "evento": {
+    "inicio": "2026-11-10",
+    "fim": "2026-11-12",
+    "horario": "horário não informado na fonte"
+   },
+   "modalidade": "hibrido",
+   "local": "On-line e presencial em Brasília (DF)",
+   "link": "https://semanadeinovacao.enap.gov.br/",
+   "fonte_verificada": "https://semanadeinovacao.enap.gov.br/faq/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "Datas, gratuidade e formato confirmados na notícia oficial de abertura das inscrições e nas perguntas frequentes do site do evento."
+  },
+  {
+   "id": "sebrae-ali-compartilhar-cuiaba-2026",
+   "titulo": "Programa ALI (Agentes Locais de Inovação) – Etapa Compartilhar – Sebrae Cuiabá",
+   "titulo_curto": "Programa ALI – Etapa Compartilhar (Sebrae, Cuiabá)",
+   "categoria": "eventos",
+   "publicos": [
+    "mei_pequena"
+   ],
+   "organizador": "Sebrae Mato Grosso",
+   "instituicoes": [
+    "Sebrae"
+   ],
+   "resumo": "Seminário do Programa ALI, do Sebrae, para empresários e futuros empresários, com soluções práticas para melhorar a gestão e os resultados do negócio.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Inscrição na loja virtual do Sebrae-MT. Prazo não informado na fonte (vale enquanto houver vagas)."
+   },
+   "fluxo_continuo": false,
+   "evento": {
+    "inicio": "2026-10-15",
+    "fim": "2026-10-15",
+    "horario": "18h30 às 22h30"
+   },
+   "modalidade": "presencial",
+   "local": "Cuiabá – Agência Sebrae Cuiabá (Shopping Goiabeiras)",
+   "link": "https://mt.loja.sebrae.com.br/programa-ali-etapa-compartilhar-cuiaba-ev-793075",
+   "fonte_verificada": "https://mt.loja.sebrae.com.br/programa-ali-etapa-compartilhar-cuiaba-ev-793075",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "Horário publicado pelo Sebrae-MT (local)."
+  },
+  {
+   "id": "sebrae-negocio-em-dia-ia",
+   "titulo": "Negócio em dIA – capacitação gratuita em Inteligência Artificial para empreendedores",
+   "titulo_curto": "Negócio em dIA – curso de Inteligência Artificial para empreendedores (Sebrae)",
+   "categoria": "cursos",
+   "publicos": [
+    "mei_pequena",
+    "media_grande"
+   ],
+   "organizador": "Sebrae, com Google, Itaú Unibanco, Tera e Blip",
+   "instituicoes": [
+    "Sebrae"
+   ],
+   "resumo": "Aprenda a usar IA para vender mais, melhorar a presença digital, organizar a operação e as finanças. Aulas de até 10 minutos com missões práticas, conteúdo também pelo WhatsApp e encontros ao vivo (outubro: IA para Marketing; dezembro: IA para Finanças).",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": "2026-12-15",
+    "hora_cuiaba": null,
+    "texto": "Inscrições abertas; as capacitações ficam disponíveis até 15/12/2026."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://onegocioemdia.com.br/",
+   "fonte_verificada": "https://agenciasebrae.com.br/inovacao-e-tecnologia/sebrae-lanca-programa-gratuito-de-capacitacao-em-inteligencia-artificial-durante-o-neon-2026/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "Prazo e gratuidade confirmados na Agência Sebrae de Notícias (canal oficial do Sebrae) e no site do programa."
+  },
+  {
+   "id": "evg-ia-generativa",
+   "titulo": "Curso on-line: Inteligência Artificial Generativa (Escola Virtual.Gov)",
+   "titulo_curto": "Inteligência Artificial Generativa (Escola Virtual.Gov)",
+   "categoria": "cursos",
+   "publicos": [
+    "pessoa_fisica",
+    "servidor_publico",
+    "estudante"
+   ],
+   "organizador": "Escola Virtual.Gov / Enap (conteúdo: Microsoft)",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Curso curto (2 horas) sobre o que é IA generativa, a diferença entre IA e IA generativa e o impacto no mundo do trabalho. Aberto a qualquer pessoa, com certificado.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Curso aberto: inscrição a qualquer momento; 30 dias para concluir."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://www.escolavirtual.gov.br/curso/1091",
+   "fonte_verificada": "https://www.escolavirtual.gov.br/curso/1091/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Carga horária: 2h."
+  },
+  {
+   "id": "evg-ciencia-de-dados",
+   "titulo": "Curso on-line: Introdução à Ciência de Dados – Conceitos e Ferramentas (Escola Virtual.Gov)",
+   "titulo_curto": "Introdução à Ciência de Dados (Escola Virtual.Gov)",
+   "categoria": "cursos",
+   "publicos": [
+    "pessoa_fisica",
+    "servidor_publico",
+    "estudante"
+   ],
+   "organizador": "Escola Virtual.Gov / Enap (conteúdo: Serpro)",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Primeiros passos em ciência de dados: papel do cientista de dados, mineração de dados, aprendizado de máquina, preparação de dados e a ferramenta KNIME. Aberto a qualquer pessoa, com certificado.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Curso aberto: inscrição a qualquer momento; 30 dias para concluir."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://www.escolavirtual.gov.br/curso/976",
+   "fonte_verificada": "https://www.escolavirtual.gov.br/curso/976",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Carga horária: 4h."
+  },
+  {
+   "id": "evg-visualizacao-dados",
+   "titulo": "Curso on-line: Visualização de Dados Aplicada à Transformação Digital (Escola Virtual.Gov)",
+   "titulo_curto": "Visualização de Dados (Escola Virtual.Gov)",
+   "categoria": "cursos",
+   "publicos": [
+    "servidor_publico",
+    "pessoa_fisica"
+   ],
+   "organizador": "Escola Virtual.Gov / Enap (conteúdo: Secretaria de Governo Digital)",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Como transformar dados em painéis e histórias visuais (data storytelling) para apoiar decisões, com casos reais de painéis em serviços públicos. Aberto a qualquer pessoa, com certificado.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Curso aberto: inscrição a qualquer momento; 30 dias para concluir."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://www.escolavirtual.gov.br/curso/802",
+   "fonte_verificada": "https://www.escolavirtual.gov.br/curso/802",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Carga horária: 25h. A EV.G avisa que, no defeso eleitoral, alguns vídeos e links podem ficar temporariamente indisponíveis."
+  },
+  {
+   "id": "fb-python-basico",
+   "titulo": "Curso on-line: Linguagem de Programação Python – Básico (Fundação Bradesco)",
+   "titulo_curto": "Python Básico – programação para iniciantes (Fundação Bradesco)",
+   "categoria": "cursos",
+   "publicos": [
+    "pessoa_fisica",
+    "estudante"
+   ],
+   "organizador": "Fundação Bradesco – Escola Virtual",
+   "instituicoes": [
+    "Fundação Bradesco"
+   ],
+   "resumo": "Curso para iniciantes em programação com a linguagem Python, 100% on-line.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Inscrição pelo site da Escola Virtual da Fundação Bradesco (cadastro gratuito)."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://www.ev.org.br/cursos/linguagem-de-programacao-python-basico",
+   "fonte_verificada": "https://www.ev.org.br/cursos/linguagem-de-programacao-python-basico",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Duração: 18h; nível iniciante. Gratuidade conforme os Termos de Uso da Escola Virtual (cursos “integralmente gratuitos”)."
+  },
+  {
+   "id": "senar-intro-ia-agro",
+   "titulo": "Curso on-line: Introdução à Inteligência Artificial no Agro (Senar)",
+   "titulo_curto": "Introdução à Inteligência Artificial no Agro (Senar)",
+   "categoria": "cursos",
+   "publicos": [
+    "produtor_rural",
+    "pessoa_fisica"
+   ],
+   "organizador": "Senar – Senar Play",
+   "instituicoes": [
+    "Senar"
+   ],
+   "resumo": "Para pequenos e médios produtores rurais entenderem como a IA pode apoiar o manejo, reduzir custos com insumos e aumentar a eficiência da produção. 100% on-line, com certificado.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Matrícula aberta, início imediato."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://ead.senar.org.br/cursos/introducao-a-inteligencia-artificial-no-agro",
+   "fonte_verificada": "https://ead.senar.org.br/cursos/introducao-a-inteligencia-artificial-no-agro",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "Carga horária: 8h; duração: 7 dias; sem tutoria."
+  },
+  {
+   "id": "senar-dados-sensores-ia",
+   "titulo": "Curso on-line: Dados e sensores no campo – a base da IA (Senar)",
+   "titulo_curto": "Dados e sensores no campo – a base da IA (Senar)",
+   "categoria": "cursos",
+   "publicos": [
+    "produtor_rural",
+    "pessoa_fisica"
+   ],
+   "organizador": "Senar – Senar Play",
+   "instituicoes": [
+    "Senar"
+   ],
+   "resumo": "Como usar sensores e dados da lavoura para aumentar a produtividade e fortalecer a gestão da propriedade, base para aplicar inteligência artificial e agricultura de precisão. 100% on-line, com certificado.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Matrícula aberta, início imediato."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://ead.senar.org.br/cursos/dados-e-sensores-no-campo-a-base-da-ia",
+   "fonte_verificada": "https://ead.senar.org.br/cursos/dados-e-sensores-no-campo-a-base-da-ia",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Carga horária: 12h; duração: 12 dias; sem tutoria."
+  },
+  {
+   "id": "senar-ia-gestao-producao",
+   "titulo": "Curso on-line: Inteligência Artificial na gestão da produção (Senar)",
+   "titulo_curto": "IA na gestão da produção rural (Senar)",
+   "categoria": "cursos",
+   "publicos": [
+    "produtor_rural",
+    "pessoa_fisica"
+   ],
+   "organizador": "Senar – Senar Play",
+   "instituicoes": [
+    "Senar"
+   ],
+   "resumo": "IA, automação e critérios de viabilidade para apoiar decisões mais eficientes no campo. 100% on-line, com certificado.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Matrícula aberta, início imediato."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://ead.senar.org.br/cursos/inteligencia-artificial-na-gestao-da-producao",
+   "fonte_verificada": "https://ead.senar.org.br/cursos/inteligencia-artificial-na-gestao-da-producao",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Carga horária: 16h; duração: 16 dias; sem tutoria."
+  },
+  {
+   "id": "senar-agricultura-precisao",
+   "titulo": "Curso on-line: Introdução à Agricultura de Precisão (Senar)",
+   "titulo_curto": "Introdução à Agricultura de Precisão (Senar)",
+   "categoria": "cursos",
+   "publicos": [
+    "produtor_rural",
+    "pessoa_fisica"
+   ],
+   "organizador": "Senar – Senar Play",
+   "instituicoes": [
+    "Senar"
+   ],
+   "resumo": "Conceitos e tecnologias de agricultura de precisão e mecanização para quem vive e trabalha no meio rural. 100% on-line, com certificado.",
+   "valor": "Gratuito",
+   "gratuito": true,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Matrícula aberta, início imediato."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://ead.senar.org.br/cursos/introducao-a-agricultura-de-precisao",
+   "fonte_verificada": "https://ead.senar.org.br/cursos/introducao-a-agricultura-de-precisao",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Carga horária: 18h; duração: 25 dias; sem tutoria."
+  },
+  {
+   "id": "embrapii-sebrae-mpe",
+   "titulo": "Embrapii + Sebrae – projetos de inovação com centros de pesquisa para pequenos negócios",
+   "titulo_curto": "Embrapii + Sebrae – inovação com centros de pesquisa",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "mei_pequena",
+    "startup"
+   ],
+   "organizador": "Embrapii e Sebrae",
+   "instituicoes": [
+    "Embrapii",
+    "Sebrae"
+   ],
+   "resumo": "Sua empresa desenvolve um produto ou processo inovador junto com uma das mais de 90 unidades de pesquisa da Embrapii. A Embrapii paga até 50% do projeto e o Sebrae cobre até 70% da parte da empresa. Contratação sem edital.",
+   "valor": "Teto do Sebrae na contrapartida da empresa: R$ 150 mil (projeto de uma micro ou pequena empresa), R$ 200 mil (MPE com média ou grande empresa) e R$ 300 mil (várias MPEs juntas).",
+   "gratuito": false,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Sem edital e sem prazo: contato pelo site."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Todo o Brasil (contato pelo site)",
+   "link": "https://embrapii.org.br/sebrae/",
+   "fonte_verificada": "https://embrapii.org.br/sebrae/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "Para micro e pequenas empresas com faturamento anual de até R$ 4,8 milhões. O restante do projeto é negociado entre a empresa e a unidade Embrapii."
+  },
+  {
+   "id": "desenvolve-mt-inovacao",
+   "titulo": "Desenvolve Inovação – crédito para inovar (Desenvolve MT + Finep)",
+   "titulo_curto": "Desenvolve Inovação – crédito para inovar (Desenvolve MT + Finep)",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "mei_pequena",
+    "media_grande"
+   ],
+   "organizador": "Desenvolve MT (agência de fomento do Estado), em parceria com a Finep",
+   "instituicoes": [
+    "Bancos e agências de fomento",
+    "Finep"
+   ],
+   "resumo": "Linha de crédito da agência de fomento de Mato Grosso para desenvolver novos produtos e processos em negócios inovadores.",
+   "valor": "Crédito de até R$ 5 milhões, prazo de até 96 meses. Taxa: TR + 6,068% ao ano (micro e pequena empresa) ou TR + 6,605% ao ano (média e grande).",
+   "gratuito": false,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Linha de crédito permanente: solicitar à Desenvolve MT."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "presencial",
+   "local": "Mato Grosso (forma de solicitação: ver página oficial)",
+   "link": "https://desenvolve.mt.gov.br/linhasdecredito/inovacred",
+   "fonte_verificada": "https://desenvolve.mt.gov.br/linhasdecredito/inovacred",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "É financiamento (precisa ser pago). Carência e documentos exigidos: ver a página oficial."
+  },
+  {
+   "id": "govbr-inova-simples",
+   "titulo": "Inova Simples – registro simplificado para startups (Empresa Simples de Inovação)",
+   "titulo_curto": "Inova Simples – registro simplificado de startups",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "startup",
+    "pessoa_fisica"
+   ],
+   "organizador": "Governo Federal (gov.br – Empresas e Negócios)",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Regime especial simplificado do Governo Federal para quem quer tirar do papel uma ideia inovadora: formulário eletrônico para inscrever, alterar e baixar a Empresa Simples de Inovação, com orientações para registrar marcas e patentes no INPI.",
+   "valor": "não informado na fonte",
+   "gratuito": null,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Serviço permanente, pelo portal gov.br."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://www.gov.br/empresas-e-negocios/pt-br/inova-simples",
+   "fonte_verificada": "https://www.gov.br/empresas-e-negocios/pt-br/inova-simples",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": ""
+  },
+  {
+   "id": "sicredi-inovar-juntos",
+   "titulo": "Sicredi Inovar Juntos – conexão de startups com o Sicredi",
+   "titulo_curto": "Sicredi Inovar Juntos – para startups",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "startup"
+   ],
+   "organizador": "Sicredi",
+   "instituicoes": [
+    "Bancos e agências de fomento"
+   ],
+   "resumo": "Programa permanente do Sicredi para startups com solução que gere valor para associados ou colaboradores. A startup faz um piloto ou prova de conceito e pode ser contratada como fornecedora ou parceira.",
+   "valor": "Não há investimento do Sicredi na startup (segundo a página do programa); a oportunidade é de contratação ou parceria comercial.",
+   "gratuito": null,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Inscrições sempre abertas; os desafios são lançados conforme a necessidade."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "On-line",
+   "link": "https://www.sicredi.com.br/site/inovacao/iniciativas/inovar-juntos/",
+   "fonte_verificada": "https://www.sicredi.com.br/site/inovacao/iniciativas/inovar-juntos/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Exige MVP (produto mínimo viável) já testado; não aceita só ideia."
+  },
+  {
+   "id": "cnpq-29-2026-rhae-ia",
+   "titulo": "CNPq RHAE IA – bolsas para pesquisadores em empresas e startups de Inteligência Artificial (Chamada nº 29/2026)",
+   "titulo_curto": "CNPq RHAE IA – bolsas de pesquisa em empresas de IA",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "startup",
+    "mei_pequena",
+    "media_grande"
+   ],
+   "organizador": "CNPq / MCTI",
+   "instituicoes": [
+    "CNPq/CAPES"
+   ],
+   "resumo": "Bolsas para levar pesquisadores a empresas e startups que desenvolvam soluções em inteligência artificial alinhadas à Nova Indústria Brasil e ao Plano Brasileiro de IA.",
+   "valor": "Até R$ 300 mil em bolsas por proposta; R$ 50 milhões no total.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-10-09",
+    "hora_cuiaba": "22:59",
+    "texto": "Submissão até 09/10/2026, 23h59 de Brasília (22h59 de Cuiabá)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-29-2026/chamada-publica-cnpq-N-29-2026",
+   "fonte_verificada": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-29-2026/chamada-publica-cnpq-N-29-2026",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Prazo muito curto. Valores conferidos no texto da chamada (itens 7.1 e 8.1.1)."
+  },
+  {
+   "id": "finep-mi-tecnologias-digitais",
+   "titulo": "Finep Mais Inovação – Tecnologias Digitais (subvenção para empresas)",
+   "categoria": "fomento_medias_grandes",
+   "publicos": [
+    "media_grande"
+   ],
+   "organizador": "Finep / MCTI",
+   "instituicoes": [
+    "Finep"
+   ],
+   "resumo": "Recursos não reembolsáveis (subvenção) para empresas desenvolverem inovação em tecnologias digitais.",
+   "valor": "R$ 300 milhões no total; valor por proposta não informado na fonte.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-10-14",
+    "hora_cuiaba": "16:00",
+    "texto": "Propostas até 14/10/2026, 17h de Brasília (16h de Cuiabá)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.finep.gov.br/e/chamada-publica/222684/755485",
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/755485",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Aberta a empresas; confira no regulamento os requisitos de porte e de parceria."
+  },
+  {
+   "id": "finep-mi-mobilidade",
+   "titulo": "Finep Mais Inovação – Mobilidade Sustentável",
+   "categoria": "fomento_medias_grandes",
+   "publicos": [
+    "media_grande"
+   ],
+   "organizador": "Finep / MCTI",
+   "instituicoes": [
+    "Finep"
+   ],
+   "resumo": "Apoio a pesquisa, desenvolvimento e inovação em mobilidade aérea, metroferroviária, aquaviária e micromobilidade. Empresas precisam de uma instituição de pesquisa (ICT) parceira.",
+   "valor": "não informado na fonte",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-10-23",
+    "hora_cuiaba": "17:00",
+    "texto": "Propostas até 23/10/2026, 18h de Brasília (17h de Cuiabá)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.finep.gov.br/e/chamada-publica/222684/755376",
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/755376",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Prazo prorrogado pela Finep (3ª rerratificação, 24/09/2026)."
+  },
+  {
+   "id": "finep-mi-semicondutores",
+   "titulo": "Finep Mais Inovação – Semicondutores",
+   "categoria": "fomento_medias_grandes",
+   "publicos": [
+    "media_grande"
+   ],
+   "organizador": "Finep / MCTI",
+   "instituicoes": [
+    "Finep"
+   ],
+   "resumo": "Subvenção (recurso não reembolsável) para empresas desenvolverem produtos ou processos inovadores em semicondutores, com ICT parceira.",
+   "valor": "R$ 100 milhões no total; valor por proposta não informado na fonte.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-11-25",
+    "hora_cuiaba": "16:00",
+    "texto": "Propostas até 25/11/2026, 17h (horário da página da Finep; convertido para Cuiabá supondo horário de Brasília)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.finep.gov.br/e/chamada-publica/222684/755605",
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/755605",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": ""
+  },
+  {
+   "id": "finep-mi-transformacao-mineral",
+   "titulo": "Finep Mais Inovação – Transformação Mineral",
+   "categoria": "fomento_medias_grandes",
+   "publicos": [
+    "media_grande"
+   ],
+   "organizador": "Finep / MCTI",
+   "instituicoes": [
+    "Finep"
+   ],
+   "resumo": "Apoio a empresas, em parceria com instituições de pesquisa, para inovação na transformação mineral, ligada à descarbonização e à transição energética.",
+   "valor": "R$ 215,2 milhões no total; valor por proposta não informado na fonte.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-11-30",
+    "hora_cuiaba": "17:00",
+    "texto": "Propostas até 30/11/2026, 18h de Brasília (17h de Cuiabá)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.finep.gov.br/e/chamada-publica/222684/754473",
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/754473",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": ""
+  },
+  {
+   "id": "finep-cooperamais-empresas",
+   "titulo": "Finep COOPERAMAIS Empresas – inovação na agroindústria com cooperativas da agricultura familiar",
+   "titulo_curto": "Finep COOPERAMAIS – agroindústria + cooperativas da agricultura familiar",
+   "categoria": "fomento_medias_grandes",
+   "publicos": [
+    "media_grande",
+    "produtor_rural"
+   ],
+   "organizador": "Finep / MCTI (FNDCT)",
+   "instituicoes": [
+    "Finep"
+   ],
+   "resumo": "Subvenção para empresas inovarem na agroindústria em parceria com cooperativas da agricultura familiar (pelo menos 70% dos associados com CAF). Interessa a agroindústrias e cooperativas da região.",
+   "valor": "R$ 120 milhões no total; valor por proposta não informado na fonte.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2027-04-30",
+    "hora_cuiaba": "16:00",
+    "texto": "Fluxo contínuo até 30/04/2027, 17h (horário da página da Finep; convertido para Cuiabá supondo horário de Brasília)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.finep.gov.br/e/chamada-publica/222684/1060720",
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/1060720",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": true,
+   "observacoes": "Quem propõe é a empresa; a cooperativa entra como parceira."
+  },
+  {
+   "id": "bndes-mais-inovacao",
+   "titulo": "BNDES Mais Inovação – crédito para inovação e digitalização",
+   "titulo_curto": "BNDES Mais Inovação – crédito para inovação e digitalização",
+   "categoria": "fomento_medias_grandes",
+   "publicos": [
+    "media_grande",
+    "mei_pequena"
+   ],
+   "organizador": "BNDES",
+   "instituicoes": [
+    "Bancos e agências de fomento"
+   ],
+   "resumo": "Crédito com recursos do FAT corrigidos pela TR para investimentos em inovação e digitalização. São cinco subprogramas, incluindo compra de equipamentos inovadores e serviços tecnológicos (Difusão Tecnológica) e digitalização de empresas pelo Brasil Mais Produtivo (Investimento Automático, via agentes financeiros).",
+   "valor": "Limites: até R$ 300 milhões/ano por grupo econômico (Investimento em Inovação + Aquisição de bens inovadores), até R$ 50 milhões/ano por cliente (Difusão Tecnológica) e até R$ 15 milhões/ano por cliente (Investimento Automático).",
+   "gratuito": false,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Pedidos a qualquer momento. Atenção: pedidos de crédito direto com TR precisam ser aprovados até 31/12/2026 e, pela alta demanda, o BNDES avisa que nem todos poderão ser atendidos com essa taxa."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.bndes.gov.br/wps/vanityurl/bndes-mais-inovacao/",
+   "fonte_verificada": "https://www.bndes.gov.br/wps/vanityurl/bndes-mais-inovacao/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "É financiamento (precisa ser pago)."
+  },
+  {
+   "id": "impa-premio-ensino-matematica-2026",
+   "titulo": "Prêmio Brasil de Ensino de Matemática na Educação Básica – categorias Docentes e Instituições",
+   "titulo_curto": "Prêmio Brasil de Ensino de Matemática (IMPA)",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "professor"
+   ],
+   "organizador": "IMPA e ANPMat, com apoio do MCTI",
+   "instituicoes": [
+    "IMPA"
+   ],
+   "resumo": "Reconhece práticas de sucesso no ensino de matemática na educação básica, com resultados e potencial de replicação. Professores podem se inscrever na categoria Docentes.",
+   "valor": "Sem prêmio em dinheiro: certificado, homenagem em simpósio nacional e publicação no Caderno Nacional de Práticas Exitosas.",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-12",
+    "hora_cuiaba": null,
+    "texto": "Inscrições até 12/10/2026 (horário-limite não informado na fonte)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://candidaturas.impa.br/eventos/565/inscricao/categoria",
+   "fonte_verificada": "https://impa.br/notices/inscricoes-para-premio-brasil-de-ensino-de-matematica-terminam-em-12-de-outubro/",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Prazo confirmado no regulamento (art. 45) e na notícia do IMPA de 05/10/2026."
+  },
+  {
+   "id": "cnpq-capes-30-2026-mai-dai",
+   "titulo": "CNPq/CAPES MAI/DAI – mestrado e doutorado para inovação em parceria com empresas (Chamada nº 30/2026)",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "estudante",
+    "professor"
+   ],
+   "organizador": "CNPq e CAPES",
+   "instituicoes": [
+    "CNPq/CAPES"
+   ],
+   "resumo": "Estimula pesquisas de mestrado e doutorado feitas em universidades em parceria com empresas. Interessa a pesquisadores de pós-graduação e a empresas que querem desenvolver inovação com universidades.",
+   "valor": "não informado na fonte",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2026-12-11",
+    "hora_cuiaba": null,
+    "texto": "Propostas de 19/08 a 11/12/2026 (horário-limite não informado na página)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-30-2026/chamada-publica-cnpq-N-30-2026",
+   "fonte_verificada": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-30-2026/chamada-publica-cnpq-N-30-2026",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": "Quem pode submeter e valores: ver o texto da chamada."
+  },
+  {
+   "id": "cnpq-32-2026-anr-franca",
+   "titulo": "CNPq/ANR – projetos de pesquisa conjuntos Brasil–França (Chamada nº 32/2026)",
+   "categoria": "pessoas_fisicas",
+   "publicos": [
+    "professor"
+   ],
+   "organizador": "CNPq / MCTI e ANR (França)",
+   "instituicoes": [
+    "CNPq/CAPES"
+   ],
+   "resumo": "Seleciona projetos de pesquisa conjuntos entre grupos brasileiros e franceses que contribuam para o desenvolvimento científico, tecnológico e a inovação. Para pesquisadores.",
+   "valor": "não informado na fonte",
+   "gratuito": false,
+   "inscricao": {
+    "ate": "2027-03-31",
+    "hora_cuiaba": null,
+    "texto": "Inscrições de 03/09/2026 a 31/03/2027 (horário-limite não informado na página)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-32-2026/chamada-publica-cnpq-N-32-2026",
+   "fonte_verificada": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-32-2026/chamada-publica-cnpq-N-32-2026",
+   "verificado_em": "2026-10-07",
+   "data_inclusao": "2026-10-07",
+   "destaque": false,
+   "observacoes": ""
+  }
+ ]
+}</script>
+<script>
+(function(){
+"use strict";
+var D = JSON.parse(document.getElementById("dados").textContent);
+var CATS = {
+  eventos:{nome:"Eventos",emoji:"📅",cor:"#2f6fdb",claro:"#e8efff"},
+  cursos:{nome:"Cursos gratuitos",emoji:"🎓",cor:"#0f8a6c",claro:"#e6f6f1"},
+  fomento_pequenas:{nome:"Fomento: MEI e pequenas empresas",emoji:"💼",cor:"#e07a10",claro:"#fff2e3"},
+  fomento_medias_grandes:{nome:"Fomento: médias e grandes empresas",emoji:"🏭",cor:"#7b4bd6",claro:"#f1eafd"},
+  pessoas_fisicas:{nome:"Para pessoas físicas",emoji:"🙋",cor:"#d64b8a",claro:"#fdebf3"}
+};
+var PUB = {mei_pequena:"MEI e pequenas empresas",media_grande:"Médias e grandes empresas",pessoa_fisica:"Pessoa física",estudante:"Estudantes",professor:"Professores",produtor_rural:"Produtores rurais",startup:"Startups",servidor_publico:"Servidores públicos"};
+var MOD = {presencial:"Presencial",online:"On-line",hibrido:"Híbrido (on-line + presencial)"};
+var CHAVE_VISITA = "radarCampoVerde.ultimaVisita";
+
+function hojeISO(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+var HOJE = hojeISO();
+function toDate(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function diasAte(s){return Math.round((toDate(s)-toDate(HOJE))/86400000);}
+function diasEntre(x,y){return Math.round((toDate(y)-toDate(x))/86400000);}
+function fmt(s){if(!s)return "";var p=s.split("-");return p[2]+"/"+p[1]+"/"+p[0];}
+function fmtCurto(s){var p=s.split("-");return p[2]+"/"+p[1];}
+function hora(h){if(!h)return "";var p=h.split(":");return p[0]+"h"+(p[1]!=="00"?p[1]:"");}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];});}
+
+function status(it){
+  var ins=it.inscricao||{};
+  if(ins.ate){var d=diasAte(ins.ate); if(d<0) return "encerrado"; if(d<=7) return "encerrando"; return "aberto";}
+  if(it.evento){ if(diasAte(it.evento.fim)<0) return "encerrado"; if(diasAte(it.evento.inicio)<=0) return "andamento"; if(diasAte(it.evento.inicio)<=7) return "encerrando"; return "aberto";}
+  if(it.fluxo_continuo) return "continuo";
+  return "aberto";
+}
+var ST_TXT={aberto:"Inscrições abertas",continuo:"Sempre aberto",encerrando:"Corra! Prazo curto",andamento:"Acontecendo agora",encerrado:"Encerrado"};
+function chavePrazo(it){var ins=it.inscricao||{}; if(ins.ate) return ins.ate; if(it.evento) return it.evento.inicio; return "9999-12-31";}
+function periodoEvento(ev){
+  if(!ev) return "";
+  if(ev.inicio===ev.fim) return fmt(ev.inicio);
+  var a=ev.inicio.split("-"), b=ev.fim.split("-");
+  if(a[0]===b[0]&&a[1]===b[1]) return a[2]+(diasEntre(ev.inicio,ev.fim)===1?" e ":" a ")+b[2]+"/"+b[1]+"/"+b[0];
+  return fmt(ev.inicio)+" a "+fmt(ev.fim);
+}
+function prazoTexto(it){
+  var ins=it.inscricao||{};
+  if(ins.ate) return "até "+fmt(ins.ate)+(ins.hora_cuiaba?" às "+hora(ins.hora_cuiaba)+" (Cuiabá)":"");
+  if(it.evento) return "evento em "+periodoEvento(it.evento)+(it.local?" · "+it.local:"")+" (inscrições pelo link)";
+  if(it.fluxo_continuo) return "inscrições a qualquer momento";
+  return "não informado na fonte";
+}
+function diasTexto(it){
+  var ins=it.inscricao||{}, alvo=ins.ate||(it.evento?it.evento.inicio:null);
+  if(!alvo) return "";
+  var d=diasAte(alvo); if(d<0) return "";
+  if(d===0) return ins.ate?"último dia!":"evento hoje!";
+  if(d===1) return ins.ate?"falta 1 dia":"evento amanhã";
+  return "faltam "+d+" dias"+(ins.ate?"":" para o evento");
+}
+
+// ---- NOVO ----
+var ultimaVisita=null;
+try{ultimaVisita=localStorage.getItem(CHAVE_VISITA);}catch(e){}
+function ehNovo(it){
+  var di=it.data_inclusao; if(!di) return false;
+  if(diasAte(di)>=-7) return true;
+  if(ultimaVisita && di>ultimaVisita) return true;
+  return false;
+}
+D.itens.forEach(function(it){it._novo=ehNovo(it); it._st=status(it);});
+
+// ---- filtros ----
+var estado={cat:"",q:"",pub:"",mod:"",inst:"",gratis:false,novos:false,enc:false,ordem:"prazo"};
+var el=function(id){return document.getElementById(id);};
+
+function preencherSelects(){
+  var pubs={},insts={};
+  D.itens.forEach(function(it){(it.publicos||[]).forEach(function(p){pubs[p]=1;});(it.instituicoes||[]).forEach(function(i){insts[i]=1;});});
+  Object.keys(PUB).forEach(function(k){if(pubs[k]){var o=document.createElement("option");o.value=k;o.textContent=PUB[k];el("fPublico").appendChild(o);}});
+  Object.keys(insts).sort(function(a,b){return a.localeCompare(b,"pt-BR");}).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k;el("fInst").appendChild(o);});
+}
+function passaBase(it){
+  if(!estado.enc && it._st==="encerrado") return false;
+  if(estado.pub && (it.publicos||[]).indexOf(estado.pub)<0) return false;
+  if(estado.mod && it.modalidade!==estado.mod) return false;
+  if(estado.inst && (it.instituicoes||[]).indexOf(estado.inst)<0) return false;
+  if(estado.gratis && it.gratuito!==true) return false;
+  if(estado.novos && !it._novo) return false;
+  if(estado.q){
+    var alvo=[it.titulo,it.resumo,it.organizador,(it.instituicoes||[]).join(" "),it.local,it.valor,(it.publicos||[]).map(function(p){return PUB[p];}).join(" "),CATS[it.categoria].nome].join(" ");
+    var n=function(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();};
+    var t=n(alvo), termos=n(estado.q).split(/\s+/).filter(Boolean);
+    for(var i=0;i<termos.length;i++){ if(t.indexOf(termos[i])<0) return false; }
+  }
+  return true;
+}
+function desenharCats(base){
+  var cont={}; base.forEach(function(it){cont[it.categoria]=(cont[it.categoria]||0)+1;});
+  var h='<button type="button" class="chip'+(estado.cat===""?" ativo":"")+'" data-cat="">✨ Todas <span class="n">'+base.length+'</span></button>';
+  Object.keys(CATS).forEach(function(k){h+='<button type="button" class="chip'+(estado.cat===k?" ativo":"")+'" data-cat="'+k+'">'+CATS[k].emoji+" "+esc(CATS[k].nome)+' <span class="n">'+(cont[k]||0)+'</span></button>';});
+  el("cats").innerHTML=h;
+}
+function card(it){
+  var c=CATS[it.categoria], st=it._st, dt=diasTexto(it);
+  var pubs=(it.publicos||[]).map(function(p){return '<span class="pub">'+esc(PUB[p]||p)+'</span>';}).join("");
+  var h='<article class="card'+(st==="encerrado"?" encerrado":"")+'" style="--cor:'+c.cor+';--cor-claro:'+c.claro+'" data-id="'+esc(it.id)+'">';
+  h+='<div class="topo-card"><span class="tag-cat">'+c.emoji+" "+esc(c.nome)+'</span>'+(it._novo?'<span class="selo-novo">NOVO</span>':'')+'<span class="status st-'+st+'">'+ST_TXT[st]+'</span></div>';
+  h+='<h3>'+esc(it.titulo)+'</h3><div class="org">'+esc(it.organizador)+'</div>';
+  h+='<div class="publicos" title="Para quem">'+pubs+'</div>';
+  h+='<p class="res">'+esc(it.resumo)+'</p><div class="info">';
+  h+='<div><span class="ic">💰</span><span><b>Valor/custo:</b> '+esc(it.valor)+'</span></div>';
+  var ins=it.inscricao||{};
+  h+='<div><span class="ic">📝</span><span><b>Inscrição:</b> '+esc(ins.texto||prazoTexto(it))+(dt?' <span class="dias'+(st==="encerrando"?" urg":"")+'">('+dt+')</span>':'')+'</span></div>';
+  if(it.evento) h+='<div><span class="ic">📅</span><span><b>Quando:</b> '+periodoEvento(it.evento)+(it.evento.horario?" – "+esc(it.evento.horario):"")+'</span></div>';
+  h+='<div><span class="ic">📍</span><span><b>Onde:</b> '+esc(MOD[it.modalidade]||it.modalidade)+(it.local?" – "+esc(it.local):"")+'</span></div>';
+  h+='<div><span class="ic">🏛️</span><span><b>Instituição:</b> '+esc((it.instituicoes||[]).join(", "))+'</span></div>';
+  h+='</div>';
+  if(it.observacoes) h+='<div class="obs">ℹ️ '+esc(it.observacoes)+'</div>';
+  h+='<div class="acoes"><a class="btn btn-of" href="'+esc(it.link)+'" target="_blank" rel="noopener noreferrer">🔗 Página oficial</a><button type="button" class="btn btn-wa" data-share="'+esc(it.id)+'">📲 Compartilhar</button></div>';
+  h+='<div class="verif">✅ Verificado em '+fmtCurto(it.verificado_em)+' na <a href="'+esc(it.fonte_verificada)+'" target="_blank" rel="noopener noreferrer">fonte oficial</a></div>';
+  return h+'</article>';
+}
+function ordenar(arr){
+  var o=estado.ordem;
+  arr.sort(function(a,b){
+    if(o==="titulo") return a.titulo.localeCompare(b.titulo,"pt-BR");
+    if(o==="recentes"){ if(a.data_inclusao!==b.data_inclusao) return a.data_inclusao<b.data_inclusao?1:-1; }
+    var ea=a._st==="encerrado"?1:0, eb=b._st==="encerrado"?1:0; if(ea!==eb) return ea-eb;
+    var ka=chavePrazo(a), kb=chavePrazo(b); if(ka!==kb) return ka<kb?-1:1;
+    return a.titulo.localeCompare(b.titulo,"pt-BR");
+  });
+  return arr;
+}
+function render(){
+  var base=D.itens.filter(passaBase);
+  desenharCats(base);
+  var vis=base.filter(function(it){return !estado.cat||it.categoria===estado.cat;});
+  ordenar(vis);
+  el("lista").innerHTML=vis.length?vis.map(card).join(""):'<div class="vazio">Nenhuma oportunidade com esses filtros. <button type="button" class="btn-limpar" id="limpar2">Limpar filtros</button></div>';
+  var enc=D.itens.filter(function(i){return i._st==="encerrado";}).length;
+  el("resumo").textContent=vis.length+(vis.length===1?" oportunidade encontrada":" oportunidades encontradas")+(estado.enc||!enc?"":" · "+enc+" encerrada(s) oculta(s)");
+  var l2=el("limpar2"); if(l2) l2.onclick=limpar;
+}
+function limpar(){
+  estado={cat:"",q:"",pub:"",mod:"",inst:"",gratis:false,novos:false,enc:false,ordem:estado.ordem};
+  el("q").value="";el("fPublico").value="";el("fModalidade").value="";el("fInst").value="";
+  el("fGratis").checked=false;el("fNovos").checked=false;el("fEnc").checked=false;render();
+}
+
+// ---- compartilhar ----
+function textoWhats(it){
+  var c=CATS[it.categoria];
+  var linhas=[c.emoji+" *"+it.titulo+"*",
+    "👥 Para quem: "+(it.publicos||[]).map(function(p,i){var t=p==="pessoa_fisica"?"Público em geral":(PUB[p]||p);return (i&&p!=="mei_pequena")?t.charAt(0).toLowerCase()+t.slice(1):t;}).join(", "),
+    "🗓️ Prazo: "+prazoTexto(it)];
+  if(it.evento && (it.inscricao||{}).ate) linhas.push("📅 Evento: "+periodoEvento(it.evento));
+  if(it.gratuito===true) linhas.push("💚 Gratuito");
+  linhas.push("🔗 "+it.link);
+  linhas.push("");
+  linhas.push("_Radar de Oportunidades – SEMCITECI – Secretaria de Ciência, Tecnologia e Inovação – Prefeitura de Campo Verde_");
+  return linhas.join("\n");
+}
+function toast(msg){var t=el("toast");t.textContent=msg;t.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove("on");},2600);}
+function copiarFallback(txt){
+  var ta=document.createElement("textarea");ta.value=txt;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.top="-1000px";document.body.appendChild(ta);ta.select();
+  var ok=false;try{ok=document.execCommand("copy");}catch(e){}
+  document.body.removeChild(ta);return ok;
+}
+function compartilhar(id){
+  var it=D.itens.filter(function(x){return x.id===id;})[0]; if(!it) return;
+  var txt=textoWhats(it);
+  window.__ultimoTextoCompartilhado=txt;
+  var fim=function(ok){toast(ok?"✅ Texto copiado! Agora é só colar no WhatsApp.":"Não foi possível copiar automaticamente. Selecione e copie o texto manualmente.");if(!ok){window.prompt("Copie o texto abaixo:",txt);}};
+  if(navigator.clipboard && window.isSecureContext){navigator.clipboard.writeText(txt).then(function(){fim(true);},function(){fim(copiarFallback(txt));});}
+  else fim(copiarFallback(txt));
+}
+
+// ---- eventos ----
+el("cats").addEventListener("click",function(e){var b=e.target.closest("[data-cat]");if(!b)return;estado.cat=b.getAttribute("data-cat");render();});
+el("lista").addEventListener("click",function(e){var b=e.target.closest("[data-share]");if(b)compartilhar(b.getAttribute("data-share"));});
+el("q").addEventListener("input",function(){estado.q=this.value.trim();render();});
+el("ordem").addEventListener("change",function(){estado.ordem=this.value;render();});
+el("fPublico").addEventListener("change",function(){estado.pub=this.value;render();});
+el("fModalidade").addEventListener("change",function(){estado.mod=this.value;render();});
+el("fInst").addEventListener("change",function(){estado.inst=this.value;render();});
+el("fGratis").addEventListener("change",function(){estado.gratis=this.checked;render();});
+el("fNovos").addEventListener("change",function(){estado.novos=this.checked;render();});
+el("fEnc").addEventListener("change",function(){estado.enc=this.checked;render();});
+el("limpar").addEventListener("click",limpar);
+el("verNovos").addEventListener("click",function(){estado.novos=true;el("fNovos").checked=true;render();el("lista").scrollIntoView({behavior:"smooth"});});
+
+// ---- inicialização ----
+el("atual").textContent="Atualizado em "+fmt(D.atualizado_em)+" · "+D.itens.filter(function(i){return i._st!=="encerrado";}).length+" oportunidades abertas";
+if(window.matchMedia && window.matchMedia("(min-width:641px)").matches) el("boxFiltros").open=true;
+preencherSelects();
+var novos=D.itens.filter(function(i){return i._novo && i._st!=="encerrado";}).length;
+if(novos>0){
+  el("bannerTxt").textContent=novos+(novos===1?" novidade":" novidades")+(ultimaVisita?" desde sua última visita":" no radar")+"!";
+  el("bannerNovo").classList.add("on");
+}
+el("rodape").innerHTML="Radar de Oportunidades – Campo Verde · SEMCITECI – Secretaria de Ciência, Tecnologia e Inovação – Prefeitura de Campo Verde · Dados atualizados em "+fmt(D.atualizado_em)+" · Prazos e dias restantes calculados pela data deste aparelho ("+fmt(HOJE)+").";
+render();
+try{localStorage.setItem(CHAVE_VISITA,HOJE);}catch(e){}
+window.__radar={itens:D.itens,estado:estado,render:render,textoWhats:textoWhats};
+})();
+</script>
+</body>
+</html>
