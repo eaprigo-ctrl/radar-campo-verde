@@ -66,6 +66,9 @@ select{border:1.5px solid var(--borda);border-radius:10px;padding:9px 10px;font-
 .publicos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .selo-local{font-size:12.5px;font-weight:700;color:#0b6b3a;background:#e3f5ea;border:1px solid #9fd8b5;border-radius:999px;padding:2px 9px}
 .pub{font-size:12.5px;background:var(--fundo);border:1px solid var(--borda);border-radius:999px;padding:2px 9px}
+.secs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:-2px 0 8px;font-size:12.5px;color:var(--suave)}
+.secs b{font-weight:600}
+.sec{font-size:12.5px;font-weight:600;color:#5b3fa8;background:#f1ecfb;border:1px solid #d9cdf5;border-radius:999px;padding:2px 9px}
 .card p.res{margin:0 0 10px;font-size:15px}
 .info{display:grid;gap:6px;font-size:14px;margin-bottom:10px}
 .info div{display:flex;gap:8px}
@@ -123,6 +126,16 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
   .financiadores h2{font-size:18px}
   .atalho{margin:8px 0 0 0}
 }
+/* ---- Emendas parlamentares ---- */
+.emendas .em-alerta{background:#fff4e5;border-left:4px solid #e07a10;border-radius:10px;padding:10px 14px;margin:0 0 12px;font-size:14.5px;color:#6b4513}
+.em-lista{list-style:none;margin:10px 0 2px;padding:0;display:grid;gap:10px}
+.em-lista li{font-size:14px;line-height:1.4}
+.em-lista .quando{display:inline-block;font-weight:800;color:var(--cor,#0e7490);background:var(--fundo);border-radius:8px;padding:1px 8px;margin-right:4px}
+.em-lista .acao{display:block;color:var(--suave);font-size:13.5px;margin-top:2px}
+.em-lista a,.em-fontes a{color:var(--verde-esc);font-size:13px;font-weight:600;text-decoration:none}
+.em-lista a:hover,.em-fontes a:hover{text-decoration:underline}
+.em-lista a:after,.em-fontes a:after{content:" ↗";font-size:12px;font-weight:400}
+.em-conf{font-style:normal;font-weight:700;color:#b55d00}
 </style>
 </head>
 <body>
@@ -133,6 +146,7 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     <p class="intro">Eventos, cursos gratuitos, editais e crédito para inovação e tecnologia, além de competições e olimpíadas científicas: para empresas, startups, produtores rurais, jovens, estudantes, professores, prefeituras e toda a comunidade — com destaque para o que acontece em Campo Verde.</p>
     <span class="atual" id="atual"></span>
     <a class="atual atalho" href="#financiadores">🏦 Quem financia CT&amp;I</a>
+    <a class="atual atalho" href="#emendas">🏛️ Emendas parlamentares</a>
   </div>
 </header>
 
@@ -163,6 +177,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
         </label>
         <label>Instituição / fonte
           <select id="fInst"><option value="">Todas as instituições</option></select>
+        </label>
+        <label>Por secretaria
+          <select id="fSec"><option value="">Todas as secretarias</option></select>
         </label>
       </div>
     </details>
@@ -227,6 +244,51 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     </div>
     <p class="fin-nota">Links conferidos em 07/10/2026. Editais abertos de cada instituição aparecem nos cards acima, quando servem para Campo Verde.</p>
   </section>
+  <section class="painel financiadores emendas" id="emendas" aria-labelledby="tituloEm">
+    <h2 id="tituloEm">🏛️ Emendas parlamentares – melhores datas</h2>
+    <p class="fin-intro">Janelas para a Prefeitura e as secretarias pedirem emendas aos deputados estaduais (ALMT) e à bancada federal de Mato Grosso (deputados federais e senadores, via CMO e Transferegov). Tenha uma ficha de 1 página por projeto: objeto, valor e local.</p>
+    <p class="em-alerta">⚠️ <b>Defeso eleitoral até 25/10/2026</b> (começou em 04/07): estão vedadas transferências voluntárias da União e do Estado, inclusive emendas — exceto obra ou serviço já em andamento, com cronograma. Use este período para sanear pendências e preparar os projetos. <a href="https://cnm.org.br/storage/biblioteca/2026/Perguntas_Respostas/31072026_Perguntas_e_Respostas_Defeso_Eleitoral.pdf" target="_blank" rel="noopener noreferrer" style="color:#6b4513;font-weight:600">Perguntas e respostas (CNM) ↗</a></p>
+    <div class="fin-grade">
+      <details class="fin-grupo" style="--cor:#e07a10">
+        <summary>🚨 Próximos 60 dias <span class="n">4</span></summary>
+        <ul class="em-lista">
+          <li><span class="quando">até 20/10</span> <b>Emendas à LOA 2027 da União</b> (deputados federais e senadores de MT; também emendas de bancada). O calendário oficial prevê de 1º a 20/10, mas o PLN 24/2026 ainda aguarda despacho na CMO: prazo final <em class="em-conf">a confirmar</em>.<span class="acao">Ação já: enviar aos gabinetes a ficha de 1 página por projeto (objeto, valor, local).</span><a href="https://www.congressonacional.leg.br/documents/150599582/159576811/Informativo_conjunto.pdf" target="_blank" rel="noopener noreferrer">Informativo conjunto – Congresso Nacional</a></li>
+          <li><span class="quando">até 25/10</span> <b>Defeso eleitoral</b>: transferências voluntárias da União e do Estado vedadas, inclusive emendas (exceção: obra ou serviço já em andamento, com cronograma).<span class="acao">Ação: usar o período para sanear pendências.</span><a href="https://cnm.org.br/storage/biblioteca/2026/Perguntas_Respostas/31072026_Perguntas_e_Respostas_Defeso_Eleitoral.pdf" target="_blank" rel="noopener noreferrer">CNM – perguntas e respostas sobre o defeso</a></li>
+          <li><span class="quando">28/11 e 30/12</span> <b>Emendas estaduais impositivas de 2026</b>: 28/11 é o prazo final de liquidação e 30/12, o de pagamento. A mudança de programação pelo deputado encerrou em 30/09.<span class="acao">Quem tem emenda estadual: entregar já o plano de trabalho e os documentos ao órgão estadual.</span><a href="http://app1.sefaz.mt.gov.br/sistema/legislacao/legislacaotribut.nsf/173e6c0d2202fdcb03258b1700659f1e/0b377abcec2fea6603258d2300728114?OpenDocument=" target="_blank" rel="noopener noreferrer">Norma estadual – Sefaz-MT</a></li>
+          <li><span class="quando">até 31/12</span> <b>Emendas federais de 2026</b>: data-limite para celebrar convênios e contratos de repasse. Os ciclos do Transferegov de 2026 já encerraram (o último em 21/09).<span class="acao">Ação: responder rápido às complementações pedidas no Transferegov.</span><a href="https://www.gov.br/transferegov/pt-br/comunicados/comunicados-gerais/2026/comunicado-no-19-2026-cronograma-3-2026-execucao-das-emendas-individuais-com-finalidade-definida-rp6-orcamento-2026-apos-superacao-dos-impedimentos-de-ordem-tecnica" target="_blank" rel="noopener noreferrer">Transferegov – Comunicado nº 19/2026</a></li>
+        </ul>
+      </details>
+      <details class="fin-grupo" style="--cor:#0e7490">
+        <summary>🏛️ Deputados estaduais – ALMT (LOA 2027 de MT)</summary>
+        <ul class="em-lista">
+          <li><span class="quando">prazo não informado</span> Em 14/09 o projeto da LOA 2027 estadual ainda não tinha chegado à ALMT, que deve acelerar a tramitação depois da eleição. O prazo para emendas dos deputados estaduais <em class="em-conf">não foi informado</em>.</li>
+          <li><span class="quando">referência 2025</span> Na LOA 2026, as emendas abriram em 24/11 e a votação foi em 17/12.<span class="acao">Ação: procurar os deputados estaduais em outubro e novembro.</span></li>
+          <li><a href="https://www.muvucapopular.com.br/2026/09/14/max-preve-votacao-do-orcamento-de-2027-apos-as-eleicoes-em-mato-grosso/" target="_blank" rel="noopener noreferrer">Notícia (14/09/2026): votação do orçamento de 2027 após as eleições</a></li>
+          <li><a href="https://www.eduardobotelho.com.br/2025/10/27/almt-inicia-tramitacao-da-loa-2026-com-audiencia-publica-no-dia-4-de-novembro/" target="_blank" rel="noopener noreferrer">Notícia (27/10/2025): tramitação da LOA 2026 na ALMT</a></li>
+        </ul>
+      </details>
+      <details class="fin-grupo" style="--cor:#2f6fdb">
+        <summary>📅 Bancada federal de MT – emendas 2027</summary>
+        <ul class="em-lista">
+          <li><span class="quando">após a sanção da LOA 2027</span> Datas <em class="em-conf">a confirmar</em>. Pelo PLDO 2027: o SIOP abre 2 dias depois da sanção da LOA; a indicação de beneficiários é em 8 dias; depois há 100 dias para cadastrar as propostas no Transferegov.</li>
+          <li>Obras precisam estar cadastradas no Obrasgov.br, e o objeto deve seguir as portarias dos ministérios (até 30/09).</li>
+          <li><a href="https://www2.camara.leg.br/orcamento-da-uniao/estudos/2026/informativo_pldo2027.pdf" target="_blank" rel="noopener noreferrer">Câmara – Informativo PLDO 2027</a></li>
+          <li><a href="https://www.gov.br/transferegov/pt-br/legislacao/portarias/portaria-conjunta-mpo-mgi-sri-pr-no-3-de-21-de-setembro-de-2026" target="_blank" rel="noopener noreferrer">Portaria Conjunta MPO/MGI/SRI-PR nº 3/2026</a></li>
+        </ul>
+      </details>
+      <details class="fin-grupo" style="--cor:#7b4bd6">
+        <summary>👥 Quem prepara o quê</summary>
+        <ul class="em-lista">
+          <li><b>Saúde</b>: metade das emendas individuais federais vai para a saúde.</li>
+          <li><b>Obras/Infraestrutura</b>: projetos com orçamento.</li>
+          <li><b>Educação, Agricultura, Assistência Social, Esporte e Cultura</b>: projetos prontos por área.</li>
+          <li><b>CT&amp;I</b>: equipamentos e inovação.</li>
+          <li><b>Todas</b>: manter o banco de projetos e os cadastros no Transferegov e no Obrasgov.br em dia.</li>
+        </ul>
+      </details>
+    </div>
+    <p class="fin-nota">Datas conferidas em 08/10/2026. Onde está “a confirmar” ou “não informado”, a data oficial ainda não foi publicada: confirme sempre com o gabinete do parlamentar e nos sites oficiais (Congresso, ALMT, Transferegov).</p>
+  </section>
 </main>
 
 <footer>
@@ -275,7 +337,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "data_inclusao": "2026-10-07",
    "destaque": true,
    "observacoes": "Programação detalhada ainda em estruturação, segundo a página do evento.",
-   "local_campo_verde": true
+   "local_campo_verde": true,
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "ifmt-cv-jenpex-2026",
@@ -314,7 +380,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "data_inclusao": "2026-10-07",
    "destaque": true,
    "observacoes": "",
-   "local_campo_verde": true
+   "local_campo_verde": true,
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "ifmt-pdl-jenpex-2026",
@@ -351,7 +420,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Programação detalhada a ser divulgada na página oficial."
+   "observacoes": "Programação detalhada a ser divulgada na página oficial.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "mcti-snct-2026",
@@ -388,7 +460,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "O MCTI informa que a SNCT 2026 está “prevista” para 26 a 30 de outubro de 2026."
+   "observacoes": "O MCTI informa que a SNCT 2026 está “prevista” para 26 a 30 de outubro de 2026.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "enap-semana-inovacao-2026",
@@ -426,7 +501,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Datas, gratuidade e formato confirmados na notícia oficial de abertura das inscrições e nas perguntas frequentes do site do evento."
+   "observacoes": "Datas, gratuidade e formato confirmados na notícia oficial de abertura das inscrições e nas perguntas frequentes do site do evento.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "sebrae-ali-compartilhar-cuiaba-2026",
@@ -461,7 +539,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-08",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Horário publicado pelo Sebrae-MT (local)."
+   "observacoes": "Horário publicado pelo Sebrae-MT (local).",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "sebrae-negocio-em-dia-ia",
@@ -493,7 +575,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Prazo e gratuidade confirmados na Agência Sebrae de Notícias (canal oficial do Sebrae) e no site do programa."
+   "observacoes": "Prazo e gratuidade confirmados na Agência Sebrae de Notícias (canal oficial do Sebrae) e no site do programa.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "evg-ia-generativa",
@@ -526,7 +612,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Carga horária: 2h."
+   "observacoes": "Carga horária: 2h.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "evg-ciencia-de-dados",
@@ -559,7 +648,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Carga horária: 4h."
+   "observacoes": "Carga horária: 4h.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "evg-visualizacao-dados",
@@ -591,7 +683,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Carga horária: 25h. A EV.G avisa que, no defeso eleitoral, alguns vídeos e links podem ficar temporariamente indisponíveis."
+   "observacoes": "Carga horária: 25h. A EV.G avisa que, no defeso eleitoral, alguns vídeos e links podem ficar temporariamente indisponíveis.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "fb-python-basico",
@@ -623,7 +718,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Duração: 18h; nível iniciante. Gratuidade conforme os Termos de Uso da Escola Virtual (cursos “integralmente gratuitos”)."
+   "observacoes": "Duração: 18h; nível iniciante. Gratuidade conforme os Termos de Uso da Escola Virtual (cursos “integralmente gratuitos”).",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "senar-intro-ia-agro",
@@ -655,7 +753,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Carga horária: 8h; duração: 7 dias; sem tutoria."
+   "observacoes": "Carga horária: 8h; duração: 7 dias; sem tutoria.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "senar-dados-sensores-ia",
@@ -687,7 +789,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Carga horária: 12h; duração: 12 dias; sem tutoria."
+   "observacoes": "Carga horária: 12h; duração: 12 dias; sem tutoria.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "senar-ia-gestao-producao",
@@ -719,7 +825,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Carga horária: 16h; duração: 16 dias; sem tutoria."
+   "observacoes": "Carga horária: 16h; duração: 16 dias; sem tutoria.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "senar-agricultura-precisao",
@@ -751,7 +861,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Carga horária: 18h; duração: 25 dias; sem tutoria."
+   "observacoes": "Carga horária: 18h; duração: 25 dias; sem tutoria.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "embrapii-sebrae-mpe",
@@ -784,7 +898,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Para micro e pequenas empresas com faturamento anual de até R$ 4,8 milhões. O restante do projeto é negociado entre a empresa e a unidade Embrapii."
+   "observacoes": "Para micro e pequenas empresas com faturamento anual de até R$ 4,8 milhões. O restante do projeto é negociado entre a empresa e a unidade Embrapii.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "desenvolve-mt-inovacao",
@@ -817,7 +935,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "É financiamento (precisa ser pago). Carência e documentos exigidos: ver a página oficial."
+   "observacoes": "É financiamento (precisa ser pago). Carência e documentos exigidos: ver a página oficial.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "govbr-inova-simples",
@@ -849,7 +971,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": ""
+   "observacoes": "",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "sicredi-inovar-juntos",
@@ -880,7 +1006,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Exige MVP (produto mínimo viável) já testado; não aceita só ideia."
+   "observacoes": "Exige MVP (produto mínimo viável) já testado; não aceita só ideia.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "cnpq-29-2026-rhae-ia",
@@ -913,7 +1043,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-08",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Prazo muito curto. Valores conferidos no texto da chamada (itens 7.1 e 8.1.1)."
+   "observacoes": "Prazo muito curto. Valores conferidos no texto da chamada (itens 7.1 e 8.1.1).",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "finep-mi-tecnologias-digitais",
@@ -943,7 +1076,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-08",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Aberta a empresas; confira no regulamento os requisitos de porte e de parceria."
+   "observacoes": "Aberta a empresas; confira no regulamento os requisitos de porte e de parceria.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "finep-mi-mobilidade",
@@ -973,7 +1109,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Prazo prorrogado pela Finep (3ª rerratificação, 24/09/2026)."
+   "observacoes": "Prazo prorrogado pela Finep (3ª rerratificação, 24/09/2026).",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "finep-mi-semicondutores",
@@ -1003,7 +1142,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": ""
+   "observacoes": "",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "finep-mi-transformacao-mineral",
@@ -1033,7 +1175,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": ""
+   "observacoes": "",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "finep-cooperamais-empresas",
@@ -1065,7 +1210,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Quem propõe é a empresa; a cooperativa entra como parceira."
+   "observacoes": "Quem propõe é a empresa; a cooperativa entra como parceira.",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "bndes-mais-inovacao",
@@ -1097,7 +1246,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-07",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "É financiamento (precisa ser pago)."
+   "observacoes": "É financiamento (precisa ser pago).",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "impa-premio-ensino-matematica-2026",
@@ -1128,7 +1281,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-08",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Prazo confirmado no regulamento (art. 45) e na notícia do IMPA de 05/10/2026."
+   "observacoes": "Prazo confirmado no regulamento (art. 45) e na notícia do IMPA de 05/10/2026.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "cnpq-capes-30-2026-mai-dai",
@@ -1159,7 +1315,13 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-08",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": "Quem pode submeter e valores: ver o texto da chamada."
+   "observacoes": "Quem pode submeter e valores: ver o texto da chamada.",
+   "secretarias": [
+    "CT&I"
+   ],
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "cnpq-32-2026-anr-franca",
@@ -1189,7 +1351,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-08",
    "data_inclusao": "2026-10-07",
    "destaque": false,
-   "observacoes": ""
+   "observacoes": "",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1222,7 +1387,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "modalidade": "online",
    "local": "Nacional – inscrição on-line",
    "link": "https://portal.sbpcnet.org.br/premio-carolina-bori/",
-   "fonte_verificada": "https://portal.sbpcnet.org.br/premio-carolina-bori/"
+   "fonte_verificada": "https://portal.sbpcnet.org.br/premio-carolina-bori/",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1255,7 +1423,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "modalidade": "online",
    "local": "Nacional – inscrição on-line",
    "link": "https://www.institutoclaro.org.br/campus-mobile/",
-   "fonte_verificada": "https://www.institutoclaro.org.br/campus-mobile/noticias/campus-mobile-abre-as-inscricoes-para-sua-15a-edicao/"
+   "fonte_verificada": "https://www.institutoclaro.org.br/campus-mobile/noticias/campus-mobile-abre-as-inscricoes-para-sua-15a-edicao/",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1290,7 +1461,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "modalidade": "online",
    "local": "Seleção nacional on-line; fórum em Bengaluru (Índia)",
    "link": "https://febrace.org.br/noticias/inscricoes-para-representar-o-brasil-no-9th-brics-young-innovator-prize-2026-abertas-ate-17-10/",
-   "fonte_verificada": "https://febrace.org.br/noticias/inscricoes-para-representar-o-brasil-no-9th-brics-young-innovator-prize-2026-abertas-ate-17-10/"
+   "fonte_verificada": "https://febrace.org.br/noticias/inscricoes-para-representar-o-brasil-no-9th-brics-young-innovator-prize-2026-abertas-ate-17-10/",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1325,7 +1499,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "modalidade": "online",
    "local": "Nacional – inscrição e envio on-line",
    "link": "https://olimpiada.maredeciencia.eco.br/",
-   "fonte_verificada": "https://olimpiada.maredeciencia.eco.br/"
+   "fonte_verificada": "https://olimpiada.maredeciencia.eco.br/",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1367,7 +1544,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "modalidade": "presencial",
    "local": "Várzea Grande – Univag Centro Universitário",
    "link": "https://erimt2026.univag.com.br/",
-   "fonte_verificada": "https://erimt2026.univag.com.br/"
+   "fonte_verificada": "https://erimt2026.univag.com.br/",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": true,
@@ -1400,7 +1580,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "modalidade": "presencial",
    "local": "Campo Verde – unidade do Senai MT",
    "link": "https://www.senaimt.ind.br/noticias/6686/qualifica-campo-verde-oferece-740-vagas-gratuitas-e-prepara-profissionais-para-novo-ciclo-de-crescimento",
-   "fonte_verificada": "https://www.senaimt.ind.br/noticias/6686/qualifica-campo-verde-oferece-740-vagas-gratuitas-e-prepara-profissionais-para-novo-ciclo-de-crescimento"
+   "fonte_verificada": "https://www.senaimt.ind.br/noticias/6686/qualifica-campo-verde-oferece-740-vagas-gratuitas-e-prepara-profissionais-para-novo-ciclo-de-crescimento",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "devfest-nortao-2026",
@@ -1437,7 +1620,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "verificado_em": "2026-10-08",
    "data_inclusao": "2026-10-07",
    "destaque": true,
-   "observacoes": "Chamada de palestrantes (palestras e workshops) até 20/10/2026; resultado até 31/10; grade publicada até 8/11, segundo o site oficial."
+   "observacoes": "Chamada de palestrantes (palestras e workshops) até 20/10/2026; resultado até 31/10; grade publicada até 8/11, segundo o site oficial.",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1469,7 +1655,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-33-2026/chamada-publica-cnpq-N-33-2026",
    "observacoes": "Prazo, requisitos e orçamento conferidos no texto da Chamada publicado na página do CNPq.",
-   "fonte_verificada": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-33-2026/chamada-publica-cnpq-N-33-2026"
+   "fonte_verificada": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-33-2026/chamada-publica-cnpq-N-33-2026",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1502,7 +1691,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/programa-de-apoio-a-eventos-no-pais-para-a-educacao-basica-paep-eb",
    "observacoes": "Não vale para cursos de formação nem ciclos de palestras espaçados. Pela Prefeitura, quem propõe é o(a) dirigente municipal de educação.",
-   "fonte_verificada": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/programa-de-apoio-a-eventos-no-pais-para-a-educacao-basica-paep-eb"
+   "fonte_verificada": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/programa-de-apoio-a-eventos-no-pais-para-a-educacao-basica-paep-eb",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1535,7 +1727,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pe-de-meia-licenciaturas",
    "observacoes": "Depois de aprovado(a), o cadastro do bolsista é feito pela instituição de ensino.",
-   "fonte_verificada": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pe-de-meia-licenciaturas"
+   "fonte_verificada": "https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pe-de-meia-licenciaturas",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1568,7 +1763,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://www.finep.gov.br/e/chamada-publica/222684/1060260",
    "observacoes": "Quem propõe é a ICT (cada uma pode ser executora principal de só uma proposta). O projeto precisa partir de TRL 3 ou superior.",
-   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/1060260"
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/1060260",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1600,7 +1798,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://www.finep.gov.br/e/chamada-publica/222684/1057230",
    "observacoes": "Prazos conferidos em 08/10/2026 na página oficial da Finep (item “Principais prazos”): cadastro no SISGON até 17/11/2026 e proposta até 14/01/2027. O acesso ao formulário da proposta depende da aprovação prévia do cadastro pela Finep. Convenentes públicos têm contrapartida conforme a LDO.",
-   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/1057230"
+   "fonte_verificada": "https://www.finep.gov.br/e/chamada-publica/222684/1057230",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1633,7 +1834,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Seleção nacional; fórum em Bangalore (Índia)",
    "link": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/inscricoes-para-o-forum-de-jovens-cientistas-dos-brics-2026-seguem-ate-18-de-outubro",
    "observacoes": "É a participação no fórum; o BRICS Young Innovator Prize (também no radar) tem inscrição separada.",
-   "fonte_verificada": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/inscricoes-para-o-forum-de-jovens-cientistas-dos-brics-2026-seguem-ate-18-de-outubro"
+   "fonte_verificada": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/inscricoes-para-o-forum-de-jovens-cientistas-dos-brics-2026-seguem-ate-18-de-outubro",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1667,7 +1871,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "On-line",
    "link": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/aeb-abre-inscricoes-para-37-cursos-gratuitos-sobre-ciencia-e-tecnologia-espacial",
    "observacoes": "Acesso aos cursos: aebescolavirtual.aeb.gov.br.",
-   "fonte_verificada": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/aeb-abre-inscricoes-para-37-cursos-gratuitos-sobre-ciencia-e-tecnologia-espacial"
+   "fonte_verificada": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/aeb-abre-inscricoes-para-37-cursos-gratuitos-sobre-ciencia-e-tecnologia-espacial",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": true,
@@ -1699,7 +1906,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://www.gov.br/pt-br/servicos/solicitar-computadores-recondicionados",
    "observacoes": "Quem recebe deve manter os equipamentos em uso no local combinado por pelo menos 12 meses e dar destino ambientalmente correto ao lixo eletrônico.",
-   "fonte_verificada": "https://www.gov.br/pt-br/servicos/solicitar-computadores-recondicionados"
+   "fonte_verificada": "https://www.gov.br/pt-br/servicos/solicitar-computadores-recondicionados",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": true,
@@ -1731,7 +1941,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://cidades.bndes.gov.br/solucao/modernizacao-gestao-tributaria-fiscal-orcamentaria-arrecadacao/",
    "observacoes": "É financiamento (precisa ser pago). O BNDES Cidades também tem soluções para equipamentos de informática e internet nas escolas.",
-   "fonte_verificada": "https://cidades.bndes.gov.br/solucao/modernizacao-gestao-tributaria-fiscal-orcamentaria-arrecadacao/"
+   "fonte_verificada": "https://cidades.bndes.gov.br/solucao/modernizacao-gestao-tributaria-fiscal-orcamentaria-arrecadacao/",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1763,7 +1976,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://luppa.comidadoamanha.org/wp-content/uploads/2026/09/Edital-Chamada-Cidades-LUPPA-6a-Edicao.pdf",
    "observacoes": "Ao entrar, o(a) prefeito(a) assume o compromisso de desenvolver a política municipal de segurança alimentar e nutricional. Prazo conferido no item 5.2 do Edital LUPPA nº 01/2026.",
-   "fonte_verificada": "https://luppa.comidadoamanha.org/wp-content/uploads/2026/09/Edital-Chamada-Cidades-LUPPA-6a-Edicao.pdf"
+   "fonte_verificada": "https://luppa.comidadoamanha.org/wp-content/uploads/2026/09/Edital-Chamada-Cidades-LUPPA-6a-Edicao.pdf",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": true,
@@ -1796,7 +2012,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional (atendimento pelo Sebrae no estado)",
    "link": "https://sebrae.com.br/subsites/sebraetec",
    "observacoes": "Percentual de subsídio conforme a regra informada na página oficial do Sebraetec; confirme o valor com o Sebrae MT.",
-   "fonte_verificada": "https://sebrae.com.br/subsites/sebraetec"
+   "fonte_verificada": "https://sebrae.com.br/subsites/sebraetec",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1828,7 +2048,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional",
    "link": "https://programas.sebraestartups.com.br/in/1784661770721x554993476191244900",
    "observacoes": "Critérios completos e condições do investimento no site do programa (inovastartups.com.br), indicado na página oficial.",
-   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1784661770721x554993476191244900"
+   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1784661770721x554993476191244900",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1862,7 +2086,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional (bootcamp on-line; final em Macau, China)",
    "link": "https://programas.sebraestartups.com.br/in/1790863305422x357691282292736000",
    "observacoes": "Exige pitch deck (PDF ou link) e, para os finalistas, passaporte válido.",
-   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1790863305422x357691282292736000"
+   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1790863305422x357691282292736000",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "fluxo_continuo": false,
@@ -1895,7 +2122,11 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "local": "Nacional (on-line, com atividades presenciais em Goiânia-GO)",
    "link": "https://programas.sebraestartups.com.br/in/1789130164174x497020058200965100",
    "observacoes": "Jornada ao vivo de 08/12/2026 a 18/02/2027. Cada organização pode indicar até 2 pessoas maiores de 18 anos.",
-   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1789130164174x497020058200965100"
+   "fonte_verificada": "https://programas.sebraestartups.com.br/in/1789130164174x497020058200965100",
+   "secretarias_filtro": [
+    "CT&I",
+    "Desenvolvimento Econômico"
+   ]
   },
   {
    "id": "cetene-futuras-cientistas-imersao-2027",
@@ -1934,7 +2165,15 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "data_inclusao": "2026-10-08",
    "destaque": false,
    "local_campo_verde": false,
-   "observacoes": "Estudantes: 2º ano do ensino médio em escola pública ESTADUAL (regular, integral, semi-integral ou técnico), com média igual ou superior a 6,0 em Química, Física, Biologia, Matemática e Português no 1º semestre de 2026. Professoras: licenciadas, com vínculo efetivo ou temporário com escola estadual. Não vale para redes federal, municipal ou privada. Há reserva de vagas (PcD, pretas/pardas/indígenas/quilombolas e mulheres trans). Notícia do CNPq: https://www.gov.br/cnpq/pt-br/assuntos/defeso-eleitoral/programa-futuras-cientistas-esta-com-inscricoes-abertas-ate-26-10"
+   "observacoes": "Estudantes: 2º ano do ensino médio em escola pública ESTADUAL (regular, integral, semi-integral ou técnico), com média igual ou superior a 6,0 em Química, Física, Biologia, Matemática e Português no 1º semestre de 2026. Professoras: licenciadas, com vínculo efetivo ou temporário com escola estadual. Não vale para redes federal, municipal ou privada. Há reserva de vagas (PcD, pretas/pardas/indígenas/quilombolas e mulheres trans). Notícia do CNPq: https://www.gov.br/cnpq/pt-br/assuntos/defeso-eleitoral/programa-futuras-cientistas-esta-com-inscricoes-abertas-ate-26-10",
+   "secretarias": [
+    "Educação",
+    "CT&I"
+   ],
+   "secretarias_filtro": [
+    "Educação",
+    "CT&I"
+   ]
   },
   {
    "id": "lncc-escola-santos-dumont-2027",
@@ -1973,7 +2212,10 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "data_inclusao": "2026-10-08",
    "destaque": false,
    "local_campo_verde": false,
-   "observacoes": "Prazo, valores e auxílio conferidos na página oficial do Programa de Verão do LNCC e na notícia do MCTI de 07/10/2026. Certificado só para quem acompanha pelo Zoom (inscritos)."
+   "observacoes": "Prazo, valores e auxílio conferidos na página oficial do Programa de Verão do LNCC e na notícia do MCTI de 07/10/2026. Certificado só para quem acompanha pelo Zoom (inscritos).",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
   },
   {
    "id": "senai-rs-cedra-agic-2026",
@@ -2005,7 +2247,252 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
    "data_inclusao": "2026-10-08",
    "destaque": false,
    "local_campo_verde": false,
-   "observacoes": "Outras páginas de desafios: Newon https://programas.sebraestartups.com.br/in/1791207877316x776980755054479100 · Canoa Mirim https://programas.sebraestartups.com.br/in/1791220155143x259334119323658460 · Exatron https://programas.sebraestartups.com.br/in/1791221497899x983893849092061400 · Green Innovation https://programas.sebraestartups.com.br/in/1791221643013x909367405252178300. Benefícios e regras no regulamento do CEDRA (cedratech.com.br/startups)."
+   "observacoes": "Outras páginas de desafios: Newon https://programas.sebraestartups.com.br/in/1791207877316x776980755054479100 · Canoa Mirim https://programas.sebraestartups.com.br/in/1791220155143x259334119323658460 · Exatron https://programas.sebraestartups.com.br/in/1791221497899x983893849092061400 · Green Innovation https://programas.sebraestartups.com.br/in/1791221643013x909367405252178300. Benefícios e regras no regulamento do CEDRA (cedratech.com.br/startups).",
+   "secretarias_filtro": [
+    "CT&I"
+   ]
+  },
+  {
+   "id": "mesp-lei-incentivo-esporte-2026",
+   "titulo": "Lei de Incentivo ao Esporte (LIE) 2026 – envio de projetos esportivos e paradesportivos prorrogado até 18/10",
+   "titulo_curto": "Lei de Incentivo ao Esporte 2026 – projetos até 18/10 (Ministério do Esporte)",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "prefeitura",
+    "osc"
+   ],
+   "organizador": "Ministério do Esporte",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Janela anual para apresentar projetos esportivos e paradesportivos à Lei de Incentivo ao Esporte. Projetos aprovados podem captar recursos de empresas e pessoas que destinam parte do Imposto de Renda. O prazo de 2026, que terminaria em 15/09, foi prorrogado até 18/10/2026.",
+   "valor": "não informado na fonte (o recurso vem da captação com incentivo fiscal, depois da aprovação do projeto)",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-18",
+    "hora_cuiaba": null,
+    "texto": "Envio de projetos até 18/10/2026 pelo sistema da Lei de Incentivo ao Esporte (horário-limite não informado na fonte)."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/esporte/pt-br/noticias/prazo-para-apresentacao-de-projetos-da-lei-de-incentivo-ao-esporte-e-prorrogado-ate-18-de-outubro",
+   "fonte_verificada": "https://www.gov.br/esporte/pt-br/noticias/prazo-para-apresentacao-de-projetos-da-lei-de-incentivo-ao-esporte-e-prorrogado-ate-18-de-outubro",
+   "verificado_em": "2026-10-08",
+   "data_inclusao": "2026-10-08",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Quem pode ser proponente (Município ou entidades esportivas locais) e os requisitos: confira as orientações no sistema da Lei de Incentivo ao Esporte. Projetos escolares podem envolver também a Educação.",
+   "secretarias": [
+    "Esporte"
+   ],
+   "secretarias_filtro": [
+    "Esporte"
+   ]
+  },
+  {
+   "id": "mda-chamamento-02-2026-rede-acesso-rural",
+   "titulo": "MDA – Chamamento Público nº 02/2026: Rede de Acesso e Desenvolvimento Rural (só para OSCs)",
+   "titulo_curto": "MDA – Rede de Acesso e Desenvolvimento Rural (OSCs, até 21/10)",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "osc",
+    "produtor_rural"
+   ],
+   "organizador": "Ministério do Desenvolvimento Agrário e Agricultura Familiar (MDA) – SEAB",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Apoio a projetos de organizações da sociedade civil que ampliem o acesso de agricultores familiares às políticas do MDA, em três eixos: regularização e cadastros (CAR, CCIR, CAF), comercialização e mercados (NFP-e, PAA, PNAE) e acesso ao crédito rural (Pronaf). Até 15 propostas no país, 1 na Região Centro-Oeste.",
+   "valor": "R$ 50 milhões no total; cerca de R$ 2,73 milhões para a Região Centro-Oeste (1 proposta).",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-21",
+    "hora_cuiaba": null,
+    "texto": "Propostas até 23h59 de 21/10/2026 na Plataforma Transferegov (Programa nº 4900020260025); fuso não informado na fonte."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/mda/pt-br/acesso-a-informacao/participacao-social/Editais-de-chamamento-publico/2026/edital-de-chamamento-publico-no-02-2026-seab",
+   "fonte_verificada": "https://www.gov.br/mda/pt-br/acesso-a-informacao/participacao-social/Editais-de-chamamento-publico/2026/edital-de-chamamento-publico-no-02-2026-seab",
+   "verificado_em": "2026-10-08",
+   "data_inclusao": "2026-10-08",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Só OSCs cadastradas e habilitadas no Transferegov podem propor (a Prefeitura não é proponente, mas pode articular com OSCs locais ou regionais). É permitida atuação em rede, com uma OSC celebrante e outras executantes.",
+   "secretarias": [
+    "Agricultura",
+    "Desenvolvimento Econômico"
+   ],
+   "secretarias_filtro": [
+    "Agricultura",
+    "Desenvolvimento Econômico"
+   ]
+  },
+  {
+   "id": "seaf-mt-produtivo-sustentavel-002-2026",
+   "titulo": "MT Produtivo e Sustentável – Edital de Chamada Pública nº 002/2026/SEAF-MT para associações e cooperativas da agricultura familiar",
+   "titulo_curto": "MT Produtivo e Sustentável – Chamada 002/2026 Seaf-MT (até 26/10)",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "produtor_rural",
+    "osc"
+   ],
+   "organizador": "Seaf-MT – Secretaria de Estado de Agricultura Familiar de Mato Grosso",
+   "instituicoes": [
+    "Governo de MT"
+   ],
+   "resumo": "Seleção de associações e cooperativas da agricultura familiar e de organizações de povos indígenas e comunidades tradicionais dos 61 municípios elegíveis para receber apoio financeiro e técnico e elaborar planos de negócios. Cadeias prioritárias: leite, olericultura, fruticultura, mandioca, café, cacau, meliponicultura e sociobiodiversidade. Metas de 15% de participação para mulheres, jovens e povos e comunidades tradicionais.",
+   "valor": "não informado na fonte",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-26",
+    "hora_cuiaba": null,
+    "texto": "Inscrições prorrogadas até 26/10/2026 (novo cronograma no Diário Oficial de MT). Manifestação de interesse pelo portal smi.agriculturafamiliar.mt.gov.br."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Mato Grosso (61 municípios elegíveis)",
+   "link": "https://www.agriculturafamiliar.mt.gov.br/-/mt-produtivo-e-sustent%C3%A1vel-prorroga-inscri%C3%A7%C3%B5es-e-d%C3%A1-mais-prazo-para-entidades-acessarem-recursos",
+   "fonte_verificada": "https://www.agriculturafamiliar.mt.gov.br/-/mt-produtivo-e-sustent%C3%A1vel-prorroga-inscri%C3%A7%C3%B5es-e-d%C3%A1-mais-prazo-para-entidades-acessarem-recursos",
+   "verificado_em": "2026-10-08",
+   "data_inclusao": "2026-10-08",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Campo Verde está entre os municípios elegíveis, segundo o levantamento da Prefeitura; confira a lista e o valor por projeto no edital (a imprensa regional cita até R$ 3 milhões por projeto). Edital e anexos: https://www.agriculturafamiliar.mt.gov.br/editais-mt-produtivo-desenvolvimento-e-sustentabilidade · Contato: mtprodutivo@agriculturafamiliar.mt.gov.br",
+   "secretarias": [
+    "Agricultura"
+   ],
+   "secretarias_filtro": [
+    "Agricultura"
+   ]
+  },
+  {
+   "id": "minc-cultura-viva-pontoes-2026",
+   "titulo": "MinC – 2º Edital de Seleção para Fomento à Rede de Pontões Cultura Viva",
+   "titulo_curto": "2º Edital Cultura Viva – Rede de Pontões (MinC, até 30/10)",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "osc"
+   ],
+   "organizador": "Ministério da Cultura – Secretaria de Cidadania e Diversidade Cultural",
+   "instituicoes": [
+    "Governo Federal"
+   ],
+   "resumo": "Seleção de Pontões de Cultura para projetos de 12 meses de fortalecimento, formação, mobilização e sustentabilidade de iniciativas culturais de base comunitária, em dois eixos: regional/territorial (inclui a Região Centro-Oeste) e nacional/temático (22 categorias, como culturas tradicionais, cultura digital, cultura e saúde, territórios rurais e cultura alimentar).",
+   "valor": "Investimento inicial de R$ 7,8 milhões, com no mínimo 13 entidades selecionadas (há cadastro de reserva).",
+   "gratuito": null,
+   "inscricao": {
+    "ate": "2026-10-30",
+    "hora_cuiaba": null,
+    "texto": "Inscrições até 30/10/2026 no Mapa da Cultura (horário-limite não informado na fonte). Não haverá reabertura de prazo."
+   },
+   "fluxo_continuo": false,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://www.gov.br/cultura/pt-br/assuntos/noticias-defeso-eleitoral/minc-divulga-2o-edital-de-selecao-para-fomento-a-rede-de-pontoes-cultura-viva",
+   "fonte_verificada": "https://www.gov.br/cultura/pt-br/assuntos/noticias-defeso-eleitoral/minc-divulga-2o-edital-de-selecao-para-fomento-a-rede-de-pontoes-cultura-viva",
+   "verificado_em": "2026-10-08",
+   "data_inclusao": "2026-10-08",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "Podem participar entidades com certificado de Ponto ou Pontão de Cultura (ou no Cadastro Nacional de Pontos e Pontões), 3 anos de CNPJ e 3 anos de experiência em redes. Tira-dúvidas ao vivo no YouTube do MinC em 08/10 e 22/10, às 15h de Brasília (14h de Cuiabá).",
+   "secretarias": [
+    "Cultura"
+   ],
+   "secretarias_filtro": [
+    "Cultura"
+   ]
+  },
+  {
+   "id": "desenvolve-mt-fundes",
+   "titulo": "Desenvolve Fundes – crédito da Desenvolve MT para pequenos negócios, turismo e produtores rurais (ABC+)",
+   "titulo_curto": "Desenvolve Fundes – crédito para pequenos negócios e produtor rural (Desenvolve MT)",
+   "categoria": "fomento_pequenas",
+   "publicos": [
+    "mei_pequena",
+    "produtor_rural"
+   ],
+   "organizador": "Desenvolve MT (agência de fomento do Estado), com recursos do Fundes/Sedec-MT",
+   "instituicoes": [
+    "Bancos e agências de fomento"
+   ],
+   "resumo": "Linha de crédito com juros baixos para investir em máquinas, equipamentos, móveis, softwares, capacitação, usinas fotovoltaicas e capital de giro. Modalidades: Fundes Empresa, Fundes MEI, ABC+ Investimento (produtor rural), Economia Criativa, Bares/Restaurantes/Hotéis e Capital de Giro Dissociado.",
+   "valor": "Fundes Empresa: até R$ 200 mil (ME) ou R$ 300 mil (EPP), até 90% da proposta, taxa de 4,76% ao ano (4,05% com bônus de adimplência), prazo de até 60 meses e carência de até 24 meses. Limites das demais modalidades: ver a página oficial.",
+   "gratuito": false,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "Linha permanente: solicitar à Desenvolve MT (site, telefone (65) 3613-7900 ou agentes de crédito)."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "presencial",
+   "local": "Mato Grosso (forma de solicitação: ver página oficial)",
+   "link": "https://desenvolve.mt.gov.br/linhasdecredito/fundes",
+   "fonte_verificada": "https://desenvolve.mt.gov.br/linhasdecredito/fundes",
+   "verificado_em": "2026-10-08",
+   "data_inclusao": "2026-10-08",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "É financiamento (precisa ser pago). Fundes Empresa exige mais de 12 meses de CNPJ. Condições conferidas na página da linha em 08/10/2026; o lançamento (12/2025) citava também até R$ 75 mil para MEI, até R$ 1,5 milhão para bares, restaurantes e hotéis e até R$ 250 mil/R$ 430 mil para produtores no ABC+.",
+   "secretarias": [
+    "Desenvolvimento Econômico",
+    "Agricultura"
+   ],
+   "secretarias_filtro": [
+    "Desenvolvimento Econômico",
+    "Agricultura"
+   ]
+  },
+  {
+   "id": "bndes-cidades-financiamento-municipios",
+   "titulo": "BNDES Cidades – financiamento para obras e serviços municipais (saúde, educação, iluminação, pavimentação, energia solar e gestão)",
+   "titulo_curto": "BNDES Cidades – crédito para obras, saúde, educação e gestão do município",
+   "categoria": "gestao_publica",
+   "publicos": [
+    "prefeitura"
+   ],
+   "organizador": "BNDES",
+   "instituicoes": [
+    "Bancos e agências de fomento"
+   ],
+   "resumo": "Portal de soluções de financiamento do BNDES para municípios: urbanização e pavimentação, iluminação pública LED, energia solar em prédios públicos, melhoria e expansão de serviços de saúde e educação, veículos escolares (Caminhos da Escola), rede de frio para vacinas, assistência social, saneamento e resíduos, mobilidade e modernização da gestão. O site filtra as soluções pelo número de habitantes da cidade.",
+   "valor": "não informado na fonte (varia conforme a linha, o projeto e a capacidade de pagamento do município)",
+   "gratuito": false,
+   "inscricao": {
+    "ate": null,
+    "hora_cuiaba": null,
+    "texto": "A qualquer momento: escolha a solução no portal e siga o caminho indicado (direto com o BNDES ou por instituição financeira credenciada)."
+   },
+   "fluxo_continuo": true,
+   "evento": null,
+   "modalidade": "online",
+   "local": "Nacional",
+   "link": "https://cidades.bndes.gov.br/",
+   "fonte_verificada": "https://cidades.bndes.gov.br/",
+   "verificado_em": "2026-10-08",
+   "data_inclusao": "2026-10-08",
+   "destaque": false,
+   "local_campo_verde": false,
+   "observacoes": "É financiamento (precisa ser pago) e depende de regularidade fiscal, capacidade de pagamento e garantias do município. A linha específica de modernização da gestão tributária e fiscal já está no radar em card próprio.",
+   "secretarias": [
+    "Obras/Infraestrutura",
+    "Saúde",
+    "Educação",
+    "Administração/Fazenda"
+   ],
+   "secretarias_filtro": [
+    "Obras/Infraestrutura",
+    "Saúde",
+    "Educação",
+    "Administração/Fazenda"
+   ]
   }
  ]
 }</script>
@@ -2022,7 +2509,8 @@ var CATS = {
   pessoas_fisicas:{nome:"Para pessoas físicas",emoji:"🙋",cor:"#d64b8a",claro:"#fdebf3"},
   gestao_publica:{nome:"Prefeituras e gestão pública",emoji:"🏛️",cor:"#0e7490",claro:"#e0f2f7"}
 };
-var PUB = {mei_pequena:"MEI e pequenas empresas",media_grande:"Médias e grandes empresas",pessoa_fisica:"Pessoa física",jovem:"Jovens e estudantes",estudante:"Estudantes",professor:"Professores",produtor_rural:"Produtores rurais",startup:"Startups",servidor_publico:"Servidores públicos",prefeitura:"Prefeituras e gestão pública"};
+var PUB = {mei_pequena:"MEI e pequenas empresas",media_grande:"Médias e grandes empresas",pessoa_fisica:"Pessoa física",jovem:"Jovens e estudantes",estudante:"Estudantes",professor:"Professores",produtor_rural:"Produtores rurais",startup:"Startups",servidor_publico:"Servidores públicos",prefeitura:"Prefeituras e gestão pública",osc:"Organizações da sociedade civil (OSCs)"};
+var SECS = ["Saúde","Educação","Assistência Social","Agricultura","Meio Ambiente","Obras/Infraestrutura","Cultura","Esporte","Turismo","Desenvolvimento Econômico","Administração/Fazenda","CT&I"];
 var MOD = {presencial:"Presencial",online:"On-line",hibrido:"Híbrido (on-line + presencial)"};
 var CHAVE_VISITA = "radarCampoVerde.ultimaVisita";
 
@@ -2080,7 +2568,7 @@ function ehNovo(it){
 D.itens.forEach(function(it){it._novo=ehNovo(it); it._st=status(it);});
 
 // ---- filtros ----
-var estado={cat:"",q:"",pub:"",mod:"",inst:"",local:false,jovem:false,gratis:false,novos:false,enc:false,ordem:"prazo"};
+var estado={cat:"",q:"",pub:"",mod:"",inst:"",sec:"",local:false,jovem:false,gratis:false,novos:false,enc:false,ordem:"prazo"};
 var el=function(id){return document.getElementById(id);};
 
 function preencherSelects(){
@@ -2088,18 +2576,21 @@ function preencherSelects(){
   D.itens.forEach(function(it){(it.publicos||[]).forEach(function(p){pubs[p]=1;});(it.instituicoes||[]).forEach(function(i){insts[i]=1;});});
   Object.keys(PUB).forEach(function(k){if(pubs[k]){var o=document.createElement("option");o.value=k;o.textContent=PUB[k];el("fPublico").appendChild(o);}});
   Object.keys(insts).sort(function(a,b){return a.localeCompare(b,"pt-BR");}).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k;el("fInst").appendChild(o);});
+  var nSec={}; D.itens.forEach(function(it){if(it._st!=="encerrado")(it.secretarias_filtro||[]).forEach(function(x){nSec[x]=(nSec[x]||0)+1;});});
+  SECS.forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=k+" ("+(nSec[k]||0)+")";el("fSec").appendChild(o);});
 }
 function passaBase(it){
   if(!estado.enc && it._st==="encerrado") return false;
   if(estado.pub && (it.publicos||[]).indexOf(estado.pub)<0) return false;
   if(estado.mod && it.modalidade!==estado.mod) return false;
   if(estado.inst && (it.instituicoes||[]).indexOf(estado.inst)<0) return false;
+  if(estado.sec && (it.secretarias_filtro||[]).indexOf(estado.sec)<0) return false;
   if(estado.local && it.local_campo_verde!==true) return false;
   if(estado.jovem && (it.publicos||[]).indexOf("jovem")<0) return false;
   if(estado.gratis && it.gratuito!==true) return false;
   if(estado.novos && !it._novo) return false;
   if(estado.q){
-    var alvo=[it.titulo,it.resumo,it.organizador,(it.instituicoes||[]).join(" "),it.local,it.valor,(it.publicos||[]).map(function(p){return PUB[p];}).join(" "),CATS[it.categoria].nome,(it.local_campo_verde?"Campo Verde local":"")].join(" ");
+    var alvo=[it.titulo,it.resumo,it.organizador,(it.instituicoes||[]).join(" "),it.local,it.valor,(it.publicos||[]).map(function(p){return PUB[p];}).join(" "),CATS[it.categoria].nome,(it.local_campo_verde?"Campo Verde local":""),(it.secretarias||[]).join(" ")].join(" ");
     var n=function(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();};
     var t=n(alvo), termos=n(estado.q).split(/\s+/).filter(Boolean);
     for(var i=0;i<termos.length;i++){ if(t.indexOf(termos[i])<0) return false; }
@@ -2122,6 +2613,7 @@ function card(it){
   if(it.local_campo_verde) h+='<div style="margin:2px 0 4px"><span class="selo-local" title="Oportunidade em Campo Verde">📍 Campo Verde</span></div>';
   h+='<h3>'+esc(it.titulo)+'</h3><div class="org">'+esc(it.organizador)+'</div>';
   h+='<div class="publicos" title="Para quem">'+pubs+'</div>';
+  if(it.secretarias && it.secretarias.length) h+='<div class="secs" title="Secretaria(s) da Prefeitura com interesse"><b>🏢 '+(it.secretarias.length>1?"Secretarias":"Secretaria")+':</b>'+it.secretarias.map(function(x){return '<span class="sec">'+esc(x)+'</span>';}).join("")+'</div>';
   h+='<p class="res">'+esc(it.resumo)+'</p><div class="info">';
   h+='<div><span class="ic">💰</span><span><b>Valor/custo:</b> '+esc(it.valor)+'</span></div>';
   var ins=it.inscricao||{};
@@ -2157,8 +2649,8 @@ function render(){
   var l2=el("limpar2"); if(l2) l2.onclick=limpar;
 }
 function limpar(){
-  estado={cat:"",q:"",pub:"",mod:"",inst:"",local:false,jovem:false,gratis:false,novos:false,enc:false,ordem:estado.ordem};
-  el("q").value="";el("fPublico").value="";el("fModalidade").value="";el("fInst").value="";
+  estado={cat:"",q:"",pub:"",mod:"",inst:"",sec:"",local:false,jovem:false,gratis:false,novos:false,enc:false,ordem:estado.ordem};
+  el("q").value="";el("fPublico").value="";el("fModalidade").value="";el("fInst").value="";el("fSec").value="";
   el("fLocal").checked=false;el("fJovem").checked=false;el("fGratis").checked=false;el("fNovos").checked=false;el("fEnc").checked=false;render();
 }
 
@@ -2199,6 +2691,7 @@ el("ordem").addEventListener("change",function(){estado.ordem=this.value;render(
 el("fPublico").addEventListener("change",function(){estado.pub=this.value;render();});
 el("fModalidade").addEventListener("change",function(){estado.mod=this.value;render();});
 el("fInst").addEventListener("change",function(){estado.inst=this.value;render();});
+el("fSec").addEventListener("change",function(){estado.sec=this.value;render();});
 el("fLocal").addEventListener("change",function(){estado.local=this.checked;render();});
 el("fJovem").addEventListener("change",function(){estado.jovem=this.checked;render();});
 el("fGratis").addEventListener("change",function(){estado.gratis=this.checked;render();});
