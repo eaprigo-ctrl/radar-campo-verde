@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editais de CT&amp;I – SEMCITECI Campo Verde</title>
+<style>
+:root{
+  --azul:#1f3a5f; --azul2:#2c5282; --verde:#2f7d4f; --laranja:#c05621; --vermelho:#b42318;
+  --cinza:#5f6b7a; --cinza2:#e6e9ee; --fundo:#f4f6f9; --branco:#fff; --roxo:#6b46c1; --ambar:#b7791f;
+  --borda:#d5dbe3; --texto:#1d2733;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--fundo);color:var(--texto);font-size:15px;line-height:1.45}
+a{color:var(--azul2)}
+header.topo{background:linear-gradient(135deg,#1f3a5f 0%,#2c5282 100%);color:#fff;padding:18px 28px 16px}
+header.topo h1{margin:0;font-size:24px;font-weight:600;letter-spacing:.2px}
+header.topo .sub{margin-top:4px;font-size:13.5px;opacity:.9}
+header.topo .sub b{font-weight:600}
+main{max-width:1240px;margin:0 auto;padding:16px 20px 30px}
+.banner-novos{display:none;margin:0 0 14px;padding:14px 18px;border-radius:12px;color:#fff;
+  background:linear-gradient(90deg,#f97316 0%,#db2777 55%,#7c3aed 100%);box-shadow:0 4px 14px rgba(124,58,237,.25);
+  align-items:center;gap:14px;flex-wrap:wrap}
+.banner-novos.visivel{display:flex}
+.banner-novos .sino{font-size:28px}
+.banner-novos .txt{flex:1;min-width:220px;font-size:17px;font-weight:700}
+.banner-novos .txt small{display:block;font-weight:400;font-size:13px;opacity:.95}
+.banner-novos button{background:#fff;color:#7c3aed;border:0;border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer}
+.banner-novos button.sec{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.7)}
+.indicadores{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.ind{background:var(--branco);border:1px solid var(--borda);border-radius:10px;padding:12px 16px;border-left:5px solid var(--azul2)}
+.ind .n{font-size:30px;font-weight:700;line-height:1.1}
+.ind .r{font-size:13px;color:var(--cinza)}
+.ind.verde{border-left-color:var(--verde)} .ind.laranja{border-left-color:var(--laranja)} .ind.roxo{border-left-color:#db2777}
+.filtros{background:var(--branco);border:1px solid var(--borda);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.filtros .linha{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.filtros label{display:flex;flex-direction:column;font-size:12px;color:var(--cinza);gap:3px}
+.filtros input[type=search],.filtros select{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--borda);border-radius:6px;background:#fff;min-width:150px;color:var(--texto)}
+.filtros input[type=search]{min-width:240px}
+.filtros .chk{flex-direction:row;align-items:center;gap:6px;font-size:14px;color:var(--texto);padding-bottom:6px}
+.acoes{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--azul2);background:var(--azul2);color:#fff;border-radius:6px;padding:7px 12px;cursor:pointer}
+.btn.sec{background:#fff;color:var(--azul2)}
+.btn:hover{filter:brightness(1.08)}
+.contagem{margin-left:auto;font-size:13px;color:var(--cinza)}
+.painel-nota{display:none;background:#fff;border:1px solid var(--borda);border-radius:10px;padding:14px 18px;margin-bottom:12px}
+.painel-nota.aberto{display:block}
+.painel-nota h2{margin:0 0 6px;font-size:17px;color:var(--azul)}
+.painel-nota table{border-collapse:collapse;width:100%;font-size:13.5px;margin:8px 0}
+.painel-nota th,.painel-nota td{border:1px solid var(--borda);padding:6px 8px;text-align:left;vertical-align:top}
+.painel-nota th{background:#eef2f7}
+.lista{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--branco);border:1px solid var(--borda);border-radius:10px;padding:14px 16px;position:relative;border-left:6px solid var(--cinza2)}
+.card.st-aberto{border-left-color:var(--verde)} .card.st-fluxo{border-left-color:var(--azul2)}
+.card.st-encerrando{border-left-color:var(--vermelho)} .card.st-encerrado{border-left-color:#9aa4b2;opacity:.88}
+.card.st-confirmar{border-left-color:var(--ambar)}
+.card .cab{display:flex;gap:12px;align-items:flex-start}
+.card .tit{flex:1}
+.card h3{margin:0;font-size:16.5px;color:var(--azul);line-height:1.3}
+.card .org{font-size:13px;color:var(--cinza);margin-top:2px}
+.nota{min-width:92px;text-align:center;border-radius:10px;padding:6px 8px;color:#fff;background:#7a8594}
+.nota .v{font-size:24px;font-weight:700;line-height:1}
+.nota .c{font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+.nota.alta{background:var(--verde)} .nota.media{background:var(--ambar)} .nota.baixa{background:var(--vermelho)} .nota.na{background:#8a94a3}
+.selos{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+.selo{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--borda);background:#f7f9fb;color:#33404f;white-space:nowrap}
+.selo.st-aberto{background:#e7f4ec;border-color:#a7d3b8;color:#1f5e3a}
+.selo.st-fluxo{background:#e6eef9;border-color:#a9c1e6;color:#1f3a7a}
+.selo.st-encerrando{background:#fde8e6;border-color:#f3b2ab;color:#8a1c12;font-weight:600}
+.selo.st-encerrado{background:#eceff3;border-color:#c7cdd6;color:#4b5563}
+.selo.st-confirmar{background:#fdf3e1;border-color:#ecc98b;color:#7a5210}
+.selo.papel{background:#eef0fb;border-color:#c3c9f0;color:#2f3a8f}
+.selo.tema{background:#eef7f4;border-color:#b6dccd;color:#245c49}
+.novo{display:inline-block;font-weight:800;font-size:15px;letter-spacing:1px;color:#fff;padding:4px 12px;border-radius:8px;
+  background:linear-gradient(90deg,#f97316,#db2777,#7c3aed);box-shadow:0 2px 8px rgba(219,39,119,.35);margin-right:8px;vertical-align:middle;
+  animation:pulsar 1.6s ease-in-out infinite}
+@keyframes pulsar{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.grade{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 18px;margin-top:8px;font-size:14px}
+.grade .campo .r{font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--cinza)}
+.grade .campo.largo{grid-column:span 3}
+.grade .campo.medio{grid-column:span 2}
+.prazo-dias{font-weight:700}
+.prazo-dias.urg{color:var(--vermelho)} .prazo-dias.ok{color:var(--verde)} .prazo-dias.passou{color:#6b7280}
+.links a{margin-right:12px;display:inline-block}
+details.det{margin-top:10px;border-top:1px dashed var(--borda);padding-top:8px}
+details.det summary{cursor:pointer;color:var(--azul2);font-weight:600;font-size:14px}
+.tab-nota{border-collapse:collapse;width:100%;font-size:13.5px;margin:8px 0}
+.tab-nota th,.tab-nota td{border:1px solid var(--borda);padding:5px 8px;text-align:left;vertical-align:top}
+.tab-nota th{background:#eef2f7}
+.tab-nota td.pt{white-space:nowrap;text-align:right;font-weight:600}
+.justif{background:#f3f7fb;border-left:4px solid var(--azul2);padding:8px 10px;margin:8px 0;font-size:14px}
+.obs{font-size:13.5px;color:#3b4654;margin:4px 0}
+.revalid{font-size:13px;background:#eef8f1;border-left:4px solid var(--verde);padding:6px 10px;margin:6px 0}
+.so-impressao{display:none}
+.resumo-nota{font-size:12.5px;margin:6px 0;color:#25303d}
+.filtros-impressao{font-size:11px;margin:4px 0 6px;color:#333}
+.vazio{padding:30px;text-align:center;color:var(--cinza);background:#fff;border:1px dashed var(--borda);border-radius:10px}
+footer{max-width:1240px;margin:0 auto;padding:6px 20px 30px;font-size:13px;color:var(--cinza)}
+footer .aviso{font-size:14.5px;font-weight:700;color:var(--vermelho);background:#fff4f2;border:1px solid #f3c2bb;border-radius:8px;padding:10px 14px;margin-bottom:8px}
+@media (max-width:900px){
+  .indicadores{grid-template-columns:repeat(2,1fr)}
+  .grade{grid-template-columns:1fr 1fr}
+  .grade .campo.largo,.grade .campo.medio{grid-column:span 2}
+}
+@media (max-width:560px){
+  .indicadores{grid-template-columns:1fr}
+  .grade{grid-template-columns:1fr}
+  .grade .campo.largo,.grade .campo.medio{grid-column:span 1}
+  .card .cab{flex-direction:column}
+  header.topo{padding:14px 16px}
+  main{padding:12px}
+}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;font-size:11.5px}
+  header.topo{background:none !important;color:#000;padding:0 0 6px;border-bottom:2px solid #000}
+  header.topo h1{font-size:18px}
+  .filtros,.banner-novos,.acoes,.painel-nota:not(.aberto),.nao-imprimir{display:none !important}
+  main{max-width:none;padding:6px 0}
+  .indicadores{grid-template-columns:repeat(4,1fr);gap:6px}
+  .ind{padding:6px 8px}
+  .ind .n{font-size:18px}
+  .card{break-inside:auto;border:1px solid #999;border-left-width:5px;padding:8px 10px;opacity:1 !important;margin-bottom:2px}
+  .card .cab,.grade .campo,.justif,.revalid,.resumo-nota{break-inside:avoid;page-break-inside:avoid}
+  .card h3{break-after:avoid}
+  .so-impressao{display:block !important}
+  .tab-nota{display:none}
+  .lista{gap:8px}
+  .links a{display:block;margin:0}
+  .card h3{font-size:13px}
+  .nota{color:#000;background:#fff !important;border:2px solid #000}
+  .novo{animation:none;color:#000;background:none;border:2px solid #000;box-shadow:none}
+  .grade{grid-template-columns:repeat(3,1fr);font-size:11px}
+  .grade .campo.largo{grid-column:span 3}
+  a{color:#000;text-decoration:none}
+  .links a::after{content:" (" attr(href) ")";font-size:9px;word-break:break-all}
+  details.det > summary{display:none}
+  footer{padding:6px 0}
+}
+</style>
+</head>
+<body>
+<header class="topo">
+  <h1>Editais de CT&amp;I – SEMCITECI Campo Verde</h1>
+  <div class="sub">Secretaria Municipal de Ciência, Tecnologia e Inovação · Prefeitura de Campo Verde-MT ·
+    Última atualização dos dados: <b id="dtAtualizacao">–</b> · Hoje (relógio do computador): <b id="dtHoje">–</b></div>
+</header>
+<main>
+  <div class="banner-novos" id="bannerNovos" role="status">
+    <span class="sino">🔔</span>
+    <div class="txt" id="bannerTxt"></div>
+    <button type="button" id="btnSoNovos">Ver só os novos</button>
+    <button type="button" class="sec" id="btnFecharBanner">Fechar aviso</button>
+  </div>
+
+  <section class="indicadores" aria-label="Indicadores">
+    <div class="ind verde"><div class="n" id="indAbertas">0</div><div class="r">oportunidades abertas (inclui fluxo contínuo)</div></div>
+    <div class="ind"><div class="n" id="indDireta">0</div><div class="r">abertas em que a SEMCITECI/prefeitura pode propor diretamente</div></div>
+    <div class="ind laranja"><div class="n" id="indQuinze">0</div><div class="r">encerram em até 15 dias</div></div>
+    <div class="ind roxo"><div class="n" id="indNovos">0</div><div class="r">novidades (desde a última visita ou nos últimos 7 dias)</div></div>
+  </section>
+
+  <section class="filtros" aria-label="Filtros">
+    <div class="linha">
+      <label>Buscar<input type="search" id="fTexto" placeholder="Edital, órgão, objeto, observações..."></label>
+      <label>Órgão<select id="fOrgao"><option value="">Todos</option></select></label>
+      <label>Status<select id="fStatus">
+        <option value="">Todos (exceto encerrados)</option>
+        <option value="aberto">Aberto</option>
+        <option value="fluxo">Fluxo contínuo</option>
+        <option value="encerrando">Encerrando em até 7 dias</option>
+        <option value="confirmar">A confirmar</option>
+        <option value="encerrado">Encerrado</option>
+      </select></label>
+      <label>Papel da SEMCITECI<select id="fPapel"><option value="">Todos</option></select></label>
+      <label>Tema prioritário<select id="fTema"><option value="">Todos</option></select></label>
+      <label>Viabilidade<select id="fClasse">
+        <option value="">Todas</option><option>Alta</option><option>Média</option><option>Baixa</option><option>Não se aplica</option>
+      </select></label>
+      <label>Ordenar por<select id="fOrdem">
+        <option value="prazo">Prazo mais próximo</option>
+        <option value="nota">Maior nota</option>
+        <option value="valor">Maior valor</option>
+      </select></label>
+      <label class="chk"><input type="checkbox" id="fEncerrados"> Mostrar encerrados</label>
+      <label class="chk"><input type="checkbox" id="fNovos"> Só novidades</label>
+    </div>
+    <div class="acoes">
+      <button type="button" class="btn sec" id="btnLimpar">Limpar filtros</button>
+      <button type="button" class="btn sec" id="btnNota">Como a nota é calculada</button>
+      <button type="button" class="btn" id="btnCSV">Exportar CSV (lista filtrada)</button>
+      <button type="button" class="btn" id="btnPrint">Imprimir / salvar PDF</button>
+      <span class="contagem" id="contagem"></span>
+    </div>
+  </section>
+
+  <section class="painel-nota" id="painelNota" aria-label="Como a nota é calculada">
+    <h2>Como a nota é calculada (0–100)</h2>
+    <p>A nota é uma <b>avaliação prévia automática</b> da viabilidade de a SEMCITECI/Prefeitura de Campo Verde aproveitar cada oportunidade. Ela soma seis critérios. O detalhamento por critério aparece em cada edital, em "Avaliação e detalhes".</p>
+    <table>
+      <thead><tr><th>Critério</th><th>Peso máx.</th><th>Como pontua</th></tr></thead>
+      <tbody id="tabCriterios"></tbody>
+    </table>
+    <p><b>Classificação:</b> <b>Alta</b> = nota ≥ 70 · <b>Média</b> = 50 a 69 · <b>Baixa</b> = abaixo de 50 · <b>Não se aplica</b> = edital encerrado, fora da área geográfica, ou em que a SEMCITECI só pode divulgar (o município não participa). Nesses casos a nota continua visível, apenas como referência.</p>
+    <p><b>Status:</b> calculado pela data e hora do computador, no horário de Cuiabá (UTC-4). "Encerrando em até 7 dias" = próximo prazo em 7 dias ou menos. Quando o edital tem mais de uma etapa (ex.: cadastro e proposta), vale a próxima etapa ainda não vencida. Prazos sem horário na fonte são considerados até 23h59 do dia.</p>
+  </section>
+
+  <div class="so-impressao filtros-impressao" id="filtrosImpressao"></div>
+  <section class="lista" id="lista" aria-live="polite"></section>
+</main>
+<footer>
+  <div class="aviso">Avaliação prévia automática; confirme sempre no edital oficial.</div>
+  <div id="rodapeInfo"></div>
+</footer>
+
+<script id="dados" type="application/json">{
+ "meta": {
+  "titulo": "Editais de CT&I – SEMCITECI Campo Verde",
+  "atualizacao": "2026-10-09",
+  "atualizacao_hora": "08:16",
+  "atualizacao_anterior": "2026-10-08",
+  "fontes_base": [
+   "levantamento-2026-09-30.md",
+   "editais-informados.csv",
+   "varredura-2026-10-05.md",
+   "Revalidação de prazos em páginas oficiais em 07/10/2026",
+   "Varredura diária de 08/10/2026 (Finep API, CNPq, FAPEMAT, SECITECI-MT, MCTI, BNDES/FIIS, Transferegov, Sebrae, Capes, Embrapii, Desenvolve MT): sem edital novo para o município; prazos de Finep (Tecnologias Digitais 14/10, Mobilidade 23/10, Semicondutores 25/11, COOPERAMAIS ICT 08/12, COOPERAMAIS Empresas 30/04/2027, Proninc 14/01/2027) conferidos na API oficial.",
+   "Varredura diária de 09/10/2026 (Finep API /o/c/chamadapublicas, CNPq abertas, FAPEMAT, SECITECI-MT/portal MT, MCTI notícias, BNDES/FIIS, Transferegov, Sebrae, Capes, Embrapii, Desenvolve MT): sem edital novo para o município. Unica publicação Finep nova desde 22/09 continua sendo Eureka (06/10, prazo envio 06/11/2026 na página; só empresas). Mudança de prazo: Proninc 2026 — término do cadastro SISGON passou de 09/10/2026 para 17/11/2026, 17h Brasília (página oficial finep.gov.br/e/chamada-publica/222684/1057230). Prazos Finep confirmados: TD 14/10, Mobilidade 23/10, Semicondutores 25/11, Transf. Mineral 30/11, COOPERAMAIS ICT 08/12, Proninc proposta 14/01/2027, COOPERAMAIS Empresas 30/04/2027. Bacias Resilientes e CNPq 29/2026: último dia 09/10/2026."
+  ],
+  "nota_fuso": "Horários em Cuiabá (UTC-4). Horário de Brasília = Cuiabá + 1h.",
+  "nota_eleitoral": "Período eleitoral de 2026: a Lei 9.504/1997, art. 73, VI, 'a', proíbe transferências voluntárias da União a estados e municípios nos 3 meses anteriores ao pleito. O BNDES informa defeso de 04/07 a 25/10/2026. Vale monitorar novas chamadas a partir do fim de outubro e em novembro."
+ },
+ "temas_prioritarios": {
+  "cidade_inteligente": "Cidade inteligente e governo digital",
+  "ambientes_inovacao": "Ambientes de inovação (hub, parque, centro de inovação)",
+  "agro_bioeconomia": "Inovação no agro e bioeconomia",
+  "educacao_cientifica": "Educação científica e tecnológica",
+  "empreendedorismo": "Empreendedorismo inovador e startups",
+  "conectividade": "Conectividade e inclusão digital"
+ },
+ "editais": [
+  {
+   "id": "impa-premio-matematica-2026",
+   "edital": "Prêmio Brasil de Ensino de Matemática na Educação Básica – 1ª edição (categoria Instituições)",
+   "orgao": "IMPA (OS vinculada ao MCTI) e ANPMat",
+   "orgao_sigla": "IMPA/MCTI",
+   "objeto": "Reconhecer práticas de sucesso no ensino de matemática na educação básica. Critérios incluem indicadores de resultado, evidências de impacto na aprendizagem e potencial de replicação.",
+   "valor_total": "Sem premiação em dinheiro nesta edição (art. 25 do regulamento)",
+   "valor_por_proposta": "Sem valor em dinheiro: certificado, homenagem no Simpósio Nacional da Formação do Professor de Matemática e inclusão no Caderno Nacional de Práticas Exitosas. 20 projetos no total; na categoria Instituições, até 1 vaga por região.",
+   "valor_ordenacao": null,
+   "quem_pode": "Categoria Docentes e categoria Instituições (escolas, redes de ensino e órgãos de gestão educacional). O município pode ser proponente direto, via Secretaria Municipal de Educação.",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte (não há repasse de recursos)",
+   "contrapartida_tipo": "sem_repasse",
+   "parceiro": "nao",
+   "porte": "nao_financeiro",
+   "prazos": [
+    {
+     "rotulo": "Encerramento das inscrições",
+     "data": "2026-10-12",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "educacao_cientifica"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Inscrição (IMPA)",
+     "url": "https://candidaturas.impa.br/eventos/565/inscricao/categoria"
+    },
+    {
+     "rotulo": "Regulamento (PDF)",
+     "url": "https://impa.br/wp-content/uploads/2026/09/Regulamento-Edital-Premio-Brasil-Ensino-Matematica_03.09.2026.pdf"
+    },
+    {
+     "rotulo": "Notícia IMPA (05/10/2026)",
+     "url": "https://impa.br/notices/inscricoes-para-premio-brasil-de-ensino-de-matematica-terminam-em-12-de-outubro/"
+    },
+    {
+     "rotulo": "Notícia MCTI",
+     "url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/premio-brasil-de-ensino-de-matematica-vai-reconhecer-projetos-de-ensino-na-educacao-basica"
+    }
+   ],
+   "justificativa": "Encaixa bem: inscrição direta e sem custo, dá visibilidade à educação científica do município. Depende de a rede municipal ter uma prática com resultados documentados, o que pede articulação entre a SEMCITECI e a Secretaria de Educação.",
+   "observacoes": "Aberta desde 08/09/2026. Avaliação de 12/10 a 01/11; resultados em 04/11/2026; premiação de 19 a 22/11/2026.",
+   "revalidacao": "07/10/2026: prazo 12/10/2026 confirmado no cronograma do regulamento (art. 45), na notícia do IMPA de 05/10/2026 e na página do MCTI. Sem prorrogação. Horário-limite não informado na fonte.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "transferegov-capes-diea-2629120260003",
+   "edital": "Capes/DIEA – Ações da DIEA: PROEB e Inovação Tecnológica (programa Transferegov nº 2629120260003, propostas voluntárias)",
+   "orgao": "MEC/Capes (via Transferegov)",
+   "orgao_sigla": "MEC/Capes",
+   "objeto": "não informado na fonte aberta. O nome do programa indica ações da Diretoria de Articulação e Inovação em Educação Aberta (educação aberta e ProEB) e inovação tecnológica.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Administração Pública Municipal (inclui MT), Estadual e OSC. Modalidade: convênio.",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": false,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte (na prática, convênios seguem a LDO 2026)",
+   "contrapartida_tipo": "financeira",
+   "parceiro": "recomendado",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Propostas voluntárias (de 10/03/2026)",
+     "data": "2026-12-31",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "educacao_cientifica"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Transferegov (buscar programa 2629120260003)",
+     "url": "https://www.gov.br/transferegov/pt-br"
+    },
+    {
+     "rotulo": "Dados abertos Transferegov (programas)",
+     "url": "https://repositorio.dados.gov.br/seges/detru/siconv_programa.csv.zip"
+    }
+   ],
+   "justificativa": "Encaixa com parceiro (IES): as ações da DIEA (UAB, ProEB) costumam envolver instituições de ensino superior; o município pode atuar como convenente ou polo. É preciso confirmar o objeto e os valores no Transferegov.",
+   "observacoes": "Dados do arquivo oficial de dados abertos do Transferegov (situação em 16/07/2026). A consulta de programas exige login gov.br e não foi acessada: confirme no Transferegov com o login da prefeitura antes de cadastrar. A celebração pode ser afetada pelas restrições eleitorais. A página da Capes sobre programas 2026 estava com 'Conteúdo Restrito' (defeso).",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "transferegov-mapa-2200020260004",
+   "edital": "MAPA – Fomento ao Setor Agropecuário – Propostas Voluntárias (programa Transferegov nº 2200020260004)",
+   "orgao": "Ministério da Agricultura e Pecuária (via Transferegov)",
+   "orgao_sigla": "MAPA",
+   "objeto": "não informado na fonte aberta. O nome indica fomento agropecuário genérico, não CT&I especificamente. Há também a variante 'Obras de Fomento', nº 2200020260018.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Administração Pública Municipal (MT incluída), estados, consórcios públicos e empresas públicas. Modalidades: convênio ou contrato de repasse.",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": false,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Propostas voluntárias (de 09/02/2026)",
+     "data": "2026-12-31",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": true,
+   "links": [
+    {
+     "rotulo": "Transferegov (buscar programa 2200020260004)",
+     "url": "https://www.gov.br/transferegov/pt-br"
+    },
+    {
+     "rotulo": "Dados abertos Transferegov (programas)",
+     "url": "https://repositorio.dados.gov.br/seges/detru/siconv_programa.csv.zip"
+    }
+   ],
+   "justificativa": "Encaixa bem para um município agro, com a ressalva de que fica fora do núcleo de CT&I. Serve para projetos de agro com componente tecnológico (por exemplo, equipamentos para agricultura familiar e agricultura de precisão), se o objeto do programa permitir.",
+   "observacoes": "Dados abertos do Transferegov com situação em 16/07/2026; confirmar no Transferegov com o login da prefeitura. Pode ser afetado pelas restrições eleitorais.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "bndes-bacias-resilientes",
+   "edital": "BNDES Territórios da Restauração – Bacias Resilientes (chamada BNDES Fundo Socioambiental)",
+   "orgao": "BNDES",
+   "orgao_sigla": "BNDES",
+   "objeto": "Segurança hídrica e adaptação climática em bacias que abastecem regiões metropolitanas, entre elas a RM de Cuiabá (microbacia do Alto Paraguai). Restauração com vegetação nativa em nascentes, matas ciliares e áreas de recarga é obrigatória, mais ao menos uma linha: SBN urbanas, tecnologias sociais de segurança hídrica e agricultura resiliente, combate a voçorocas ou SBN contra poluição.",
+   "valor_total": "Até R$ 120 milhões (até R$ 60 mi do BNDES; o restante de parceiros)",
+   "valor_por_proposta": "Entre R$ 15 mi e R$ 20 mi por projeto; até 48 meses de execução",
+   "valor_ordenacao": 120000000,
+   "quem_pode": "Proponente: só pessoa jurídica de direito privado sem fins lucrativos, isolada ou em rede. O P&R oficial lista 'prefeituras municipais' entre as Instituições Parceiras (carta de parceria). Execução só nas áreas elegíveis dos mapas anexos.",
+   "papel": "parceira formal",
+   "elegibilidade_confirmada": false,
+   "fora_da_area": false,
+   "contrapartida": "50%, com recursos próprios ou de parceiros (pode ser detalhada após a submissão, durante a análise da operação)",
+   "contrapartida_tipo": "alta",
+   "parceiro": "obrigatorio",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Submissão de propostas (Portal do Cliente BNDES)",
+     "data": "2026-10-09",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h de Brasília"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "agro_bioeconomia"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial da chamada",
+     "url": "https://www.bndes.gov.br/wps/portal/site/home/onde-atuamos/meio-ambiente/!ut/p/z1/fc7BCsIwDAbg-57Cy44lRUT0KKKIDhQR2XqRbCsadY22mfj4zjH15qV_SPKFgol6vSiCtImm6J5PgnH4oCMKscMrpJCZ4SEZr2aLwVon6-1ipCfJNNlt5iPd3_dh2cKff1_4L9JOdOvfgIzO97uZgCnYiX0KpLkrbTiQC0JSF-2PYn3iysaam5FCqbHiEOvKEiuscrKNjHXrlFjvSdgTB1Wi8jYI1h4LZJVjQRjeLbq2JsDtYrIXFzNNHg!!/"
+    },
+    {
+     "rotulo": "Perguntas e respostas (PDF)",
+     "url": "https://www.bndes.gov.br/wps/wcm/connect/site/fcdf9961-1b67-4614-93b2-8b0cc5f0ca93/P%26R+-+BNDES+Bacias+Resilientes.pdf?MOD=AJPERES&CVID=q0rpK6J"
+    }
+   ],
+   "justificativa": "Encaixa com parceiro (OSC ambiental ou agro). Tema de fronteira (bioeconomia, restauração e tecnologia social hídrica, não CT&I estrita). Prazo muito curto.",
+   "observacoes": "É preciso confirmar se o território de Campo Verde está no 'Recorte Metropolitano do Vale do Rio Cuiabá' ou na microrregião do Alto Paraguai (mapa anexo no ZIP da página). O mapa anexo não traz nomes de municípios, então isso não foi confirmado.",
+   "revalidacao": "09/10/2026: Agência BNDES de Notícias confirma prazo prorrogado até 9 de outubro; painel mantém 09/10/2026, 17h de Brasília (16h de Cuiabá) como último dia. Às ~08h Cuiabá a chamada ainda estava no prazo (encerra no fim do dia).",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-mi-cadeias-agro",
+   "edital": "Finep Mais Inovação Brasil – Rodada 2 – Cadeias Agroindustriais Sustentáveis",
+   "orgao": "Finep/MCTI",
+   "orgao_sigla": "Finep",
+   "objeto": "Subvenção a produtos e processos inovadores da agroindústria, em rede com ICTs.",
+   "valor_total": "R$ 300 milhões",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": 300000000,
+   "quem_pode": "Empresas",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "obrigatorio",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas",
+     "data": "2026-09-30",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h00 conforme página Finep (fuso não indicado; convertido supondo horário de Brasília)"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "agro_bioeconomia"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/754839"
+    }
+   ],
+   "justificativa": "Não encaixa para a prefeitura (proponente é empresa). Acompanhar uma eventual nova rodada para avisar agroindústrias locais.",
+   "observacoes": "Encerrada em 30/09/2026. Página Finep em 07/10/2026 mostra 'Inscrição: Encerrada'.",
+   "revalidacao": "09/10/2026: página Finep mantém 'Encerrada' (prazo 30/09/2026).",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-proninc-2026",
+   "edital": "Proninc 2026 – Programa Nacional de Incubadoras Tecnológicas de Cooperativas Populares",
+   "orgao": "Finep/MCTI (FNDCT)",
+   "orgao_sigla": "Finep",
+   "objeto": "Desenvolvimento ou adaptação de soluções tecnológicas para empreendimentos econômicos solidários (agroecologia e sistemas produtivos sustentáveis; saneamento, água e resíduos; sistemas digitais e tecnologias financeiras solidárias; energias renováveis; saúde, cuidado e bem-viver).",
+   "valor_total": "Até R$ 100 milhões (FNDCT, não reembolsável)",
+   "valor_por_proposta": "R$ 2 mi a R$ 5 mi por proposta; até 36 meses; até 2 propostas por ICT executora",
+   "valor_ordenacao": 100000000,
+   "quem_pode": "ICTs públicas federais, estaduais, distritais e municipais (propostas por fundação de apoio) e ICTs privadas sem fins lucrativos qualificadas como OS ou ICES, com execução articulada entre ICT, ITCP e NIT. Os empreendimentos solidários não podem ser proponentes.",
+   "papel": "mobilizadora",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "Página Finep: 'Não Financeira'. Edital (item 8): convenente estadual ou municipal deve prever contrapartida financeira conforme a LDO 2026.",
+   "contrapartida_tipo": "nao_financeira",
+   "parceiro": "obrigatorio",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Cadastro no SISGON ('Básico de Pessoa Jurídica' e 'Documentos Institucionais')",
+     "data": "2026-11-17",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h de Brasília"
+    },
+    {
+     "rotulo": "Envio da proposta no SISGON",
+     "data": "2027-01-14",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h de Brasília"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "agro_bioeconomia"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial da chamada (Finep)",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/1057230"
+    },
+    {
+     "rotulo": "Notícia Finep de 18/09/2026 (cita 16/10)",
+     "url": "https://faleconosco.finep.gov.br/web/guest/w/finep-publica-chamada-de-r-100-milh%C3%B5es-para-impulsionar-solu%C3%A7%C3%B5es-tecnol%C3%B3gicas-na-economia-solid%C3%A1ria"
+    }
+   ],
+   "justificativa": "Encaixa com parceiro (ICT, por exemplo IFMT, UFMT ou UNEMAT). A prefeitura não figura formalmente, mas pode indicar demandas e empreendimentos solidários de Campo Verde e articular a ICT.",
+   "observacoes": "Sem cadastro aprovado até o prazo de cadastro, a ICT não consegue preencher a proposta. Cadastros com pendência são devolvidos para ajuste: não deixar para o último dia. Em 09/10/2026 a página oficial passou a indicar 17/11/2026 para o cadastro (antes 09/10/2026).",
+   "revalidacao": "09/10/2026: página oficial da chamada Finep (finep.gov.br/e/chamada-publica/222684/1057230) exibe cronograma com término do cadastro SISGON em 17/11/2026, até 17h de Brasília (16h de Cuiabá), e envio da proposta até 14/01/2027, 17h de Brasília. O prazo de cadastro anterior (09/10/2026) foi superado na página; mantém-se a proposta em 14/01/2027.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "cnpq-29-2026-rhae-ia",
+   "edital": "Chamada CNPq/SETEC/SETAD/MCTI/FNDCT nº 29/2026 – RHAE IA (Pesquisador na Empresa – Inteligência Artificial)",
+   "orgao": "CNPq/MCTI",
+   "orgao_sigla": "CNPq",
+   "objeto": "Pesquisadores em empresas e startups que desenvolvam soluções em inteligência artificial, alinhadas às missões da Nova Indústria Brasil e ao Plano Brasileiro de IA.",
+   "valor_total": "R$ 50 milhões (valor global, item 7.1 da chamada)",
+   "valor_por_proposta": "Até R$ 300 mil em bolsas de fomento (item 8.1.1 da chamada)",
+   "valor_ordenacao": 50000000,
+   "quem_pode": "Empresas e startups (o município não é elegível)",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "medio",
+   "prazos": [
+    {
+     "rotulo": "Submissão de propostas",
+     "data": "2026-10-09",
+     "hora_cuiaba": "22:59",
+     "hora_fonte": "23h59 de Brasília (item 9.2 da chamada)"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "empreendedorismo"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial CNPq",
+     "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-29-2026/chamada-publica-cnpq-N-29-2026"
+    },
+    {
+     "rotulo": "Texto da chamada (PDF)",
+     "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-29-2026/chamadapublica29_2026_RHAEIA_2769274.pdf"
+    }
+   ],
+   "justificativa": "Não encaixa como proponente (município não elegível). Vale avisar empresas e startups de TI locais.",
+   "observacoes": "",
+   "revalidacao": "09/10/2026: página CNPq 'Abertas para Submissão' ainda lista a chamada 29/2026; último dia de submissão 09/10/2026, 23h59 de Brasília (22h59 de Cuiabá), conforme item 9.2.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-mi-tecnologias-digitais",
+   "edital": "Finep Mais Inovação Brasil – Rodada 2 – Tecnologias Digitais",
+   "orgao": "Finep/MCTI",
+   "orgao_sigla": "Finep",
+   "objeto": "Subvenção a inovação em tecnologias digitais.",
+   "valor_total": "R$ 300 milhões",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": 300000000,
+   "quem_pode": "Empresas",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "Contrapartida financeira da empresa (item 4.5 do regulamento rerratificado em 28/09/2026; percentuais no Anexo 1)",
+   "contrapartida_tipo": "financeira",
+   "parceiro": "nao_informado",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas",
+     "data": "2026-10-14",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h00 de Brasília (item 6.3 do regulamento rerratificado)"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "empreendedorismo"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/755485"
+    }
+   ],
+   "justificativa": "Não encaixa para a prefeitura. Divulgar a empresas de TI locais.",
+   "observacoes": "O regulamento prevê que o prazo pode ser prorrogado pela Finep (item 6.4).",
+   "revalidacao": "09/10/2026: página Finep e API confirmam prazo 14/10/2026, 17h Brasília; status Aberta.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-mi-mobilidade",
+   "edital": "Finep Mais Inovação Brasil – Rodada 2 – Mobilidade Sustentável",
+   "orgao": "Finep/MCTI",
+   "orgao_sigla": "Finep",
+   "objeto": "PD&I em mobilidade aérea, metroferroviária, aquaviária e micromobilidade.",
+   "valor_total": "não informado na fonte oficial consultada",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Empresas, com ICT obrigatória",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "obrigatorio",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas",
+     "data": "2026-10-23",
+     "hora_cuiaba": "17:00",
+     "hora_fonte": "18h00 de Brasília"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/755376"
+    }
+   ],
+   "justificativa": "Não encaixa para a prefeitura.",
+   "observacoes": "",
+   "revalidacao": "09/10/2026: página Finep e API confirmam prazo 23/10/2026, 18h Brasília; status Aberta.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-mi-semicondutores",
+   "edital": "Finep Mais Inovação Brasil – Rodada 2 – Semicondutores",
+   "orgao": "Finep/MCTI",
+   "orgao_sigla": "Finep",
+   "objeto": "Subvenção a semicondutores, TRL 3 a 8.",
+   "valor_total": "Cerca de R$ 100 milhões (notícia Finep)",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": 100000000,
+   "quem_pode": "Empresas, com ICT obrigatória",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "obrigatorio",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas",
+     "data": "2026-11-25",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h conforme página Finep (fuso não indicado; convertido supondo horário de Brasília)"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/755605"
+    }
+   ],
+   "justificativa": "Não encaixa para a prefeitura.",
+   "observacoes": "",
+   "revalidacao": "09/10/2026: página Finep e API confirmam prazo 25/11/2026, 17h; status Aberta.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-mi-transformacao-mineral",
+   "edital": "Finep Mais Inovação Brasil – Rodada 2 – Transformação Mineral",
+   "orgao": "Finep/MCTI",
+   "orgao_sigla": "Finep",
+   "objeto": "PD&I em transformação mineral.",
+   "valor_total": "R$ 215 milhões (notícia MCTI)",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": 215000000,
+   "quem_pode": "Empresas em parceria com ICTs",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "obrigatorio",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas",
+     "data": "2026-11-30",
+     "hora_cuiaba": "17:00",
+     "hora_fonte": "18h de Brasília"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/754473"
+    }
+   ],
+   "justificativa": "Não encaixa para a prefeitura.",
+   "observacoes": "",
+   "revalidacao": "09/10/2026: página Finep e API confirmam prazo 30/11/2026, 18h Brasília; status Aberta.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-cooperamais-ict",
+   "edital": "COOPERAMAIS Tecnologia – ICT",
+   "orgao": "Finep/MCTI (FNDCT/CT-Agro)",
+   "orgao_sigla": "Finep",
+   "objeto": "P,D&I de ICTs para a agricultura familiar, obrigatoriamente com cooperativa da agricultura familiar (comercialização, agroindustrialização, transformação digital, economia circular, energia e clima).",
+   "valor_total": "R$ 100 milhões (pelo menos 30% para Norte, Nordeste e Centro-Oeste)",
+   "valor_por_proposta": "R$ 3 mi a R$ 15 mi por proposta; até 36 meses; TRL ≥ 3",
+   "valor_ordenacao": 100000000,
+   "quem_pode": "ICTs públicas e privadas, com parceria formal de pelo menos 1 ano com cooperativa da agricultura familiar (CAF ativo; pelo menos 70% dos cooperados com CAF).",
+   "papel": "mobilizadora",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "Financeira (campo da página Finep)",
+   "contrapartida_tipo": "financeira",
+   "parceiro": "obrigatorio",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas",
+     "data": "2026-12-08",
+     "hora_cuiaba": "17:00",
+     "hora_fonte": "18h conforme página Finep (fuso não indicado; convertido supondo horário de Brasília)"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "agro_bioeconomia"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/1060260"
+    }
+   ],
+   "justificativa": "Encaixa com parceiro (ICT + cooperativa da agricultura familiar de Campo Verde). É o edital de maior aderência ao perfil agro. A prefeitura pode articular e apoiar.",
+   "observacoes": "A parceria formal ICT–cooperativa precisa ter pelo menos 1 ano: verificar cedo quais cooperativas locais cumprem a exigência.",
+   "revalidacao": "09/10/2026: página Finep e API confirmam prazo 08/12/2026, 18h; status Aberta.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "cnpq-capes-30-2026-mai-dai",
+   "edital": "Chamada CNPq/CAPES nº 30/2026 – MAI/DAI (Mestrado e Doutorado Acadêmico para Inovação)",
+   "orgao": "CNPq/CAPES",
+   "orgao_sigla": "CNPq",
+   "objeto": "Pesquisa de mestrado e doutorado em universidades, em parceria com empresas.",
+   "valor_total": "não informado na fonte consultada",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Universidades e empresas (o município não é elegível)",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "obrigatorio",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Inscrições (de 19/08/2026)",
+     "data": "2026-12-11",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial CNPq",
+     "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-30-2026/chamada-publica-cnpq-N-30-2026"
+    }
+   ],
+   "justificativa": "Não encaixa (município não elegível). Pode interessar a IES da região com empresas locais.",
+   "observacoes": "",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-cooperamais-empresas",
+   "edital": "Finep COOPERAMAIS Brasil Tecnologias – Empresas",
+   "orgao": "Finep/MCTI (FNDCT)",
+   "orgao_sigla": "Finep",
+   "objeto": "Subvenção para inovação na agroindústria, em parceria com cooperativas da agricultura familiar (pelo menos 70% dos associados com CAF).",
+   "valor_total": "R$ 120 milhões",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": 120000000,
+   "quem_pode": "Empresas",
+   "papel": "mobilizadora",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "obrigatorio",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Fluxo contínuo até",
+     "data": "2027-04-30",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h conforme página Finep (fuso não indicado; convertido supondo horário de Brasília)"
+    }
+   ],
+   "fluxo_continuo": true,
+   "status_manual": null,
+   "temas": [
+    "agro_bioeconomia",
+    "empreendedorismo"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/1060720"
+    }
+   ],
+   "justificativa": "Encaixa com parceiro (empresa + cooperativa da agricultura familiar locais). A SEMCITECI pode aproximar agroindústrias e cooperativas de Campo Verde.",
+   "observacoes": "",
+   "revalidacao": "09/10/2026: página Finep e API confirmam fluxo contínuo até 30/04/2027, 17h; status Aberta.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "mgi-rede-govbr",
+   "edital": "Rede Nacional de Governo Digital (Rede GOV.BR) – adesão",
+   "orgao": "MGI / Secretaria de Governo Digital",
+   "orgao_sigla": "MGI",
+   "objeto": "Termo de adesão assinado pelo prefeito. Dá acesso a apoio metodológico para digitalizar serviços, plataformas gov.br, capacitação, compartilhamento de soluções e apoio para buscar financiamento.",
+   "valor_total": "não informado na fonte (não há repasse)",
+   "valor_por_proposta": "não informado na fonte (apoio técnico, sem repasse)",
+   "valor_ordenacao": null,
+   "quem_pode": "Estados, DF e municípios",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "sem_repasse",
+   "parceiro": "nao",
+   "porte": "nao_financeiro",
+   "prazos": [],
+   "fluxo_continuo": true,
+   "status_manual": null,
+   "temas": [
+    "cidade_inteligente"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial",
+     "url": "https://www.gov.br/governodigital/pt-br/estrategias-e-governanca-digital/rede-nacional-de-governo-digital"
+    },
+    {
+     "rotulo": "Plataforma de adesão",
+     "url": "https://plataforma.rede.gov.br/"
+    }
+   ],
+   "justificativa": "Encaixa bem: base para a agenda de transformação digital do município.",
+   "observacoes": "Verificar antes se Campo Verde já aderiu (painel de adesões).",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "mcom-computadores-inclusao",
+   "edital": "Computadores para Inclusão – solicitar computadores recondicionados (Pontos de Inclusão Digital)",
+   "orgao": "Ministério das Comunicações",
+   "orgao_sigla": "MCom",
+   "objeto": "Doação de computadores recondicionados a Pontos de Inclusão Digital (escolas, bibliotecas, laboratórios e telecentros).",
+   "valor_total": "Gratuito; depende da disponibilidade do CRC regional",
+   "valor_por_proposta": "não informado na fonte (doação de equipamentos)",
+   "valor_ordenacao": null,
+   "quem_pode": "OSCs e Pontos de Inclusão Digital com CNPJ válido (escolas e instituições da rede pública, bibliotecas etc.)",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "Termo de doação com encargos: manter o uso por no mínimo 12 meses e dar destinação adequada aos resíduos",
+   "contrapartida_tipo": "nao_financeira",
+   "parceiro": "nao",
+   "porte": "nao_financeiro",
+   "prazos": [],
+   "fluxo_continuo": true,
+   "status_manual": null,
+   "temas": [
+    "conectividade",
+    "educacao_cientifica"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Serviço gov.br",
+     "url": "https://www.gov.br/pt-br/servicos/solicitar-computadores-recondicionados"
+    }
+   ],
+   "justificativa": "Encaixa bem: inclusão digital, laboratórios maker e telecentros.",
+   "observacoes": "A solicitação é feita pelo PID com CNPJ (por exemplo, escola municipal ou biblioteca).",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "enap-banco-solucoes-ia",
+   "edital": "Banco de Soluções de IA para a Gestão Pública Brasileira",
+   "orgao": "Enap / Ibict (MCTI) / CIIA",
+   "orgao_sigla": "Enap/Ibict",
+   "objeto": "Catálogo nacional que recebe soluções e ideias de IA de órgãos públicos e aproxima gestores de especialistas.",
+   "valor_total": "Sem recurso financeiro",
+   "valor_por_proposta": "Sem recurso financeiro",
+   "valor_ordenacao": null,
+   "quem_pode": "Órgãos públicos, universidades, ICTs etc.",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "sem_repasse",
+   "parceiro": "nao",
+   "porte": "nao_financeiro",
+   "prazos": [],
+   "fluxo_continuo": true,
+   "status_manual": null,
+   "temas": [
+    "cidade_inteligente"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Banco de Soluções de IA",
+     "url": "https://bancobrasileiro.ia.br/"
+    },
+    {
+     "rotulo": "Notícia MCTI",
+     "url": "https://www.gov.br/mcti/pt-br/acompanhe-o-mcti/noticias/noticias-julho-outubro-2026/banco-nacional-reune-solucoes-de-inteligencia-artificial-para-o-setor-publico"
+    }
+   ],
+   "justificativa": "Encaixa bem: visibilidade e busca de soluções prontas, sem custo.",
+   "observacoes": "",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "bndes-pmat",
+   "edital": "BNDES Cidades – Modernização da gestão tributária, fiscal, orçamentária e da arrecadação (BNDES PMAT) – crédito",
+   "orgao": "BNDES",
+   "orgao_sigla": "BNDES",
+   "objeto": "Crédito (reembolsável) para fortalecer as capacidades gerencial, operacional e tecnológica da prefeitura. Municípios com menos de 100 mil habitantes têm acesso ao segmento 'Modernização e Digitalização da Gestão Pública'.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Municípios, via instituição financeira credenciada",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "Depende da capacidade de endividamento (é crédito, não fomento)",
+   "contrapartida_tipo": "credito",
+   "parceiro": "nao",
+   "porte": "credito",
+   "prazos": [],
+   "fluxo_continuo": true,
+   "status_manual": null,
+   "temas": [
+    "cidade_inteligente"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "BNDES Cidades – PMAT",
+     "url": "https://cidades.bndes.gov.br/solucao/modernizacao-da-gestao-tributaria-fiscal-e-orcamentaria-e-da-arrecadacao-municipal/"
+    }
+   ],
+   "justificativa": "Encaixa bem, com a ressalva de que é crédito (reembolsável), não fomento.",
+   "observacoes": "",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "cnpq-32-2026-anr-franca",
+   "edital": "Chamada MCTI/CNPq/ANR nº 32/2026 – projetos conjuntos Brasil–França",
+   "orgao": "CNPq/MCTI e ANR (França)",
+   "orgao_sigla": "CNPq",
+   "objeto": "Projetos de pesquisa conjuntos entre grupos brasileiros e franceses.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Pesquisadores (não serve ao município)",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "obrigatorio",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Inscrições (de 03/09/2026)",
+     "data": "2027-03-31",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial CNPq",
+     "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-32-2026/chamada-publica-cnpq-N-32-2026"
+    }
+   ],
+   "justificativa": "Não serve ao município; no máximo divulgar a pesquisadores de IES da região.",
+   "observacoes": "Prazo lido na página 'Abertas para submissão' do CNPq na varredura de 05/10/2026.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "funbio-bndes-aguas-sao-francisco",
+   "edital": "Edital 04/2026 Floresta Viva – Águas do São Francisco",
+   "orgao": "BNDES (Floresta Viva) / CPR São Francisco e Parnaíba; gestão operacional Funbio",
+   "orgao_sigla": "BNDES",
+   "objeto": "Restauração ecológica e revitalização hídrica nas áreas dos reservatórios de Sobradinho e Itaparica (44 municípios da Bahia e de Pernambuco).",
+   "valor_total": "R$ 20 milhões (notícias BNDES/MMA); a página do Funbio indica até R$ 17,76 milhões para as propostas",
+   "valor_por_proposta": "não informado na fonte (até 7 projetos; área mínima de 100 ha)",
+   "valor_ordenacao": 20000000,
+   "quem_pode": "Projetos nos 44 municípios de BA e PE da área dos reservatórios. Campo Verde está fora da área.",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": true,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Inscrições",
+     "data": "2026-12-02",
+     "hora_cuiaba": null,
+     "hora_fonte": "não informado (a página do Funbio cita envio até 19h de Brasília de 04/12/2026)"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Portal de Chamadas Funbio",
+     "url": "https://chamadas.funbio.org.br/floresta-viva-sao-francisco"
+    },
+    {
+     "rotulo": "Notícia MMA",
+     "url": "https://www.gov.br/mma/pt-br/noticias-defeso-eleitoral/edital-destina-r-20-milhoes-a-restauracao-ecologica-no-rio-sao-francisco"
+    }
+   ],
+   "justificativa": "Não se aplica a Campo Verde: só BA/PE. Listado porque apareceu na varredura de 05/10/2026.",
+   "observacoes": "Datas divergentes entre fontes (02/12 nas notícias; 04/12, 19h de Brasília, na página do Funbio). Irrelevante para MT.",
+   "revalidacao": "",
+   "data_inclusao": "2026-10-05"
+  },
+  {
+   "id": "cnpq-08-2026-pop-ciencia-snct",
+   "edital": "Chamada CNPq/MCTI nº 08/2026 – Pop Ciência – Semana Nacional de C&T (SNCT) 2026",
+   "orgao": "CNPq/MCTI",
+   "orgao_sigla": "CNPq",
+   "objeto": "Financiar eventos da SNCT 2026 com abrangência estadual/distrital, intermunicipal e municipal/escolar, com o tema 'Ciência delas'.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "não informado na fonte (a chamada tinha linhas intermunicipal e municipal/escolar)",
+   "papel": "parceira formal",
+   "elegibilidade_confirmada": false,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Inscrições (de 28/05/2026)",
+     "data": "2026-07-03",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "educacao_cientifica"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial CNPq",
+     "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-08-2026/chamada-publica-cnpq-N-08-2026"
+    }
+   ],
+   "justificativa": "Edição anual com linha municipal/escolar: preparar proposta para a SNCT 2027.",
+   "observacoes": "Papel estimado: a fonte não detalha quem pode ser proponente; confirmar na edição 2027.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "fnma-arborizacidades-2026",
+   "edital": "FNMA/MMA Edital nº 1/2026 – ArborizaCidades",
+   "orgao": "FNMA/MMA",
+   "orgao_sigla": "MMA/FNMA",
+   "objeto": "Arborização urbana (propostas via Transferegov).",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "R$ 1 mi a R$ 2 mi por proposta",
+   "valor_ordenacao": 2000000,
+   "quem_pode": "Municípios de 20 mil a 750 mil habitantes",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "alto",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas (prorrogado)",
+     "data": "2026-07-13",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Notícia MMA (prorrogação)",
+     "url": "https://www.gov.br/mma/pt-br/noticias-defeso-eleitoral/fnma-prorroga-prazo-do-edital-arborizacidades"
+    }
+   ],
+   "justificativa": "Campo Verde (cerca de 50 mil habitantes) está na faixa elegível; tema ambiental, fora do núcleo de CT&I. Acompanhar reabertura.",
+   "observacoes": "Encerrado em 13/07/2026.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "cidades-sndum-01-2026-cidades-mais-inteligentes",
+   "edital": "Ministério das Cidades – Edital SNDUM nº 01/2026 – Projeto Cidades Mais Inteligentes",
+   "orgao": "Ministério das Cidades (SNDUM)",
+   "orgao_sigla": "Min. Cidades",
+   "objeto": "Assessoria técnica em transformação digital urbana. A rede de apoio no Centro-Oeste é a UFG.",
+   "valor_total": "não informado na fonte (apoio em forma de assessoria técnica)",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Municípios (chamamento público)",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_financeiro",
+   "prazos": [
+    {
+     "rotulo": "Inscrições",
+     "data": "2026-05-08",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "cidade_inteligente"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial do edital",
+     "url": "https://www.gov.br/cidades/pt-br/acesso-a-informacao/participacao-social/editais-de-chamamento-publico/edital-de-chamamento-publico-sndum-no-1-2026-projeto-cidades-mais-inteligentes"
+    }
+   ],
+   "justificativa": "Alta aderência a cidade inteligente: acompanhar nova rodada.",
+   "observacoes": "Encerrado em 08/05/2026.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "fapemat-05-2026-pietec",
+   "edital": "FAPEMAT nº 05/2026 – PIETec (Escolas Técnicas)",
+   "orgao": "FAPEMAT",
+   "orgao_sigla": "FAPEMAT",
+   "objeto": "não informado na fonte (programa voltado a escolas técnicas)",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Escolas técnicas (o município não é proponente)",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Submissão",
+     "data": "2026-09-04",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "educacao_cientifica"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "FAPEMAT – editais abertos",
+     "url": "https://www.fapemat.mt.gov.br/edital?categoryId=73983336"
+    }
+   ],
+   "justificativa": "Município não é proponente; divulgar a escolas técnicas numa próxima edição.",
+   "observacoes": "Encerrado em 04/09/2026.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "fapemat-01-2026-pie",
+   "edital": "FAPEMAT nº 01/2026 – PIE (escolas estaduais)",
+   "orgao": "FAPEMAT",
+   "orgao_sigla": "FAPEMAT",
+   "objeto": "não informado na fonte (programa voltado a escolas estaduais)",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Escolas estaduais (o município não é proponente)",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Submissão",
+     "data": "2026-06-15",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "educacao_cientifica"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "FAPEMAT – editais abertos",
+     "url": "https://www.fapemat.mt.gov.br/edital?categoryId=73983336"
+    }
+   ],
+   "justificativa": "Município não é proponente; divulgar às escolas estaduais de Campo Verde numa próxima edição.",
+   "observacoes": "Encerrado em 15/06/2026.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "finep-agrifam-ict-2026",
+   "edital": "Finep AgriFam-ICT 2026 – Cadeias Socioprodutivas da Agricultura Familiar e Sistemas Agroalimentares Sustentáveis para ICTs",
+   "orgao": "Finep/MCTI (FNDCT)",
+   "orgao_sigla": "Finep",
+   "objeto": "Apoio financeiro a projetos de ICTs para cadeias socioprodutivas da agricultura familiar e sistemas agroalimentares sustentáveis.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "ICTs",
+   "papel": "mobilizadora",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "Previa contrapartida para convenente municipal conforme a LDO",
+   "contrapartida_tipo": "financeira",
+   "parceiro": "obrigatorio",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Envio de propostas",
+     "data": "2026-07-03",
+     "hora_cuiaba": "16:00",
+     "hora_fonte": "17h00 conforme página Finep (fuso não indicado; convertido supondo horário de Brasília)"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [
+    "agro_bioeconomia"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial Finep",
+     "url": "https://www.finep.gov.br/e/chamada-publica/222684/755892"
+    }
+   ],
+   "justificativa": "Aderente ao agro de Campo Verde via ICT parceira: acompanhar reabertura em 2027.",
+   "observacoes": "O levantamento de 30/09 registrava propostas até 26/06/2026; a página oficial da Finep mostra prazo de envio até 03/07/2026, 17h00. Em ambos os casos, encerrado. Resultado preliminar da avaliação de mérito publicado em 06/10/2026.",
+   "revalidacao": "07/10/2026: página Finep mostra prazo 03/07/2026 e resultado preliminar de mérito de 06/10/2026.",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "secitec-premio-cidades-inovadoras",
+   "edital": "SECITECI-MT – Prêmio Cidades Inovadoras de Mato Grosso",
+   "orgao": "SECITECI-MT (Governo de MT)",
+   "orgao_sigla": "SECITECI-MT",
+   "objeto": "Prêmio estadual a municípios inovadores. A 2ª edição foi em 2025; não há edição 2026 na página de editais da SECITECI.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Municípios de MT",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [],
+   "fluxo_continuo": false,
+   "status_manual": "encerrado",
+   "temas": [
+    "cidade_inteligente",
+    "ambientes_inovacao"
+   ],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "SECITECI-MT – editais",
+     "url": "https://www.secitec.mt.gov.br/editais"
+    }
+   ],
+   "justificativa": "Alta aderência (prêmio estadual a cidades inovadoras): acompanhar uma 3ª edição.",
+   "observacoes": "Sem edição 2026 encontrada (varreduras de 30/09 e 05/10/2026).",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "sebrae-premio-prefeitura-empreendedora-13",
+   "edital": "Sebrae – Prêmio Sebrae Prefeitura Empreendedora, 13ª edição",
+   "orgao": "Sebrae",
+   "orgao_sigla": "Sebrae",
+   "objeto": "não informado na fonte",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "não informado na fonte",
+   "papel": "proponente direta",
+   "elegibilidade_confirmada": false,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [],
+   "fluxo_continuo": false,
+   "status_manual": "encerrado",
+   "temas": [
+    "empreendedorismo"
+   ],
+   "aderencia_parcial": false,
+   "links": [],
+   "justificativa": "Prêmio voltado a prefeituras (pelo nome); a 13ª edição já passou da fase de inscrições. Recomendável contato direto com o Sebrae-MT sobre a próxima edição.",
+   "observacoes": "Link oficial não informado na fonte. Sem nova edição aberta (varredura de 05/10/2026).",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "cnpq-20-2026-atlanticas",
+   "edital": "Chamada MCTI/CNPq/MIR/MMulheres/MPI nº 20/2026 – Atlânticas (Programa Beatriz Nascimento de Mulheres na Ciência)",
+   "orgao": "CNPq/MCTI",
+   "orgao_sigla": "CNPq",
+   "objeto": "não informado na fonte",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "não informado na fonte (não aceita município)",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Inscrições",
+     "data": "2026-09-30",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial CNPq",
+     "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-20-2026/chamada-publica-cnpq-N-20-2026"
+    }
+   ],
+   "justificativa": "Não aceita município.",
+   "observacoes": "Encerrada em 30/09/2026.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "cnpq-21-2026-erc",
+   "edital": "Chamada CNPq/ERC (Conselho Europeu de Pesquisa) nº 21/2026",
+   "orgao": "CNPq/MCTI e ERC",
+   "orgao_sigla": "CNPq",
+   "objeto": "Participação de pesquisadores brasileiros doutores em colaborações com projetos financiados pelo ERC.",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "não informado na fonte",
+   "valor_ordenacao": null,
+   "quem_pode": "Pesquisadores doutores (não aceita município)",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": true,
+   "fora_da_area": false,
+   "contrapartida": "não informado na fonte",
+   "contrapartida_tipo": "nao_informado",
+   "parceiro": "nao_informado",
+   "porte": "nao_informado",
+   "prazos": [
+    {
+     "rotulo": "Inscrições (de 03/08/2026)",
+     "data": "2026-09-30",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Página oficial CNPq",
+     "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-21-2026/chamada-publica-cnpq-N-21-2026"
+    }
+   ],
+   "justificativa": "Não aceita município.",
+   "observacoes": "Encerrada em 30/09/2026.",
+   "revalidacao": "",
+   "data_inclusao": "2026-09-30"
+  },
+  {
+   "id": "fiis-edital-3-2026-saude",
+   "edital": "FIIS – Edital de Chamamento Público CGFIIS nº 3/2026 – Unidades de Atenção Especializada (saúde)",
+   "orgao": "Casa Civil / CGFIIS, com o BNDES como agente financeiro",
+   "orgao_sigla": "Casa Civil/FIIS",
+   "objeto": "Crédito para investimentos em infraestrutura de atenção à saúde pública especializada no SUS (fora do escopo de CT&I).",
+   "valor_total": "não informado na fonte",
+   "valor_por_proposta": "Crédito direto no BNDES a partir de R$ 20 mi; crédito indireto (instituição habilitada) até R$ 50 mi",
+   "valor_ordenacao": 50000000,
+   "quem_pode": "Pessoa jurídica proponente; o edital prevê condições para operações com entes públicos",
+   "papel": "só divulgar",
+   "elegibilidade_confirmada": false,
+   "fora_da_area": false,
+   "contrapartida": "Crédito (reembolsável) com juros; não é fomento",
+   "contrapartida_tipo": "credito",
+   "parceiro": "nao_informado",
+   "porte": "credito",
+   "prazos": [
+    {
+     "rotulo": "Apresentação de propostas",
+     "data": "2026-07-06",
+     "hora_cuiaba": null,
+     "hora_fonte": "horário não informado na fonte"
+    }
+   ],
+   "fluxo_continuo": false,
+   "status_manual": null,
+   "temas": [],
+   "aderencia_parcial": false,
+   "links": [
+    {
+     "rotulo": "Editais do FIIS (Casa Civil)",
+     "url": "https://www.gov.br/casacivil/pt-br/acesso-a-informacao/fundos/fundo-fiis/editais"
+    }
+   ],
+   "justificativa": "Fora do escopo de CT&I (infraestrutura de saúde). Se reabrir, repassar à Secretaria de Saúde.",
+   "observacoes": "Varredura de 05/10/2026: o banner do FIIS no BNDES Cidades está desatualizado; os editais FIIS 1, 2 e 3 estão encerrados (o 3 fechou em 06/07/2026).",
+   "revalidacao": "",
+   "data_inclusao": "2026-10-05"
+  }
+ ]
+}</script>
+<script>
+(function(){
+"use strict";
+var DADOS = JSON.parse(document.getElementById('dados').textContent);
+var META = DADOS.meta || {};
+var TEMAS = DADOS.temas_prioritarios || {};
+var EDITAIS = DADOS.editais || [];
+var CHAVE_VISITA = 'semciteci_editais_ultima_visita';
+var DIA = 86400000;
+var OFFSET_CUIABA = -4; // UTC-4 (Mato Grosso não adota horário de verão)
+
+var PAPEIS = {
+  'proponente direta': 'Proponente direta',
+  'parceira formal': 'Parceira formal',
+  'mobilizadora': 'Mobilizadora de ICT, cooperativa ou empresa',
+  'só divulgar': 'Só divulgar'
+};
+var STATUS_NOME = {aberto:'Aberto', fluxo:'Fluxo contínuo', encerrando:'Encerrando em até 7 dias', encerrado:'Encerrado', confirmar:'A confirmar'};
+
+// Permite simular a data para testes: ...html?hoje=2026-10-07T10:00
+function agoraMs(){
+  var m = /[?&]hoje=([0-9T:\-]+)/.exec(location.search || '');
+  if (m) { var t = Date.parse(m[1].length <= 10 ? m[1] + 'T12:00:00-04:00' : m[1] + ':00-04:00'); if (!isNaN(t)) return t; }
+  return Date.now();
+}
+var AGORA = agoraMs();
+function partesCuiaba(ms){ var d = new Date(ms + OFFSET_CUIABA*3600000); return {a:d.getUTCFullYear(), m:d.getUTCMonth(), d:d.getUTCDate(), h:d.getUTCHours(), mi:d.getUTCMinutes()}; }
+var HOJE = (function(){ var p = partesCuiaba(AGORA); return Date.UTC(p.a,p.m,p.d); })();
+function dataUTC(iso){ var x = iso.split('-'); return Date.UTC(+x[0], +x[1]-1, +x[2]); }
+function fmtData(iso){ if(!iso) return ''; var x = iso.split('-'); return x[2]+'/'+x[1]+'/'+x[0]; }
+function pad(n){ return (n<10?'0':'')+n; }
+function instantePrazo(p){ return Date.parse(p.data + 'T' + (p.hora_cuiaba || '23:59') + ':00-04:00'); }
+function diasAte(p){ return Math.round((dataUTC(p.data) - HOJE) / DIA); }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function horaTxt(h){ return h ? h.replace(':','h') : ''; }
+
+function proximoPrazo(e){
+  var ps = (e.prazos || []).slice().sort(function(a,b){ return instantePrazo(a) - instantePrazo(b); });
+  for (var i=0;i<ps.length;i++){ if (instantePrazo(ps[i]) >= AGORA) return ps[i]; }
+  return null;
+}
+function ultimoPrazo(e){
+  var ps = (e.prazos || []).slice().sort(function(a,b){ return instantePrazo(a) - instantePrazo(b); });
+  return ps.length ? ps[ps.length-1] : null;
+}
+function calcStatus(e){
+  if (e.status_manual === 'encerrado') return 'encerrado';
+  if (e.status_manual === 'a confirmar') return 'confirmar';
+  if (!e.prazos || !e.prazos.length) return e.fluxo_continuo ? 'fluxo' : 'confirmar';
+  var p = proximoPrazo(e);
+  if (!p) return 'encerrado';
+  var d = diasAte(p);
+  if (d <= 7) return 'encerrando';
+  return e.fluxo_continuo ? 'fluxo' : 'aberto';
+}
+
+// ---------- Avaliação prévia ----------
+var CRITERIOS = [
+  {id:'eleg', nome:'Elegibilidade do município', max:35,
+   regra:'Proponente direta: 35 (28 se a elegibilidade ainda precisa ser confirmada) · Parceira formal: 22 (17 se a confirmar) · Mobilizadora de ICT/cooperativa/empresa: 12 (10 se a confirmar) · Só divulgar: 3 · Fora da área geográfica elegível: 0'},
+  {id:'tema', nome:'Aderência aos temas prioritários da SEMCITECI', max:20,
+   regra:'2 ou mais temas prioritários: 20 · 1 tema: 14 · aderência apenas parcial/indireta: 5 · nenhum: 0'},
+  {id:'parc', nome:'Exigência de parceiro', max:10,
+   regra:'Não exige: 10 · Parceiro recomendado: 6 · Não informado: 5 · Parceiro obrigatório (outra instituição propõe ou co-executa): 2'},
+  {id:'cont', nome:'Contrapartida exigida', max:10,
+   regra:'Nenhuma: 10 · Sem repasse de recursos: 9 · Não financeira (encargos, uso de bens): 7 · Não informada: 5 · Financeira (ex.: LDO): 3 · Crédito/endividamento: 1 · Alta (≥ 50%): 0'},
+  {id:'tempo', nome:'Tempo até o prazo', max:15,
+   regra:'Fluxo contínuo ou mais de 60 dias: 15 · 31–60 dias: 12 · 15–30: 9 · 8–14: 5 · 2–7: 2 · hoje/amanhã: 1 · sem prazo definido (a confirmar): 5 · encerrado: 0'},
+  {id:'porte', nome:'Porte do recurso', max:10,
+   regra:'Alto (≥ R$ 1 milhão por proposta ou chamada grande): 10 · Médio: 7 · Baixo: 5 · Benefício não financeiro (bens, apoio técnico, prêmio): 5 · Crédito reembolsável: 4 · Não informado: 3'}
+];
+var TXT_CONT = {nenhuma:'nenhuma', sem_repasse:'sem repasse de recursos', nao_financeira:'não financeira', nao_informado:'não informada na fonte', financeira:'financeira', credito:'crédito (endividamento)', alta:'alta (≥ 50%)'};
+var PT_CONT = {nenhuma:10, sem_repasse:9, nao_financeira:7, nao_informado:5, financeira:3, credito:1, alta:0};
+var TXT_PARC = {nao:'não exige', recomendado:'parceiro recomendado', nao_informado:'não informado na fonte', obrigatorio:'parceiro obrigatório'};
+var PT_PARC = {nao:10, recomendado:6, nao_informado:5, obrigatorio:2};
+var TXT_PORTE = {alto:'alto', medio:'médio', baixo:'baixo', nao_financeiro:'benefício não financeiro', credito:'crédito reembolsável', nao_informado:'não informado na fonte'};
+var PT_PORTE = {alto:10, medio:7, baixo:5, nao_financeiro:5, credito:4, nao_informado:3};
+
+function avaliar(e, status){
+  var itens = [];
+  // 1. elegibilidade
+  var pe, xe;
+  if (e.fora_da_area){ pe = 0; xe = 'Fora da área geográfica elegível.'; }
+  else if (e.papel === 'proponente direta'){ pe = e.elegibilidade_confirmada ? 35 : 28; xe = 'Município pode ser proponente' + (e.elegibilidade_confirmada ? '.' : ' (elegibilidade a confirmar).'); }
+  else if (e.papel === 'parceira formal'){ pe = e.elegibilidade_confirmada ? 22 : 17; xe = 'Município entra como parceiro formal' + (e.elegibilidade_confirmada ? '.' : ' (a confirmar).'); }
+  else if (e.papel === 'mobilizadora'){ pe = e.elegibilidade_confirmada ? 12 : 10; xe = 'Município não propõe; pode mobilizar ICT, cooperativa ou empresa.'; }
+  else { pe = 3; xe = 'Município não é elegível; apenas divulgar.'; }
+  itens.push({c:CRITERIOS[0], p:pe, x:xe});
+  // 2. temas
+  var n = (e.temas || []).length, pt;
+  if (n >= 2) pt = 20; else if (n === 1) pt = 14; else if (e.aderencia_parcial) pt = 5; else pt = 0;
+  var nomes = (e.temas || []).map(function(t){ return TEMAS[t] || t; });
+  itens.push({c:CRITERIOS[1], p:pt, x: n ? ('Temas: ' + nomes.join('; ') + '.') : (e.aderencia_parcial ? 'Aderência apenas parcial/indireta.' : 'Nenhum tema prioritário.')});
+  // 3. parceiro
+  var pp = PT_PARC.hasOwnProperty(e.parceiro) ? PT_PARC[e.parceiro] : 5;
+  itens.push({c:CRITERIOS[2], p:pp, x:'Parceiro: ' + (TXT_PARC[e.parceiro] || 'não informado na fonte') + '.'});
+  // 4. contrapartida
+  var pc = PT_CONT.hasOwnProperty(e.contrapartida_tipo) ? PT_CONT[e.contrapartida_tipo] : 5;
+  itens.push({c:CRITERIOS[3], p:pc, x:'Contrapartida: ' + (TXT_CONT[e.contrapartida_tipo] || 'não informada na fonte') + '.'});
+  // 5. tempo
+  var ptp, xt, prox = proximoPrazo(e);
+  if (status === 'encerrado'){ ptp = 0; xt = 'Prazo encerrado.'; }
+  else if (!prox){ if (e.fluxo_continuo){ ptp = 15; xt = 'Fluxo contínuo, sem prazo final.'; } else { ptp = 5; xt = 'Prazo a confirmar.'; } }
+  else {
+    var d = diasAte(prox);
+    if (d > 60) ptp = 15; else if (d >= 31) ptp = 12; else if (d >= 15) ptp = 9; else if (d >= 8) ptp = 5; else if (d >= 2) ptp = 2; else ptp = 1;
+    xt = (e.fluxo_continuo ? 'Fluxo contínuo; ' : '') + 'próximo prazo em ' + d + ' dia(s) (' + fmtData(prox.data) + ').';
+  }
+  itens.push({c:CRITERIOS[4], p:ptp, x:xt});
+  // 6. porte
+  var pr = PT_PORTE.hasOwnProperty(e.porte) ? PT_PORTE[e.porte] : 3;
+  itens.push({c:CRITERIOS[5], p:pr, x:'Porte: ' + (TXT_PORTE[e.porte] || 'não informado na fonte') + '.'});
+  var total = 0; itens.forEach(function(i){ total += i.p; });
+  var classe;
+  if (status === 'encerrado' || e.papel === 'só divulgar' || e.fora_da_area) classe = 'Não se aplica';
+  else if (total >= 70) classe = 'Alta';
+  else if (total >= 50) classe = 'Média';
+  else classe = 'Baixa';
+  return {total: total, itens: itens, classe: classe};
+}
+
+// ---------- Novidades ----------
+var ultimaVisita = null;
+try { ultimaVisita = localStorage.getItem(CHAVE_VISITA); } catch(err) { ultimaVisita = null; }
+var ultimaVisitaDia = null;
+if (ultimaVisita){ var tv = Date.parse(ultimaVisita); if (!isNaN(tv)){ var pv = partesCuiaba(tv); ultimaVisitaDia = Date.UTC(pv.a,pv.m,pv.d); } }
+function ehNovo(e){
+  if (!e.data_inclusao) return false;
+  var di = dataUTC(e.data_inclusao);
+  if ((HOJE - di) / DIA < 7) return true;
+  if (ultimaVisitaDia !== null && di > ultimaVisitaDia) return true;
+  return false;
+}
+
+// ---------- Pré-cálculo ----------
+EDITAIS.forEach(function(e){
+  e._status = calcStatus(e);
+  e._prox = proximoPrazo(e);
+  e._ult = ultimoPrazo(e);
+  e._dias = e._prox ? diasAte(e._prox) : (e._ult ? diasAte(e._ult) : null);
+  e._av = avaliar(e, e._status);
+  e._novo = ehNovo(e);
+  e._busca = [e.edital, e.orgao, e.objeto, e.quem_pode, e.observacoes, e.justificativa, e.valor_total, e.contrapartida, (e.temas||[]).map(function(t){return TEMAS[t]||t;}).join(' ')].join(' ').toLowerCase();
+});
+try { localStorage.setItem(CHAVE_VISITA, new Date(AGORA).toISOString()); } catch(err) {}
+
+// ---------- Cabeçalho, indicadores ----------
+function fmtAgora(){ var p = partesCuiaba(AGORA); return pad(p.d)+'/'+pad(p.m+1)+'/'+p.a+' '+pad(p.h)+'h'+pad(p.mi)+' (Cuiabá)'; }
+document.getElementById('dtAtualizacao').textContent = fmtData(META.atualizacao) + (META.atualizacao_hora ? ' ' + horaTxt(META.atualizacao_hora) : '') + ' (Cuiabá)';
+document.getElementById('dtHoje').textContent = fmtAgora();
+
+var abertos = EDITAIS.filter(function(e){ return e._status === 'aberto' || e._status === 'fluxo' || e._status === 'encerrando'; });
+document.getElementById('indAbertas').textContent = abertos.length;
+document.getElementById('indDireta').textContent = abertos.filter(function(e){ return e.papel === 'proponente direta' && !e.fora_da_area; }).length;
+document.getElementById('indQuinze').textContent = abertos.filter(function(e){ return e._prox && e._dias !== null && e._dias <= 15; }).length;
+var novos = EDITAIS.filter(function(e){ return e._novo; });
+var novosAtivos = novos.filter(function(e){ return e._status !== 'encerrado'; });
+document.getElementById('indNovos').textContent = novos.length;
+
+if (novos.length){
+  var b = document.getElementById('bannerNovos');
+  var desdeVisita = ultimaVisitaDia === null ? 0 : novos.filter(function(e){ return dataUTC(e.data_inclusao) > ultimaVisitaDia; }).length;
+  var t = desdeVisita ? (desdeVisita + (desdeVisita === 1 ? ' novo edital' : ' novos editais') + ' desde sua última visita' +
+                         (novos.length > desdeVisita ? ' (' + novos.length + ' novidades no total, contando os últimos 7 dias)' : ''))
+                      : (novos.length + (novos.length === 1 ? ' edital incluído' : ' editais incluídos') + ' nos últimos 7 dias');
+  var sub = novosAtivos.length + ' ainda em aberto' + (novos.length - novosAtivos.length ? ' · ' + (novos.length - novosAtivos.length) + ' já encerrado(s), listado(s) para acompanhamento' : '') +
+            (ultimaVisita ? ' · última visita: ' + (function(){ var p = partesCuiaba(Date.parse(ultimaVisita)); return pad(p.d)+'/'+pad(p.m+1)+'/'+p.a+' '+pad(p.h)+'h'+pad(p.mi); })() : '');
+  document.getElementById('bannerTxt').innerHTML = esc(t) + '<small>' + esc(sub) + '</small>';
+  b.classList.add('visivel');
+}
+document.getElementById('btnFecharBanner').addEventListener('click', function(){ document.getElementById('bannerNovos').classList.remove('visivel'); });
+document.getElementById('btnSoNovos').addEventListener('click', function(){
+  var c = document.getElementById('fNovos'); c.checked = true;
+  if (novos.length !== novosAtivos.length) document.getElementById('fEncerrados').checked = true;
+  render();
+});
+
+// ---------- Tabela de critérios ----------
+document.getElementById('tabCriterios').innerHTML = CRITERIOS.map(function(c){
+  return '<tr><td>' + esc(c.nome) + '</td><td>' + c.max + '</td><td>' + esc(c.regra) + '</td></tr>';
+}).join('');
+
+// ---------- Filtros ----------
+function preencherSelect(id, valores){
+  var s = document.getElementById(id);
+  valores.forEach(function(v){ var o = document.createElement('option'); o.value = v[0]; o.textContent = v[1]; s.appendChild(o); });
+}
+var orgaos = {}; EDITAIS.forEach(function(e){ orgaos[e.orgao_sigla || e.orgao] = 1; });
+preencherSelect('fOrgao', Object.keys(orgaos).sort(function(a,b){ return a.localeCompare(b,'pt-BR'); }).map(function(o){ return [o,o]; }));
+preencherSelect('fPapel', Object.keys(PAPEIS).map(function(k){ return [k, PAPEIS[k]]; }));
+preencherSelect('fTema', Object.keys(TEMAS).map(function(k){ return [k, TEMAS[k]]; }));
+
+function el(id){ return document.getElementById(id); }
+function filtrados(){
+  var txt = el('fTexto').value.trim().toLowerCase();
+  var org = el('fOrgao').value, st = el('fStatus').value, pa = el('fPapel').value, te = el('fTema').value, cl = el('fClasse').value;
+  var mostrarEnc = el('fEncerrados').checked || st === 'encerrado';
+  var soNovos = el('fNovos').checked;
+  var termos = txt ? txt.split(/\s+/) : [];
+  var r = EDITAIS.filter(function(e){
+    if (!mostrarEnc && e._status === 'encerrado') return false;
+    if (st && e._status !== st) return false;
+    if (org && (e.orgao_sigla || e.orgao) !== org) return false;
+    if (pa && e.papel !== pa) return false;
+    if (te && (e.temas || []).indexOf(te) < 0) return false;
+    if (cl && e._av.classe !== cl) return false;
+    if (soNovos && !e._novo) return false;
+    for (var i=0;i<termos.length;i++){ if (e._busca.indexOf(termos[i]) < 0) return false; }
+    return true;
+  });
+  var ordem = el('fOrdem').value;
+  function chavePrazo(e){
+    if (e._status === 'encerrado') return 9e15 + (e._ult ? -instantePrazo(e._ult) : 0) / 1e3; // encerrados no fim, mais recentes primeiro
+    if (e._prox && !e.fluxo_continuo) return instantePrazo(e._prox);
+    if (e._prox && e.fluxo_continuo) return 8e15 + instantePrazo(e._prox) / 1e3;
+    return 8.5e15; // fluxo contínuo sem data / a confirmar
+  }
+  r.sort(function(a,b){
+    if (ordem === 'nota') return (b._av.total - a._av.total) || (chavePrazo(a) - chavePrazo(b));
+    if (ordem === 'valor'){
+      var va = a.valor_ordenacao == null ? -1 : a.valor_ordenacao, vb = b.valor_ordenacao == null ? -1 : b.valor_ordenacao;
+      return (vb - va) || (chavePrazo(a) - chavePrazo(b));
+    }
+    return (chavePrazo(a) - chavePrazo(b)) || (b._av.total - a._av.total);
+  });
+  return r;
+}
+
+// ---------- Textos ----------
+function prazoLinhas(e){
+  if (!e.prazos || !e.prazos.length) return e.fluxo_continuo ? ['Fluxo contínuo (sem prazo final)'] : ['não informado na fonte'];
+  return e.prazos.map(function(p){
+    var s = p.rotulo + ': ' + fmtData(p.data);
+    if (p.hora_cuiaba) s += ', ' + horaTxt(p.hora_cuiaba) + ' (Cuiabá)';
+    if (p.hora_fonte) s += ' [fonte: ' + p.hora_fonte + ']';
+    return s;
+  });
+}
+function diasTxt(e){
+  if (e._status === 'fluxo' && !e._prox) return {t:'fluxo contínuo', c:'ok'};
+  if (e._prox){
+    var d = e._dias;
+    var t = d === 0 ? 'encerra hoje' : (d === 1 ? 'falta 1 dia' : 'faltam ' + d + ' dias');
+    return {t:t, c: d <= 7 ? 'urg' : 'ok'};
+  }
+  if (e._ult){ var dd = -diasAte(e._ult); return {t: dd === 0 ? 'encerrou hoje' : 'encerrado há ' + dd + ' dia(s)', c:'passou'}; }
+  return {t: e._status === 'encerrado' ? 'encerrado' : 'prazo a confirmar', c:'passou'};
+}
+function classeCss(c){ return c === 'Alta' ? 'alta' : c === 'Média' ? 'media' : c === 'Baixa' ? 'baixa' : 'na'; }
+
+function cardHTML(e){
+  var dt = diasTxt(e), av = e._av;
+  var temas = (e.temas || []).map(function(t){ return '<span class="selo tema">' + esc(TEMAS[t] || t) + '</span>'; }).join('');
+  var links = (e.links || []).length ? e.links.map(function(l){ return '<a href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer">' + esc(l.rotulo) + ' ↗</a>'; }).join('') : 'não informado na fonte';
+  var tab = '<table class="tab-nota"><thead><tr><th>Critério</th><th>Pontos</th><th>Por quê</th></tr></thead><tbody>' +
+    av.itens.map(function(i){ return '<tr><td>' + esc(i.c.nome) + '</td><td class="pt">' + i.p + ' / ' + i.c.max + '</td><td>' + esc(i.x) + '</td></tr>'; }).join('') +
+    '<tr><th>Total</th><th class="pt">' + av.total + ' / 100</th><th>Classificação: ' + esc(av.classe) + '</th></tr></tbody></table>';
+  return '<article class="card st-' + e._status + '" data-id="' + esc(e.id) + '">' +
+    '<div class="cab"><div class="tit">' +
+      '<h3>' + (e._novo ? '<span class="novo">NOVO</span>' : '') + esc(e.edital) + '</h3>' +
+      '<div class="org">' + esc(e.orgao) + '</div>' +
+      '<div class="selos"><span class="selo st-' + e._status + '">' + esc(STATUS_NOME[e._status]) + '</span>' +
+        '<span class="selo papel">Papel: ' + esc(PAPEIS[e.papel] || e.papel) + '</span>' + temas + '</div>' +
+    '</div>' +
+    '<div class="nota ' + classeCss(av.classe) + '" title="Nota de viabilidade (0–100)"><div class="v">' + av.total + '</div><div class="c">' + esc(av.classe) + '</div></div></div>' +
+    '<div class="grade">' +
+      '<div class="campo medio"><div class="r">Prazo (horário de Cuiabá)</div>' + prazoLinhas(e).map(esc).join('<br>') + '</div>' +
+      '<div class="campo"><div class="r">Dias restantes</div><span class="prazo-dias ' + dt.c + '">' + esc(dt.t) + '</span></div>' +
+      '<div class="campo largo"><div class="r">Objeto</div>' + esc(e.objeto) + '</div>' +
+      '<div class="campo"><div class="r">Valor total</div>' + esc(e.valor_total) + '</div>' +
+      '<div class="campo"><div class="r">Valor por proposta</div>' + esc(e.valor_por_proposta) + '</div>' +
+      '<div class="campo"><div class="r">Contrapartida</div>' + esc(e.contrapartida) + '</div>' +
+      '<div class="campo largo"><div class="r">Quem pode participar</div>' + esc(e.quem_pode) + '</div>' +
+      '<div class="campo largo links"><div class="r">Link oficial</div>' + links + '</div>' +
+    '</div>' +
+    '<details class="det"><summary>Avaliação e detalhes (nota por critério, justificativa, ressalvas)</summary>' +
+      '<div class="justif"><b>Encaixe para Campo Verde:</b> ' + esc(e.justificativa || 'não informado na fonte') + '</div>' +
+      tab +
+      '<p class="resumo-nota so-impressao"><b>Nota ' + av.total + '/100 (' + esc(av.classe) + '):</b> ' + av.itens.map(function(i){ return esc(i.c.nome) + ' ' + i.p + '/' + i.c.max; }).join(' · ') + '</p>' +
+      (e.observacoes ? '<p class="obs"><b>Observações/ressalvas:</b> ' + esc(e.observacoes) + '</p>' : '') +
+      (e.revalidacao ? '<div class="revalid"><b>Revalidação:</b> ' + esc(e.revalidacao) + '</div>' : '') +
+      '<p class="obs" style="color:#6b7280">Incluído no painel em ' + esc(fmtData(e.data_inclusao)) + '.</p>' +
+    '</details>' +
+  '</article>';
+}
+
+var ULTIMA_LISTA = [];
+function render(){
+  var r = filtrados(); ULTIMA_LISTA = r;
+  el('lista').innerHTML = r.length ? r.map(cardHTML).join('') : '<div class="vazio">Nenhum edital com esses filtros. Experimente "Limpar filtros" ou marcar "Mostrar encerrados".</div>';
+  var encOcultos = (!el('fEncerrados').checked && el('fStatus').value !== 'encerrado') ? EDITAIS.filter(function(e){ return e._status === 'encerrado'; }).length : 0;
+  var fdesc = [];
+  if (el('fTexto').value.trim()) fdesc.push('busca "' + el('fTexto').value.trim() + '"');
+  ['fOrgao','fStatus','fPapel','fTema','fClasse'].forEach(function(id){ var s = el(id); if (s.value) fdesc.push(s.options[s.selectedIndex].text); });
+  if (el('fEncerrados').checked) fdesc.push('inclui encerrados');
+  if (el('fNovos').checked) fdesc.push('só novidades');
+  el('filtrosImpressao').textContent = 'Lista impressa: ' + r.length + ' oportunidade(s) · filtros: ' + (fdesc.length ? fdesc.join('; ') : 'padrão (sem encerrados)') + ' · ordenação: ' + el('fOrdem').options[el('fOrdem').selectedIndex].text + ' · impresso em ' + fmtAgora() + '.';
+  el('contagem').textContent = 'Mostrando ' + r.length + ' de ' + EDITAIS.length + ' oportunidades' + (encOcultos ? ' (' + encOcultos + ' encerradas ocultas)' : '');
+}
+
+// ---------- CSV ----------
+function csvCampo(v){ v = String(v == null ? '' : v).replace(/\r?\n/g, ' '); return '"' + v.replace(/"/g, '""') + '"'; }
+function gerarCSV(lista){
+  var cab = ['Edital','Órgão','Objeto','Valor total','Valor por proposta','Quem pode participar','Papel da SEMCITECI','Contrapartida','Prazo(s) – horário de Cuiabá','Dias restantes','Status','Nota (0-100)','Classificação','Detalhamento da nota','Temas prioritários','Link oficial','Outros links','Encaixe para Campo Verde','Observações/ressalvas','Revalidação','Novo?','Incluído em'];
+  var linhas = [cab.map(csvCampo).join(';')];
+  lista.forEach(function(e){
+    var links = e.links || [];
+    linhas.push([
+      e.edital, e.orgao, e.objeto, e.valor_total, e.valor_por_proposta, e.quem_pode, PAPEIS[e.papel] || e.papel, e.contrapartida,
+      prazoLinhas(e).join(' | '), diasTxt(e).t, STATUS_NOME[e._status], e._av.total, e._av.classe,
+      e._av.itens.map(function(i){ return i.c.nome + ': ' + i.p + '/' + i.c.max; }).join(' | '),
+      (e.temas || []).map(function(t){ return TEMAS[t] || t; }).join(' | '),
+      links.length ? links[0].url : 'não informado na fonte',
+      links.slice(1).map(function(l){ return l.rotulo + ': ' + l.url; }).join(' | '),
+      e.justificativa, e.observacoes, e.revalidacao, e._novo ? 'sim' : 'não', fmtData(e.data_inclusao)
+    ].map(csvCampo).join(';'));
+  });
+  return '\uFEFF' + linhas.join('\r\n') + '\r\n';
+}
+window.__gerarCSV = function(){ return gerarCSV(ULTIMA_LISTA); };
+el('btnCSV').addEventListener('click', function(){
+  var csv = gerarCSV(ULTIMA_LISTA);
+  var blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+  var p = partesCuiaba(AGORA);
+  var nome = 'editais-cti-semciteci-' + p.a + '-' + pad(p.m+1) + '-' + pad(p.d) + '.csv';
+  if (window.navigator && window.navigator.msSaveOrOpenBlob){ window.navigator.msSaveOrOpenBlob(blob, nome); return; }
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href = url; a.download = nome; document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 1500);
+});
+
+// ---------- Impressão ----------
+var detAbertos = [];
+window.addEventListener('beforeprint', function(){
+  detAbertos = [];
+  document.querySelectorAll('details.det').forEach(function(d){ if (!d.open){ d.open = true; detAbertos.push(d); } });
+});
+window.addEventListener('afterprint', function(){ detAbertos.forEach(function(d){ d.open = false; }); detAbertos = []; });
+el('btnPrint').addEventListener('click', function(){ window.print(); });
+
+// ---------- Eventos ----------
+['fTexto','fOrgao','fStatus','fPapel','fTema','fClasse','fOrdem','fEncerrados','fNovos'].forEach(function(id){
+  el(id).addEventListener(id === 'fTexto' ? 'input' : 'change', render);
+});
+el('btnLimpar').addEventListener('click', function(){
+  el('fTexto').value=''; ['fOrgao','fStatus','fPapel','fTema','fClasse'].forEach(function(id){ el(id).value=''; });
+  el('fOrdem').value='prazo'; el('fEncerrados').checked=false; el('fNovos').checked=false; render();
+});
+el('btnNota').addEventListener('click', function(){ el('painelNota').classList.toggle('aberto'); });
+
+el('rodapeInfo').innerHTML =
+  '<p>' + esc(META.nota_fuso || '') + ' ' + esc(META.nota_eleitoral || '') + '</p>' +
+  '<p>Fontes: ' + esc((META.fontes_base || []).join(' · ')) + '. Regra: nada é inventado; dado ausente na fonte aparece como "não informado na fonte".</p>' +
+  '<p>Painel gerado por gerar_app.py a partir de editais.json. Nenhuma inscrição foi feita por este painel.</p>';
+
+render();
+window.__appOK = true;
+})();
+</script>
+</body>
+</html>
