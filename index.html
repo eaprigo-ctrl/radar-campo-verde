@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Radar de Oportunidades – Campo Verde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --verde:#0f8a6c; --verde-esc:#0b6b54; --verde-claro:#e6f6f1;
@@ -136,17 +138,164 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
 .em-lista a:hover,.em-fontes a:hover{text-decoration:underline}
 .em-lista a:after,.em-fontes a:after{content:" ↗";font-size:12px;font-weight:400}
 .em-conf{font-style:normal;font-weight:700;color:#b55d00}
+/* ==== Redesign 2026-10-14: app moderno verde/branco/amarelo ==== */
+:root{--verde:#2e8b1e;--verde-esc:#1f6b12;--verde-claro:#eaf6e3;--amarelo:#f5c518;--fundo:#f3f7f1;--borda:#e1e9dc}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+header.topo{background:radial-gradient(900px 400px at 85% -10%,rgba(245,197,24,.28),transparent 60%),radial-gradient(700px 420px at 0% 110%,rgba(160,230,110,.35),transparent 60%),linear-gradient(135deg,#1c6e10 0%,#2e8b1e 45%,#5cb82e 100%);padding:0 20px 84px}
+header.topo:after{display:none}
+.grade-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:32px 32px;-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 100%);mask-image:linear-gradient(180deg,#000 30%,transparent 100%);pointer-events:none}
+.appbar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.marca img{display:block;height:58px;width:auto;max-width:100%;filter:drop-shadow(0 2px 8px rgba(0,0,0,.18))}
+.live{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:1px;color:#3a2e00;background:var(--amarelo);border-radius:999px;padding:5px 11px;box-shadow:0 0 0 4px rgba(245,197,24,.22)}
+.live i{width:8px;height:8px;border-radius:50%;background:#c0392b;animation:pisca 1.4s infinite}
+@keyframes pisca{50%{opacity:.25}}
+.hero{position:relative;padding-top:26px}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:4px 12px;margin-bottom:12px}
+.topo h1{font-size:38px;font-weight:800;letter-spacing:-.8px}
+.topo .sub{font-weight:500;opacity:.9}
+.topo .intro{opacity:.92}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,200px));gap:12px;margin-top:20px}
+.kpi{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:12px 16px;transition:transform .2s,background .2s}
+.kpi:hover{transform:translateY(-3px);background:rgba(255,255,255,.22)}
+.kpi b{display:block;font-size:30px;font-weight:800;line-height:1.1}
+.kpi span{font-size:13px;opacity:.92}
+.kpi.destaque b{color:var(--amarelo)}
+.pills{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.topo .atual{margin:0;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:6px 13px;transition:background .2s}
+.atalho{margin-left:0}
+main.wrap{margin-top:-56px}
+.painel{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);box-shadow:0 10px 34px rgba(20,60,10,.12);border-radius:20px}
+.chip{transition:all .18s;font-weight:500}
+.chip:hover{border-color:var(--verde);transform:translateY(-1px)}
+.chip.ativo{background:var(--verde);border-color:var(--verde);box-shadow:inset 0 -3px 0 var(--amarelo),0 4px 12px rgba(46,139,30,.3)}
+.chip.ativo .n{background:var(--amarelo);color:#3a2e00}
+.campo-busca{flex:1 1 260px;position:relative;display:flex}
+.campo-busca svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:19px;height:19px;fill:none;stroke:#7a8a72;stroke-width:2.2;stroke-linecap:round}
+.busca input[type=search]{flex:1;width:100%;padding:12px 16px 12px 42px;border-radius:999px;background:#f7faf5;transition:all .2s}
+.busca input[type=search]:focus,select:focus{outline:0;border-color:var(--verde);box-shadow:0 0 0 4px rgba(46,139,30,.15);background:#fff}
+select{border-radius:999px;background:#f7faf5;padding:10px 14px;transition:border-color .2s}
+select:hover{border-color:#a9cf95}
+.linha-opcoes label{background:#f7faf5;border:1px solid var(--borda);border-radius:999px;padding:6px 12px;transition:all .18s}
+.linha-opcoes label:hover{border-color:var(--verde)}
+.linha-opcoes label:has(input:checked){background:var(--verde-claro);border-color:var(--verde);color:var(--verde-esc);font-weight:600}
+.linha-opcoes input{accent-color:var(--verde)}
+.selo-novo{background:var(--amarelo);color:#3a2e00;box-shadow:0 2px 8px rgba(245,197,24,.45)}
+.banner-novo{background:linear-gradient(90deg,#f5c518,#ffdb4d);color:#3a2e00}
+.banner-novo button{background:#2e8b1e;color:#fff}
+.card{border-radius:18px;border:1px solid var(--borda);border-top:4px solid var(--cor,#2e8b1e);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(20,60,10,.13)}
+.btn{border-radius:999px;transition:all .18s}
+.btn-of{background:var(--verde)}
+@media (max-width:640px){
+  header.topo{padding:0 14px 70px}
+  .marca img{height:auto;width:min(260px,62vw)}
+  .live{font-size:10.5px;padding:4px 9px}
+  .hero{padding-top:18px}
+  .topo h1{font-size:25px;letter-spacing:-.4px}
+  .kpis{grid-template-columns:repeat(3,1fr);gap:8px}
+  .kpi{padding:10px 10px}
+  .kpi b{font-size:22px}
+  .kpi span{font-size:11.5px;line-height:1.2;display:block}
+  .linha-opcoes{gap:8px}
+  .lista{grid-template-columns:minmax(0,1fr)}
+}
+.card{min-width:0;overflow-wrap:anywhere}
+/* ==== v2: cards recolhíveis, animações, ilustrações ==== */
+header.topo{background-size:200% 200%,200% 200%,220% 220%;animation:gradMove 18s ease-in-out infinite alternate}
+@keyframes gradMove{0%{background-position:0% 0%,0% 100%,0% 50%}100%{background-position:100% 30%,60% 60%,100% 50%}}
+.orbs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.orbs i{position:absolute;bottom:-20px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);animation:sobe 14s linear infinite}
+.orbs i:nth-child(1){left:8%;animation-delay:0s}.orbs i:nth-child(2){left:22%;width:5px;height:5px;animation-delay:-4s;background:rgba(245,197,24,.8)}
+.orbs i:nth-child(3){left:41%;animation-delay:-8s}.orbs i:nth-child(4){left:63%;width:6px;height:6px;animation-delay:-2s;background:rgba(245,197,24,.7)}
+.orbs i:nth-child(5){left:78%;animation-delay:-10s}.orbs i:nth-child(6){left:92%;width:5px;height:5px;animation-delay:-6s}
+@keyframes sobe{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(-480px);opacity:0}}
+.marca-box{display:flex;flex-direction:column;gap:4px}
+.credito{font-size:11.5px;color:rgba(255,255,255,.82);letter-spacing:.2px;padding-left:2px}
+.hero{display:block}
+.hero-ilu{position:absolute;right:0;top:20px;width:300px;height:auto;filter:drop-shadow(0 10px 30px rgba(0,0,0,.15))}
+.radar-varre{transform-origin:160px 150px;animation:gira 6s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.pisca-pt{animation:pisca 2.4s ease-in-out infinite}
+.hero h1,.hero .sub,.hero .intro{max-width:calc(100% - 320px)}
+/* cards */
+.card{padding:0;overflow:hidden;opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease,box-shadow .2s}
+.card.vis{opacity:1;transform:none}
+.card.encerrado.vis{opacity:.62}
+.card.vis:hover{transform:translateY(-4px)}
+.card-cab{padding:16px 16px 12px;cursor:pointer;outline:0;display:flex;flex-direction:column;gap:12px;flex:1}
+.card-cab:focus-visible{box-shadow:inset 0 0 0 3px var(--amarelo)}
+.cab-linha{display:flex;gap:12px;align-items:flex-start}
+.ico-cat{flex:0 0 52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:27px;background:linear-gradient(135deg,var(--cor-claro,#eaf6e3),#fff);border:1px solid color-mix(in srgb,var(--cor) 25%,transparent);box-shadow:0 4px 12px color-mix(in srgb,var(--cor) 18%,transparent);transition:transform .3s}
+.card:hover .ico-cat{transform:rotate(-6deg) scale(1.06)}
+.cab-txt{min-width:0;flex:1}
+.cab-txt .selo-local{display:inline-block;margin:0 0 4px}
+.badges{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bdg{display:flex;gap:8px;align-items:flex-start;background:#f4f9f1;border:1px solid #dcebd3;border-radius:12px;padding:8px 10px;font-size:13.5px;font-weight:600;line-height:1.3;color:#1f3a14}
+.bdg i{font-style:normal;font-size:16px;line-height:1.2}
+.bdg small{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#5f7a52;margin-bottom:1px}
+.bdg-prazo{grid-column:1/-1}
+.pz-yel{background:#fff7d6;border-color:#f5c518;color:#6b5000}.pz-yel small{color:#8a6a00}
+.pz-red{background:#fde8e6;border-color:#e2553f;color:#9b1c0c}.pz-red small{color:#b0321f}
+.pz-enc{background:#eef0f1;border-color:#d5dadd;color:#66727b}
+.expandir{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--verde-esc);padding-top:2px}
+.expandir svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;transition:transform .35s}
+.txt-menos,.aberto .txt-mais{display:none}.aberto .txt-menos{display:inline}
+.aberto .expandir svg{transform:rotate(180deg)}
+.card-cab:hover .expandir{color:var(--verde)}
+.card-corpo{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.card.aberto .card-corpo{grid-template-rows:1fr}
+.corpo-in{overflow:hidden;min-height:0;padding:0 16px;visibility:hidden;transition:visibility 0s .4s,padding .4s}
+.card.aberto .corpo-in{visibility:visible;padding:4px 16px 14px;border-top:1px dashed var(--borda);transition:visibility 0s,padding .4s}
+.lista{align-items:start}
+@media (max-width:900px){.hero-ilu{width:190px;top:14px;opacity:.55}.hero h1,.hero .sub,.hero .intro{max-width:none}.hero h1{padding-right:120px}}
+@media (max-width:640px){
+  .hero-ilu{width:120px;top:8px;right:-10px;opacity:.35}
+  .hero h1{padding-right:0}
+  .credito{font-size:10.5px}
+  .badges{grid-template-columns:1fr}
+  .ico-cat{flex-basis:44px;height:44px;font-size:23px;border-radius:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .card{opacity:1;transform:none}
+  .orbs{display:none}
+}
 </style>
 </head>
 <body>
 <header class="topo">
-  <div class="wrap">
+  <div class="grade-bg" aria-hidden="true"></div><div class="orbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <nav class="appbar wrap">
+    <div class="marca-box"><a class="marca" href="#" aria-label="SEMCITECI – Campo Verde"><img src="logo_semciteci.png" alt="Campo Verde – Secretaria Municipal de Ciência, Tecnologia e Inovação" width="640" height="134"></a><span class="credito">Desenvolvido por Rigoberto Ximenes Lopes</span></div>
+    <span class="live"><i></i>AO VIVO</span>
+  </nav>
+  <div class="wrap hero"><svg class="hero-ilu" viewBox="0 0 320 300" aria-hidden="true">
+ <defs><linearGradient id="gF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#dff3d2" stop-opacity=".85"/></linearGradient></defs>
+ <circle cx="160" cy="150" r="128" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.25)" stroke-dasharray="4 8"/>
+ <circle cx="160" cy="150" r="88" fill="rgba(255,255,255,.10)"/>
+ <g class="radar-varre"><path d="M160 150 L160 22 A128 128 0 0 1 270 86 Z" fill="rgba(245,197,24,.22)"/></g>
+ <g stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none"><path d="M60 230h40v-30h30"/><path d="M260 70h-30v30h-25"/><path d="M262 220h-40v-25"/></g>
+ <g fill="#f5c518"><circle cx="60" cy="230" r="5"/><circle cx="260" cy="70" r="5"/><circle cx="262" cy="220" r="5"/></g>
+ <path d="M160 214v-62" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+ <path d="M160 176c-30 0-46-18-48-44 28 0 46 14 48 44z" fill="url(#gF)"/>
+ <path d="M160 160c26 0 42-16 44-40-26 0-42 14-44 40z" fill="url(#gF)"/>
+ <rect x="122" y="212" width="76" height="16" rx="8" fill="#f5c518"/>
+ <g class="pisca-pt"><circle cx="232" cy="118" r="6" fill="#f5c518"/><circle cx="98" cy="96" r="4" fill="#fff"/><circle cx="214" cy="200" r="4" fill="#fff"/></g>
+</svg>
+    <span class="eyebrow">SEMCITECI · Campo Verde</span>
     <h1>🔎 Radar de Oportunidades – Campo Verde</h1>
     <p class="sub">SEMCITECI – Secretaria de Ciência, Tecnologia e Inovação – Prefeitura de Campo Verde</p>
     <p class="intro">Eventos, cursos gratuitos, editais e crédito para inovação e tecnologia, além de competições e olimpíadas científicas: para empresas, startups, produtores rurais, jovens, estudantes, professores, prefeituras e toda a comunidade — com destaque para o que acontece em Campo Verde.</p>
+    <div class="kpis" aria-label="Indicadores">
+      <div class="kpi"><b id="kpiAbertas">–</b><span>oportunidades abertas</span></div>
+      <div class="kpi destaque"><b id="kpiNovos">–</b><span>novidades</span></div>
+      <div class="kpi"><b id="kpi10">–</b><span>encerram em até 10 dias</span></div>
+    </div>
+    <div class="pills">
     <span class="atual" id="atual"></span>
     <a class="atual atalho" href="#financiadores">🏦 Quem financia CT&amp;I</a>
     <a class="atual atalho" href="#emendas">🏛️ Emendas parlamentares</a>
+    </div>
   </div>
 </header>
 
@@ -159,7 +308,7 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
   <section class="painel" aria-label="Filtros">
     <div class="cats" id="cats" role="tablist"></div>
     <div class="busca">
-      <input type="search" id="q" placeholder="Buscar por palavra (ex.: inteligência artificial, agro, crédito, Sebrae)" aria-label="Buscar">
+      <span class="campo-busca"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="q" placeholder="Buscar por palavra (ex.: inteligência artificial, agro, crédito, Sebrae)" aria-label="Buscar"></span>
       <select id="ordem" aria-label="Ordenar">
         <option value="prazo">Ordenar: prazo mais próximo</option>
         <option value="recentes">Ordenar: mais recentes no radar</option>
@@ -2990,7 +3139,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "pessoa_fisica"
    ],
    "organizador": "MDS, Enap e Impact Hub",
-   "instituicoes": "Governo Federal",
+   "instituicoes": [
+    "Governo Federal"
+   ],
    "resumo": "Desafio de inovação aberta sobre a agenda alimentar urbana, incluindo agricultura urbana e periurbana. As soluções selecionadas recebem selo, capacitação e conexão com municípios. Aberto a empresas, startups, cooperativas, OSCs, ICTs e pessoas físicas.",
    "valor": "Sem prêmio em dinheiro (selo, capacitação e conexão com municípios).",
    "gratuito": null,
@@ -3030,7 +3181,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "startup"
    ],
    "organizador": "Anjos do Brasil",
-   "instituicoes": "Investidores-anjo",
+   "instituicoes": [
+    "Investidores-anjo"
+   ],
    "resumo": "Rede nacional de investidores-anjo. Startups de todo o país com alto potencial de crescimento podem submeter o negócio; as selecionadas fazem pitch no Pitch Night mensal da rede.",
    "valor": "Aportes de R$ 300 mil a R$ 2 milhões.",
    "gratuito": null,
@@ -3068,7 +3221,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "startup"
    ],
    "organizador": "Anjos do Brasil",
-   "instituicoes": "Investidores-anjo",
+   "instituicoes": [
+    "Investidores-anjo"
+   ],
    "resumo": "Três startups apresentam por mês para a rede de investidores-anjo. Participam as startups que passaram pela triagem da submissão à Anjos do Brasil.",
    "valor": "ver edital",
    "gratuito": null,
@@ -3106,7 +3261,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "startup"
    ],
    "organizador": "Gávea Angels",
-   "instituicoes": "Investidores-anjo",
+   "instituicoes": [
+    "Investidores-anjo"
+   ],
    "resumo": "Associação de investidores-anjo com captação periódica de startups via formulário. Para startups de qualquer região alinhadas à tese de investimento.",
    "valor": "R$ 500 mil a R$ 2 milhões.",
    "gratuito": null,
@@ -3144,7 +3301,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "startup"
    ],
    "organizador": "BR Angels",
-   "instituicoes": "Investidores-anjo",
+   "instituicoes": [
+    "Investidores-anjo"
+   ],
    "resumo": "Ciclo de investimento com Pitch Night para startups de fintech, insurtech e health com faturamento a partir de R$ 500 mil por ano.",
    "valor": "não informado na fonte",
    "gratuito": null,
@@ -3183,7 +3342,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "mei_pequena"
    ],
    "organizador": "CVM – Comissão de Valores Mobiliários",
-   "instituicoes": "Governo Federal",
+   "instituicoes": [
+    "Governo Federal"
+   ],
    "resumo": "Lista oficial das plataformas autorizadas pela CVM a fazer ofertas públicas de startups e sociedades empresárias de pequeno porte (equity crowdfunding), conforme a Resolução CVM 88/2022.",
    "valor": "Conforme os limites da Resolução CVM 88/2022.",
    "gratuito": null,
@@ -3221,7 +3382,9 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "startup"
    ],
    "organizador": "Itaipu Parquetec, Sanesul e Fonplata",
-   "instituicoes": "Itaipu Parquetec",
+   "instituicoes": [
+    "Itaipu Parquetec"
+   ],
    "resumo": "Programa de inovação aberta: prova de conceito (PoC) de tratamento de água subterrânea em Mato Grosso do Sul, com Demoday de 16 a 17/12. Para startups do Brasil (CNPJ ativo) e de países do Fonplata, com tecnologia em TRL 5 a 9.",
    "valor": "R$ 79 mil por startup (até 4 selecionadas), mais mentoria e infraestrutura.",
    "gratuito": null,
@@ -3250,6 +3413,23 @@ details.fin-grupo[open] summary:after{transform:rotate(180deg)}
     "Desenvolvimento Econômico"
    ]
   }
+ ],
+ "novidades_ids": [
+  "senai-finep-smart-factory-2026",
+  "br-angels-captacao-latam-2026",
+  "cvm-equity-crowdfunding-plataformas",
+  "anjos-do-brasil-pitch-night",
+  "gavea-angels-selecao-startups",
+  "anjos-do-brasil-submissao-startups",
+  "mds-enap-solucoes-que-alimentam-2026",
+  "icna-inova-mais-campo-2026",
+  "sanesul-innova-2026",
+  "estudio-livre-mt-2026",
+  "cnm-qualifica-cuiaba-out2026",
+  "ms-pronon-06-2026",
+  "ms-pronas-pcd-07-2026",
+  "anater-mda-006-2026-ater-agroecologia",
+  "mec-pneae-adesao-2026"
  ]
 }</script>
 <script>
@@ -3316,11 +3496,11 @@ function diasTexto(it){
 var ultimaVisita=null;
 try{ultimaVisita=localStorage.getItem(CHAVE_VISITA);}catch(e){}
 function ehNovo(it){
-  var di=it.data_inclusao; if(!di) return false;
-  if(diasAte(di)>=-7) return true;
-  if(ultimaVisita && di>ultimaVisita) return true;
-  return false;
+  /* Novidade = mesmo critério do gerador (novidades_radar.json): itens do lote desta atualização. */
+  if(Array.isArray(D.novidades_ids)) return D.novidades_ids.indexOf(it.id)>=0;
+  var di=it.data_inclusao; return !!di && diasAte(di)>=-2;
 }
+D.itens.forEach(function(it){if(it.instituicoes&&!Array.isArray(it.instituicoes))it.instituicoes=[it.instituicoes];});
 D.itens.forEach(function(it){it._novo=ehNovo(it); it._st=status(it);});
 
 // ---- filtros ----
@@ -3361,13 +3541,28 @@ function desenharCats(base){
 }
 // "Jovens e estudantes" já inclui estudantes: não repete o selo "Estudantes" no card/compartilhamento
 function pubsVis(it){var ps=it.publicos||[];return ps.indexOf("jovem")>=0?ps.filter(function(p){return p!=="estudante";}):ps;}
+function badgeCurto(t,n){t=String(t||"");return t.length>n?t.slice(0,n-1).replace(/[\s,;.]+\S*$/,"")+"…":t;}
+function badgePub(it){var ps=pubsVis(it).map(function(p){return PUB[p]||p;});if(!ps.length)return "Todos";return ps.slice(0,2).join(", ")+(ps.length>2?" +"+(ps.length-2):"");}
+function badgeValor(it){var v=String(it.valor||"").trim();if(it.gratuito&&(!v||/^gratuit/i.test(v)))return "Gratuito";if(!v||/não informado/i.test(v)&&v.length<30)return "Não informado";return badgeCurto(v,48);}
+function badgePrazo(it){var ins=it.inscricao||{},st=it._st;if(st==="encerrado")return {t:"Encerrado",c:"enc"};
+  if(st==="andamento")return {t:"Acontecendo agora",c:"ok"};
+  var alvo=ins.ate||(it.evento&&it.evento.inicio);
+  if(!alvo)return {t:it.fluxo_continuo||st==="continuo"?"Fluxo contínuo":"Ver página oficial",c:"ok"};
+  var d=diasAte(alvo),pre=ins.ate?"":"Evento ";
+  if(d<=0)return {t:ins.ate?"Encerra hoje!":"Evento hoje",c:"red"};
+  if(d===1)return {t:ins.ate?"Encerra amanhã":"Evento amanhã",c:"red"};
+  return {t:fmtCurto(alvo)+" · "+(ins.ate?"faltam ":"em ")+d+" dias",c:d<=7?"yel":"ok"};}
 function card(it){
-  var c=CATS[it.categoria], st=it._st, dt=diasTexto(it);
+  var c=CATS[it.categoria], st=it._st, dt=diasTexto(it), bp=badgePrazo(it), cid="cc-"+esc(it.id);
   var pubs=pubsVis(it).map(function(p){return '<span class="pub">'+esc(PUB[p]||p)+'</span>';}).join("");
   var h='<article class="card'+(st==="encerrado"?" encerrado":"")+'" style="--cor:'+c.cor+';--cor-claro:'+c.claro+'" data-id="'+esc(it.id)+'">';
-  h+='<div class="topo-card"><span class="tag-cat">'+c.emoji+" "+esc(c.nome)+'</span>'+(it._novo?'<span class="selo-novo">NOVO</span>':'')+'<span class="status st-'+st+'">'+ST_TXT[st]+'</span></div>';
-  if(it.local_campo_verde) h+='<div style="margin:2px 0 4px"><span class="selo-local" title="Oportunidade em Campo Verde">📍 Campo Verde</span></div>';
-  h+='<h3>'+esc(it.titulo)+'</h3><div class="org">'+esc(it.organizador)+'</div>';
+  h+='<div class="card-cab" role="button" tabindex="0" aria-expanded="false" aria-controls="'+cid+'">';
+  h+='<div class="cab-linha"><span class="ico-cat" aria-hidden="true">'+c.emoji+'</span><div class="cab-txt"><div class="topo-card"><span class="tag-cat">'+esc(c.nome)+'</span>'+(it._novo?'<span class="selo-novo">NOVIDADE</span>':'')+'<span class="status st-'+st+'">'+ST_TXT[st]+'</span></div>';
+  if(it.local_campo_verde) h+='<span class="selo-local" title="Oportunidade em Campo Verde">📍 Campo Verde</span>';
+  h+='<h3>'+esc(it.titulo)+'</h3><div class="org">'+esc(it.organizador)+'</div></div></div>';
+  h+='<div class="badges"><span class="bdg bdg-pub"><i>✅</i><span><small>Pra quem</small>'+esc(badgePub(it))+'</span></span><span class="bdg bdg-val"><i>💰</i><span><small>Valor</small>'+esc(badgeValor(it))+'</span></span><span class="bdg bdg-prazo pz-'+bp.c+'"><i>🗓️</i><span><small>Prazo</small>'+esc(bp.t)+'</span></span></div>';
+  h+='<span class="expandir"><span class="txt-mais">Ver detalhes</span><span class="txt-menos">Recolher</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></div>';
+  h+='<div class="card-corpo" id="'+cid+'" role="region" aria-label="Detalhes: '+esc(it.titulo)+'"><div class="corpo-in">';
   h+='<div class="publicos" title="Para quem">'+pubs+'</div>';
   if(it.secretarias && it.secretarias.length) h+='<div class="secs" title="Secretaria(s) da Prefeitura com interesse"><b>🏢 '+(it.secretarias.length>1?"Secretarias":"Secretaria")+':</b>'+it.secretarias.map(function(x){return '<span class="sec">'+esc(x)+'</span>';}).join("")+'</div>';
   h+='<p class="res">'+esc(it.resumo)+'</p><div class="info">';
@@ -3378,10 +3573,10 @@ function card(it){
   h+='<div><span class="ic">📍</span><span><b>Onde:</b> '+esc(MOD[it.modalidade]||it.modalidade)+(it.local?" – "+esc(it.local):"")+'</span></div>';
   h+='<div><span class="ic">🏛️</span><span><b>Instituição:</b> '+esc((it.instituicoes||[]).join(", "))+'</span></div>';
   h+='</div>';
-  if(it.observacoes) h+='<div class="obs">ℹ️ '+esc(it.observacoes)+'</div>';
+  if(it.observacoes) h+='<div class="obs"><b>ℹ️ Requisitos e observações:</b> '+esc(it.observacoes)+'</div>';
   h+='<div class="acoes"><a class="btn btn-of" href="'+esc(it.link)+'" target="_blank" rel="noopener noreferrer">🔗 Página oficial</a><button type="button" class="btn btn-wa" data-share="'+esc(it.id)+'">📲 Compartilhar</button></div>';
   h+='<div class="verif">✅ Verificado em '+fmtCurto(it.verificado_em)+' na <a href="'+esc(it.fonte_verificada)+'" target="_blank" rel="noopener noreferrer">fonte oficial</a></div>';
-  return h+'</article>';
+  return h+'</div></div></article>';
 }
 function ordenar(arr){
   var o=estado.ordem;
@@ -3403,6 +3598,7 @@ function render(){
   var enc=D.itens.filter(function(i){return i._st==="encerrado";}).length;
   el("resumo").textContent=vis.length+(vis.length===1?" oportunidade encontrada":" oportunidades encontradas")+(estado.enc||!enc?"":" · "+enc+" encerrada(s) oculta(s)");
   var l2=el("limpar2"); if(l2) l2.onclick=limpar;
+  revelar();
 }
 function limpar(){
   estado={cat:"",q:"",pub:"",mod:"",inst:"",sec:"",local:false,jovem:false,gratis:false,novos:false,enc:false,ordem:estado.ordem};
@@ -3441,7 +3637,14 @@ function compartilhar(id){
 
 // ---- eventos ----
 el("cats").addEventListener("click",function(e){var b=e.target.closest("[data-cat]");if(!b)return;estado.cat=b.getAttribute("data-cat");render();});
-el("lista").addEventListener("click",function(e){var b=e.target.closest("[data-share]");if(b)compartilhar(b.getAttribute("data-share"));});
+el("lista").addEventListener("click",function(e){var b=e.target.closest("[data-share]");if(b){compartilhar(b.getAttribute("data-share"));return;}var cab=e.target.closest(".card-cab");if(cab)alternar(cab);});
+el("lista").addEventListener("keydown",function(e){var cab=e.target.closest(".card-cab");if(cab&&e.target===cab&&(e.key==="Enter"||e.key===" ")){e.preventDefault();alternar(cab);}});
+function alternar(cab){var card=cab.parentNode,ab=card.classList.toggle("aberto");cab.setAttribute("aria-expanded",ab?"true":"false");}
+var REDUZ=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches,OBS=null;
+function revelar(){var cs=el("lista").querySelectorAll(".card");if(REDUZ||!("IntersectionObserver" in window)){cs.forEach(function(c){c.classList.add("vis");});return;}
+  if(!OBS)OBS=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");OBS.unobserve(x.target);}});},{rootMargin:"0px 0px -40px 0px"});
+  cs.forEach(function(c,i){c.style.transitionDelay=Math.min(i%3,2)*70+"ms";OBS.observe(c);});}
+function contar(id,n){var e=el(id);if(REDUZ||!n){e.textContent=n;return;}var t0=null;function f(t){if(!t0)t0=t;var k=Math.min((t-t0)/900,1);e.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
 el("q").addEventListener("input",function(){estado.q=this.value.trim();render();});
 el("ordem").addEventListener("change",function(){estado.ordem=this.value;render();});
 el("fPublico").addEventListener("change",function(){estado.pub=this.value;render();});
@@ -3458,11 +3661,16 @@ el("verNovos").addEventListener("click",function(){estado.novos=true;el("fNovos"
 
 // ---- inicialização ----
 el("atual").textContent="Atualizado em "+fmt(D.atualizado_em)+" · "+D.itens.filter(function(i){return i._st!=="encerrado";}).length+" oportunidades abertas";
+
+(function(){var ab=D.itens.filter(function(i){return i._st!=="encerrado";});
+contar("kpiAbertas",ab.length);
+contar("kpiNovos",D.itens.filter(function(i){return i._novo&&i._st!=="encerrado";}).length);
+contar("kpi10",ab.filter(function(i){var ins=i.inscricao||{};var k=ins.ate||(i.evento&&i.evento.inicio);if(!k)return false;var d=diasAte(k);return d>=0&&d<=10;}).length);})();
 if(window.matchMedia && window.matchMedia("(min-width:641px)").matches){el("boxFiltros").open=true;Array.prototype.forEach.call(document.querySelectorAll("details.fin-grupo"),function(d){d.open=true;});}
 preencherSelects();
 var novos=D.itens.filter(function(i){return i._novo && i._st!=="encerrado";}).length;
 if(novos>0){
-  el("bannerTxt").textContent=novos+(novos===1?" novidade":" novidades")+(ultimaVisita?" desde sua última visita":" no radar")+"!";
+  el("bannerTxt").textContent=novos+(novos===1?" novidade":" novidades")+" nesta atualização"+"!";
   el("bannerNovo").classList.add("on");
 }
 el("rodape").innerHTML="Radar de Oportunidades – Campo Verde · SEMCITECI – Secretaria de Ciência, Tecnologia e Inovação – Prefeitura de Campo Verde · Dados atualizados em "+fmt(D.atualizado_em)+" · Prazos e dias restantes calculados pela data deste aparelho ("+fmt(HOJE)+").";
